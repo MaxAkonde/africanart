@@ -10,4 +10,14 @@ class PageController extends Controller
     {
         return view('pages.home');
     }
+
+    public function contact()
+    {
+        return view('pages.contact');
+    }
+
+    public function shop()
+    {
+        return view('pages.shop');
+    }
 }

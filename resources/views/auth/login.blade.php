@@ -28,7 +28,7 @@
                             <h2>Nouveau dans notre boutique ?</h2>
                             <p>There are advances being made in science and technology
                                 everyday, and a good example of this is the</p>
-                            <a href="#" class="btn_3">Créer un compte</a>
+                            <a href="{{ route('register') }}" class="btn_3">Créer un compte</a>
                         </div>
                     </div>
                 </div>

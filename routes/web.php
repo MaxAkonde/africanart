@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,14 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', [PageController::class, 'home'])->name('index');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/shop', [PageController::class, 'shop'])->name('shop');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::group(['middleware' => 'auth', 'namespace' => 'App\Http\Controllers\Admin', 'as' => 'admin.'] ,function () {
+
+    Route::resource('roles', 'RoleController');
+ 
+});

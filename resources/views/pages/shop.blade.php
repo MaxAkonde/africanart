@@ -32,8 +32,8 @@
                 <div class="col-lg-8">
                     <div class="breadcrumb_iner">
                         <div class="breadcrumb_iner_item">
-                            <h2>Shop Category</h2>
-                            <p>Home <span>-</span> Shop Category</p>
+                            <h2>Boutique</h2>
+                            <p>Acceuil <span>-</span> Boutique</p>
                         </div>
                     </div>
                 </div>

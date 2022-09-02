@@ -4,7 +4,7 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="#"> <img src={{ asset("user/img/logo.png") }} alt="logo"> </a>
+                    <a class="navbar-brand" href="#"> <img src={{ asset('user/img/logo.png') }} alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -31,12 +31,9 @@
                     </div>
                     <div class="hearer_icon d-flex">
                         {{-- <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a> --}}
-                        <div class="dropdown cart">
-                            <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-cart-plus"></i>
-                            </a>
-                        </div>
+                        <a href="{{ route('cart') }}">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
                         <a href="{{ route('login') }}"><i class="ti-user"></i></a>
                     </div>
                 </nav>

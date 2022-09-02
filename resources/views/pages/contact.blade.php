@@ -29,8 +29,8 @@
         <div class="col-lg-8">
           <div class="breadcrumb_iner">
             <div class="breadcrumb_iner_item">
-              <h2>contactez nous</h2>
-              <p>Home <span>-</span> contactez nous</p>
+              <h2>Contactez nous</h2>
+              <p>Acceuil <span>-</span> Contactez nous</p>
             </div>
           </div>
         </div>

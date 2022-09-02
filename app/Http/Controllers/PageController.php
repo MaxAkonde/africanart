@@ -20,4 +20,14 @@ class PageController extends Controller
     {
         return view('pages.shop');
     }
+
+    public function cart()
+    {
+        return view('pages.cart');
+    }
+
+    public function checkout()
+    {
+        return view('pages.checkout');
+    }
 }

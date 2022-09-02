@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'home'])->name('index');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/shop', [PageController::class, 'shop'])->name('shop');
+Route::get('/cart', [PageController::class, 'cart'])->name('cart');
+Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
 
 Auth::routes();
 

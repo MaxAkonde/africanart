@@ -49,6 +49,18 @@
 
 @section('content')
     <div class="row">
+        @if (session('status'))
+            <div class="col-lg-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('status') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        @endif
+    </div>
+    <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
@@ -69,7 +81,7 @@
                                 <tr>
                                     <th scope="row">{{ $role->id }}</th>
                                     <td>{{ $role->name }}</td>
-                                    <td>{{ $role->slug }}</td>
+                                    <td><small class="text-muted">{{ $role->slug }}</small></td>
                                     <td>
                                         <a href="{{ route('admin.roles.edit', $role->id) }}"
                                             class="fa fa-pencil edit-button" title="Modifier"></a>

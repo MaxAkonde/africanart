@@ -3,8 +3,8 @@
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="#"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                <li class="{{ ($active=='dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
                 <li class="menu-title">Inventaire</li><!-- /.menu-title -->
                 
@@ -45,7 +45,7 @@
 
                 <li class="menu-title">Parametre</li><!-- /.menu-title -->
 
-                <li class="menu-item-has-children dropdown">
+                <li class="menu-item-has-children dropdown {{ ($active=='roles') ? 'active' : '' }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"> <i class="menu-icon fa fa-flag-o"></i>Roles</a>
                     <ul class="sub-menu children dropdown-menu">

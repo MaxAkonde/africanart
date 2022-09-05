@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Role;
 use Illuminate\Support\Str;
-use App\Http\Requests\RoleRequest;
+use App\Http\Requests\StoreRoleRequest;
+use App\Http\Requests\UpdateRoleRequest;
 use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
+    private $active;
 
     public function __construct()
     {
         $this->middleware('auth');
+        $this->active = "roles";
     }
 
     /**
@@ -25,6 +28,7 @@ class RoleController extends Controller
         $roles = Role::latest()->get();
         return view('admin.roles.index', [
             'roles' => $roles,
+            'active' => $this->active,
         ]);
     }
 
@@ -35,7 +39,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('admin.roles.create');
+        $active = 'roles';
+        return view('admin.roles.create', [
+            'active' => $this->active,
+        ]);
     }
 
     /**
@@ -44,14 +51,14 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RoleRequest $request)
+    public function store(StoreRoleRequest $request)
     {
         $role = new Role;
         $role->name = $request->name;
         $role->slug = Str::slug($role->name);
         $role->save();
 
-        return redirect()->route('admin.roles.create')->with('status', 'Votre rôle a été enregistrer avec succes !');
+        return redirect()->route('admin.roles.index')->with('status', $request->name . ' a été enregistrer avec succes !');
     }
 
     /**
@@ -73,7 +80,10 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        return view('admin.roles.edit', [
+            'role' => $role,
+            'active' => $this->active
+        ]);
     }
 
     /**
@@ -83,9 +93,11 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(RoleRequest $request, Role $role)
+    public function update(UpdateRoleRequest $request, Role $role)
     {
-        //
+        $role->update($request->all());
+
+        return redirect()->route('admin.roles.index')->with('status', $request->name . ' a été modifier avec success !');
     }
 
     /**
@@ -96,6 +108,10 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $name = $role->name;
+
+        $role->delete();
+
+        return redirect()->route('admin.roles.index')->with('status', "Le role " . $name . " vient d'être supprimer !");
     }
 }

@@ -7,7 +7,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>Nouveau role</h1>
+                            <h1><small>{{ $role->name }}</small></h1>
                         </div>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                             <ol class="breadcrumb text-right">
                                 <li><a href="#">Dashboard</a></li>
                                 <li><a href="#">Roles</a></li>
-                                <li class="active">Ajouter</li>
+                                <li class="active">Modifier</li>
                             </ol>
                         </div>
                     </div>
@@ -31,15 +31,16 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">Ajouter un role</div>
+                <div class="card-header">Modifier</div>
                 <div class="card-body card-block">
-                    <form action="{{ route('admin.roles.store') }}" method="post" class="">
+                    <form action="{{ route('admin.roles.update', $role->id) }}" method="post" class="">
                         @csrf
+                        @method('PUT')
 
                         <div class="form-group">
                             <label for="name" class=" form-control-label">Nom du role</label>
                             <input type="text" id="name" placeholder="Entrer le nom du role" name="name"
-                                value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror"
+                                value="{{ $role->name }}" class="form-control @error('name') is-invalid @enderror"
                                 autocomplete="name" required autofocus>
 
                             @error('name')
@@ -49,7 +50,7 @@
                             @enderror
                         </div>
                         <div class="form-actions form-group">
-                            <button type="submit" class="btn btn-secondary btn-sm">Enregistrer</button>
+                            <button type="submit" class="btn btn-secondary btn-sm">Modifier</button>
                         </div>
                     </form>
                 </div>

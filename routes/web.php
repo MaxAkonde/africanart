@@ -28,5 +28,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::group(['middleware' => 'auth', 'namespace' => 'App\Http\Controllers\Admin', 'as' => 'admin.'] ,function () {
 
     Route::resource('roles', 'RoleController');
+    Route::resource('categories', 'CategoryController');
  
 });

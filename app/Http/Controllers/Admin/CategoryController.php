@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Role;
+use App\Models\Category;
 use Illuminate\Support\Str;
-use App\Http\Requests\Role\StoreRoleRequest;
-use App\Http\Requests\Role\UpdateRoleRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\StoreCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 
-class RoleController extends Controller
+class CategoryController extends Controller
 {
     private $active;
 
     public function __construct()
     {
         $this->middleware('auth');
-        $this->active = "roles";
+        $this->active = "categories";
     }
 
     /**
@@ -25,9 +26,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::latest()->get();
-        return view('admin.roles.index', [
-            'roles' => $roles,
+        $categories = Category::latest()->get();
+        return view('admin.categories.index', [
+            'categories' => $categories,
             'active' => $this->active,
         ]);
     }
@@ -39,7 +40,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('admin.roles.create', [
+        return view('admin.categories.create', [
             'active' => $this->active,
         ]);
     }
@@ -50,23 +51,23 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRoleRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
-        $role = new Role;
+        $role = new Category();
         $role->name = $request->name;
         $role->slug = Str::slug($role->name);
         $role->save();
 
-        return redirect()->route('admin.roles.index')->with('status', $request->name . ' a été enregistrer avec succes !');
+        return redirect()->route('admin.categories.index')->with('status', $request->name . ' a été enregistrer avec succes !');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show(Category $category)
     {
         //
     }
@@ -74,13 +75,13 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit(Category $category)
     {
-        return view('admin.roles.edit', [
-            'role' => $role,
+        return view('admin.categories.edit', [
+            'category' => $category,
             'active' => $this->active
         ]);
     }
@@ -89,28 +90,28 @@ class RoleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Role  $role
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRoleRequest $request, Role $role)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $role->update($request->all());
+        $category->update($request->all());
 
-        return redirect()->route('admin.roles.index')->with('status', $request->name . ' a été modifier avec success !');
+        return redirect()->route('admin.categories.index')->with('status', $request->name . ' a été modifier avec success !');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(Category $category)
     {
-        $name = $role->name;
+        $name = $category->name;
 
-        $role->delete();
+        $category->delete();
 
-        return redirect()->route('admin.roles.index')->with('status', "Le role " . $name . " vient d'être supprimer !");
+        return redirect()->route('admin.categories.index')->with('status', "La catégorie " . $name . " vient d'être supprimer !");
     }
 }

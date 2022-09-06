@@ -34,12 +34,12 @@
                     </ul>
                 </li>
 
-                <li class="menu-item-has-children dropdown">
+                <li class="menu-item-has-children dropdown {{ $active == 'users' ? 'active' : '' }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Utilisateurs</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-plus"></i><a href="#">Ajouter</a></li>
-                        <li><i class="fa fa-list"></i><a href="#">Liste</a></li>
+                        <li><i class="fa fa-plus"></i><a href="{{ route('admin.users.create') }}">Ajouter</a></li>
+                        <li><i class="fa fa-list"></i><a href="{{ route('admin.users.index') }}">Liste</a></li>
                     </ul>
                 </li>
 

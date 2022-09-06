@@ -27,7 +27,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>Liste des roles</h1>
+                            <h1>Liste des utilisateurs</h1>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">Roles</a></li>
+                                <li><a href="#">Utilisateurs</a></li>
                                 <li class="active">Liste</li>
                             </ol>
                         </div>
@@ -64,7 +64,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Roles</strong>
+                    <strong class="card-title">Utilisateurs</strong>
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -72,20 +72,22 @@
                             <tr>
                                 <th scope="col">#ID</th>
                                 <th scope="col">Nom</th>
-                                <th scope="col">Slug</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Rôle(s)</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($roles as $role)
+                            @forelse ($users as $user)
                                 <tr>
-                                    <th scope="row">{{ $role->id }}</th>
-                                    <td>{{ $role->name }}</td>
-                                    <td><small class="text-muted">{{ $role->slug }}</small></td>
+                                    <th scope="row">{{ $user->id }}</th>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ implode(' ,',$user->roles()->get()->pluck('name')->toArray()) }}</td>
                                     <td>
-                                        <a href="{{ route('admin.roles.edit', $role->id) }}"
+                                        <a href="{{ route('admin.users.edit', $user->id) }}"
                                             class="fa fa-pencil edit-button" title="Modifier"></a>
-                                        <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST"
+                                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
                                             onsubmit="" style="display: inline" id="delete_form">
                                             @csrf
                                             @method('DELETE')
@@ -97,9 +99,9 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">
+                                    <td colspan="5">
                                         <div class="">
-                                            <p class="d-flex justify-content-center">Pas de rôle disponible</p>
+                                            <p class="d-flex justify-content-center">Pas d'utilisateur disponible</p>
                                         </div>
                                     </td>
                                 </tr>

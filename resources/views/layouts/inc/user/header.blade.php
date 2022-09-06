@@ -29,12 +29,33 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="hearer_icon d-flex">
+                    <div class="hearer_icon1 d-flex1">
                         {{-- <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a> --}}
-                        <a href="{{ route('cart') }}">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                        <a href="{{ route('login') }}"><i class="ti-user"></i></a>
+                        <ul class="navbar-nav1" style="display:flex;">
+                            <li class="nav-item1">
+                                <a class="nav-link" href="{{ route('cart') }}">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+
+                            <li class="nav-item1 dropdown" style="padding:0px;">
+                                <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
+                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ti-user" style="margin:0px"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2" style="margin-left:-102px;">
+                                    <a class="dropdown-item" href="login.html"> login</a>
+                                    <a class="dropdown-item" href="tracking.html">tracking</a>
+                                    <a class="dropdown-item" href="checkout.html">product checkout</a>
+                                    <a class="dropdown-item" href="cart.html">shopping cart</a>
+                                    <a class="dropdown-item" href="confirmation.html">confirmation</a>
+                                    <a class="dropdown-item" href="elements.html">elements</a>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                        {{-- <a href="{{ route('login') }}"><i class="ti-user"></i></a> --}}
                     </div>
                 </nav>
             </div>

@@ -108,7 +108,7 @@ class UserController extends Controller
 
         $user->roles()->sync($request->roles);
 
-        return redirect()->route('admin.user.index')->with('status', $request->name . ' a été modifier avec success !');
+        return redirect()->route('admin.users.index')->with('status', $request->name . ' a été modifier avec success !');
     }
 
     /**

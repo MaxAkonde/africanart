@@ -17,6 +17,12 @@
         .delete-button:hover {
             color: #c82333;
         }
+        .info-button {
+            color: #17a2b8;
+        }
+        .info-button:hover {
+            color: #138496;
+        }
     </style>
 @endsection
 
@@ -85,6 +91,7 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ implode(' ,',$user->roles()->get()->pluck('name')->toArray()) }}</td>
                                     <td>
+                                        <a href="#" class="fa fa-unlock-alt info-button" title="Mot de passe"></a>
                                         <a href="{{ route('admin.users.edit', $user->id) }}"
                                             class="fa fa-pencil edit-button" title="Modifier"></a>
                                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
@@ -93,7 +100,7 @@
                                             @method('DELETE')
                                             <a href="#"
                                                 onclick="return confirm('Etes-vous sur ?') ? document.getElementById('delete_form').submit() : null"
-                                                class="fa fa-times delete-button"></a>
+                                                class="fa fa-times delete-button" title="Supprimer"></a>
                                         </form>
                                     </td>
                                 </tr>

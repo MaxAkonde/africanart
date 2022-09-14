@@ -39,17 +39,32 @@
                             </li>
 
                             <li class="nav-item1 dropdown" style="padding:0px;">
-                                <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
-                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="ti-user" style="margin:0px"></i>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_3" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{-- <i class="ti-user"></i> --}}
+                                    @guest
+                                        <i class="fas fa-user"style="margin:0px"></i>
+                                    @else
+                                        <i class="fas fa-user-check" style="margin: 0px"></i>
+                                    @endguest
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2" style="margin-left:-102px;">
-                                    <a class="dropdown-item" href="login.html"> login</a>
-                                    <a class="dropdown-item" href="tracking.html">tracking</a>
-                                    <a class="dropdown-item" href="checkout.html">product checkout</a>
-                                    <a class="dropdown-item" href="cart.html">shopping cart</a>
-                                    <a class="dropdown-item" href="confirmation.html">confirmation</a>
-                                    <a class="dropdown-item" href="elements.html">elements</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2"
+                                    style="margin-left:-102px;">
+                                    @guest
+                                        <a class="dropdown-item" href="{{ route('login') }}">Se connectez</a>
+                                        <a class="dropdown-item" href="{{ route('register') }}">Créer un compte</a>
+                                    @else
+                                        <a class="dropdown-item" href="#"
+                                            style="text-decoration: none">{{ Auth::user()->name }}</a>
+                                        <hr>
+                                        <a class="dropdown-item" href="#">Commandes</a>
+                                        <a class="dropdown-item" href="#">Profile</a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    @endguest
                                 </div>
                             </li>
 

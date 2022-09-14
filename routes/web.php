@@ -30,5 +30,8 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'namespace' => 'App\Http\Cont
     Route::resource('roles', 'RoleController');
     Route::resource('categories', 'CategoryController');
     Route::resource('users', 'UserController');
+    Route::resource('produits', 'ProductController');
+
+    //Route::get('/produits', 'ProductController@index')->name('products.index');
  
 });

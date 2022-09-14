@@ -2,22 +2,22 @@
 
 @section('extra-css')
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/bootstrap.min.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/bootstrap.min.css') }}>
     <!-- animate CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/animate.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/animate.css') }}>
     <!-- owl carousel CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/owl.carousel.min.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/owl.carousel.min.css') }}>
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/all.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/all.css') }}>
     <!-- flaticon CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/flaticon.css") }}>
-    <link rel="stylesheet" href={{ asset("user/css/themify-icons.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/flaticon.css') }}>
+    <link rel="stylesheet" href={{ asset('user/css/themify-icons.css') }}>
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/magnific-popup.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/magnific-popup.css') }}>
     <!-- swiper CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/slick.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/slick.css') }}>
     <!-- style CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/style.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/style.css') }}>
 @endsection
 
 @section('content')
@@ -62,8 +62,8 @@
 
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" name="name" value="{{ old('name') }}" placeholder="Nom" required
-                                        autocomplete="name" autofocus>
+                                        id="name" name="name" value="{{ old('name') }}" placeholder="Nom"
+                                        required autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -101,6 +101,17 @@
                                         required autocomplete="new-password">
                                 </div>
 
+                                <div class="col-md-12 form-group p_star">
+                                    <div class="creat_account d-flex align-items-center">
+                                        <input type="radio" id="client" name="role" value="1">
+                                        <label for="client">Client</label>
+                                    </div>
+                                    <div class="creat_account d-flex align-items-center">
+                                        <input type="radio" id="vendeur" name="role" value="2">
+                                        <label for="vendeur">Vendeur</label>
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12 form-group">
                                     <button type="submit" class="btn_3">
                                         Créer mon compte
@@ -118,31 +129,31 @@
 
 @section('extra-js')
     <!-- jquery -->
-    <script src={{ asset("user/js/jquery-1.12.1.min.js") }}></script>
+    <script src={{ asset('user/js/jquery-1.12.1.min.js') }}></script>
     <!-- popper js -->
-    <script src={{ asset("user/js/popper.min.js") }}></script>
+    <script src={{ asset('user/js/popper.min.js') }}></script>
     <!-- bootstrap js -->
-    <script src={{ asset("user/js/bootstrap.min.js") }}></script>
+    <script src={{ asset('user/js/bootstrap.min.js') }}></script>
     <!-- easing js -->
-    <script src={{ asset("user/js/jquery.magnific-popup.js") }}></script>
+    <script src={{ asset('user/js/jquery.magnific-popup.js') }}></script>
     <!-- swiper js -->
-    <script src={{ asset("user/js/swiper.min.js") }}></script>
+    <script src={{ asset('user/js/swiper.min.js') }}></script>
     <!-- swiper js -->
-    <script src={{ asset("user/js/masonry.pkgd.js") }}></script>
+    <script src={{ asset('user/js/masonry.pkgd.js') }}></script>
     <!-- particles js -->
-    <script src={{ asset("user/js/owl.carousel.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.nice-select.min.js") }}></script>
+    <script src={{ asset('user/js/owl.carousel.min.js') }}></script>
+    <script src={{ asset('user/js/jquery.nice-select.min.js') }}></script>
     <!-- slick js -->
-    <script src={{ asset("user/js/slick.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.counterup.min.js") }}></script>
-    <script src={{ asset("user/js/waypoints.min.js") }}></script>
-    <script src={{ asset("user/js/contact.js") }}></script>
-    <script src={{ asset("user/js/jquery.ajaxchimp.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.form.js") }}></script>
-    <script src={{ asset("user/js/jquery.validate.min.js") }}></script>
-    <script src={{ asset("user/js/mail-script.js") }}></script>
-    <script src={{ asset("user/js/stellar.js") }}></script>
-    <script src={{ asset("user/js/price_rangs.js") }}></script>
+    <script src={{ asset('user/js/slick.min.js') }}></script>
+    <script src={{ asset('user/js/jquery.counterup.min.js') }}></script>
+    <script src={{ asset('user/js/waypoints.min.js') }}></script>
+    <script src={{ asset('user/js/contact.js') }}></script>
+    <script src={{ asset('user/js/jquery.ajaxchimp.min.js') }}></script>
+    <script src={{ asset('user/js/jquery.form.js') }}></script>
+    <script src={{ asset('user/js/jquery.validate.min.js') }}></script>
+    <script src={{ asset('user/js/mail-script.js') }}></script>
+    <script src={{ asset('user/js/stellar.js') }}></script>
+    <script src={{ asset('user/js/price_rangs.js') }}></script>
     <!-- custom js -->
-    <script src={{ asset("js/custom.js") }}></script>
+    <script src={{ asset('js/custom.js') }}></script>
 @endsection

@@ -11,7 +11,7 @@
         <div class="header-menu">
             <div class="header-left">
 
-                <div class="dropdown for-notification">
+                {{-- <div class="dropdown for-notification">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-bell"></i>
@@ -32,9 +32,9 @@
                             <p>Server #3 overloaded.</p>
                         </a>
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="dropdown for-message">
+                {{-- <div class="dropdown for-message">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="message"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-envelope"></i>
@@ -75,7 +75,7 @@
                             </div>
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="user-area dropdown float-right">
@@ -85,14 +85,18 @@
                 </a>
 
                 <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                    <a class="nav-link" href="#"><i class="fa fa- user"></i>Mon Profil</a>
 
                     <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span
                             class="count">13</span></a>
 
-                    <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+                    <a class="nav-link" href="#"><i class="fa fa -cog"></i>Paramètres</a>
 
-                    <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                    <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-power -off"></i>Déconnexion</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
 

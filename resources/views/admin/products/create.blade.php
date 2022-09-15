@@ -1,5 +1,13 @@
 @extends('layouts.admin')
 
+@section('extra-css')
+    <style>
+        img.img-thumbnail {
+            cursor: pointer;
+        }
+    </style>
+@endsection
+
 @section('breadcrumbs')
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
@@ -128,7 +136,8 @@
 @section('extra-js')
     <script>
         jQuery(document).ready(function($) {
-            $('#image').change(function(e) {
+
+            $('#image').on('change', function(e) {
                 //alert('1');
                 var input = this;
                 var url = $(this).val();
@@ -143,6 +152,10 @@
                 } else {
                     $('img.img-thumbnail').attr('src', 'https://via.placeholder.com/200');
                 }
+            });
+
+            $("img.img-thumbnail").click(function() {
+                $("#image").click();
             });
         });
     </script>

@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
+use App\Http\Requests\Product\UpdateProductRequest;
 
 class ProductController extends Controller
 {
@@ -52,7 +53,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         $product = new Product();
         $product->title = $request->title;
@@ -61,17 +62,21 @@ class ProductController extends Controller
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
 
-        if ($request->file('image')) {
-            $file = $request->file('image');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('products'), $filename);
-        }
-
-        $product->image = $filename;
+        $product->image = $this->uploadImage($request->file('image'));
 
         $product->save();
 
         return redirect()->route('admin.produits.index')->with('status', $request->title . ' a été enregistrer avec succes !');
+    }
+
+    private function uploadImage($requestImage)
+    {
+        if($requestImage) {
+            $file = $requestImage;
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('products'), $filename);
+            return $filename;
+        }
     }
 
     /**
@@ -93,7 +98,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        return view('admin.products.edit', [
+            'product' => $product,
+            'categories' => $categories,
+            'active' => $this->active
+        ]);
     }
 
     /**
@@ -103,9 +113,21 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        unlink("products/" . $product->image);
+
+        $product->title = $request->title;
+        $product->price = $request->price;
+        $product->category_id = $request->category_id;
+        $product->short_description = $request->short_description;
+        $product->long_description = $request->long_description;
+
+        $product->image = $this->uploadImage($request->file('image'));
+
+        $product->update();
+
+        return redirect()->route('admin.produits.index')->with('status', $request->title . ' a été modifier avec succes !');
     }
 
     /**
@@ -116,6 +138,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        unlink("products/" . $product->image);
+
+        $name = $product->name;
+
+        $product->delete();
+
+        return redirect()->route('admin.produits.index')->with('status', "Le produit " . $name . " vient d'être supprimer !");
     }
 }

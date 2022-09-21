@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -84,9 +85,15 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $rowId)
     {
-        //
+        $data = $request->json()->all();
+
+        Cart::update($rowId, $data['qty']);
+
+        Session::flash('success', 'Quantité du produit mise à jour');
+
+        return response()->json(['success' => 'Quantité du panier mise à jour']);
     }
 
     public function empty()

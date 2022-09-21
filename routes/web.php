@@ -24,6 +24,7 @@ Route::get('/single/{product}', [PageController::class, 'single'])->name('single
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+Route::match(array('PUT', 'PATCH'), '/cart/{rowId}', [CartController::class, 'update'])->name('cart.update');
 Route::get('/empty', [CartController::class, 'empty'])->name('cart.empty');
 Route::delete('/cart/{rowId}', [CartController::class, 'destroy'])->name('cart.destroy');
 

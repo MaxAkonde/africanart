@@ -22,8 +22,8 @@ class Product extends Model
         $devise = ' FCFA';
         if($price > 900)
         {
-            $price = $this->price / 100;
-            return number_format($price, 2, '.', ',') . $devise;
+            $price = floatval($price);
+            return number_format($price, 2, '.', ' ') . $devise;
         }
         return number_format($price, 0) . $devise;
     }

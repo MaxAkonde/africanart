@@ -91,13 +91,13 @@
                                             <div class="product_count">
                                                 <span class="input-number-decrement {{ $product->id }}"> <i
                                                         class="ti-angle-down"></i></span>
-                                                <input class="input-number" type="text" value="1" min="0"
+                                                <input class="input-number" data-id="{{ $product->rowId }}" type="text" readonly value="{{ getQty($product->qty) }}"  min="0"
                                                     max="10">
                                                 <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
                                             </div>
                                         </td>
                                         <td>
-                                            <h5>{{ $product->model->getPrice() }}</h5>
+                                            <h5>{{ subTotal($product->model->price,$product->qty) }}</h5>
                                         </td>
                                         <td>
                                             <form action="{{ route('cart.destroy', $product->rowId) }}" method="POST">
@@ -129,7 +129,7 @@
                                         <h5>Sous-Total</h5>
                                     </td>
                                     <td>
-                                        <h5>$2160.00</h5>
+                                        <h5>{{ Cart::subtotal() . " FCFA" }}</h5>
                                     </td>
                                     <td></td>
                                 </tr>
@@ -204,6 +204,7 @@
                 var value = input[0].value;
                 value--;
                 if (!min || value >= min) {
+                    updateCart(input, value);
                     input[0].value = value;
                 }
             }
@@ -213,8 +214,36 @@
                 var value = input[0].value;
                 value++;
                 if (!min || value <= max) {
+                    updateCart(input, value);
                     input[0].value = value++;
                 }
+            }
+
+            function updateCart(input, value)
+            {
+                var token = $('meta[name="csrf-token"]').attr('content');
+                var rowId = input.attr('data-id');
+                fetch(
+                    `/cart/${rowId}`,
+                    {
+                        headers : {
+                            "Content-Type" : "application/json",
+                            "Accept" : "application/json, text-plain, */*",
+                            "X-Requested-With" : "XMLHttpRequest",
+                            "X-CSRF-TOKEN" : token
+                        },
+                        method: 'patch',
+                        body: JSON.stringify({
+                            qty: value
+                        })
+                    }
+                ).then((data) => {
+                    console.log(data);
+                    location.reload();
+                }).catch((error) => {
+                    console.log(error);
+                });
+                //console.log(value);
             }
 
         });

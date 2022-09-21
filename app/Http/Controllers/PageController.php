@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function home()
     {
-        return view('pages.home');
+        $latest = Product::latest()->paginate(8);
+        $features = Product::paginate(5);
+        return view('pages.home', [
+            'latest' => $latest,
+            'features' => $features,
+        ]);
     }
 
     public function contact()
@@ -18,12 +24,17 @@ class PageController extends Controller
 
     public function shop()
     {
-        return view('pages.shop');
+        $latest = Product::latest()->paginate(9);
+        return view('pages.shop', [
+            'latest' => $latest,
+        ]);
     }
 
-    public function cart()
+    public function single(Product $product)
     {
-        return view('pages.cart');
+        return view('pages.single', [
+            'product' => $product
+        ]);
     }
 
     public function checkout()

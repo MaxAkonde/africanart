@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,25 +19,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'home'])->name('index');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/shop', [PageController::class, 'shop'])->name('shop');
-Route::get('/cart', [PageController::class, 'cart'])->name('cart');
 Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
+Route::get('/single/{product}', [PageController::class, 'single'])->name('single');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+Route::get('/empty', [CartController::class, 'empty'])->name('cart.empty');
+Route::delete('/cart/{rowId}', [CartController::class, 'destroy'])->name('cart.destroy');
 
 Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::group(['middleware' => ['auth', 'isAdmin'], 'namespace' => 'App\Http\Controllers\Admin', 'as' => 'admin.'] ,function () {
+Route::group(['middleware' => ['auth', 'isAdmin'], 'namespace' => 'App\Http\Controllers\Admin', 'as' => 'admin.'], function () {
 
     Route::resource('roles', 'RoleController');
     Route::resource('categories', 'CategoryController');
     Route::resource('users', 'UserController');
-    
+
     Route::get('/produits', 'ProductController@index')->name('produits.index');
     Route::post('/produits', 'ProductController@store')->name('produits.store');
     Route::get('/produits/create', 'ProductController@create')->name('produits.create');
     Route::get('/produits/{product}', 'ProductController@show')->name('produits.show');
-    Route::match(array('PUT', 'PATCH'),'/produits/{product}', 'ProductController@update')->name('produits.update');
+    Route::match(array('PUT', 'PATCH'), '/produits/{product}', 'ProductController@update')->name('produits.update');
     Route::delete('/produits/{product}', 'ProductController@destroy')->name('produits.destroy');
     Route::get('/produits/{product}/edit', 'ProductController@edit')->name('produits.edit');
- 
 });

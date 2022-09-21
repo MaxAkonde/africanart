@@ -2,22 +2,32 @@
 
 @section('extra-css')
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/bootstrap.min.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/bootstrap.min.css') }}>
     <!-- animate CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/animate.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/animate.css') }}>
     <!-- owl carousel CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/owl.carousel.min.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/owl.carousel.min.css') }}>
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/all.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/all.css') }}>
     <!-- flaticon CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/flaticon.css") }}>
-    <link rel="stylesheet" href={{ asset("user/css/themify-icons.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/flaticon.css') }}>
+    <link rel="stylesheet" href={{ asset('user/css/themify-icons.css') }}>
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/magnific-popup.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/magnific-popup.css') }}>
     <!-- swiper CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/slick.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/slick.css') }}>
     <!-- style CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/style.css") }}>
+    <link rel="stylesheet" href={{ asset('user/css/style.css') }}>
+
+    <style>
+        .single_product_text h4:hover {
+            color: #ff3368;
+        }
+
+        .single_product_text h4 {
+            cursor: pointer;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -166,89 +176,23 @@
                     <div class="product_list_slider owl-carousel">
                         <div class="single_product_list_slider">
                             <div class="row align-items-center justify-content-between">
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_1.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                @foreach ($latest as $product)
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div class="single_product_item">
+                                            <img src="{{ asset('products/' . $product->image) }}" alt="">
+                                            <div class="single_product_text">
+                                                <h4 onclick="location.href='{{ route('single', $product) }}'">
+                                                    {{ $product->title }}</h4>
+                                                <h3>${{ $product->price }}</h3>
+                                                <a href="#" class="add_cart">+ add to cart<i
+                                                        class="ti-heart"></i></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_2.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_3.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_4.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_5.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_6.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_7.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_8.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                        <div class="single_product_list_slider">
+                        {{-- <div class="single_product_list_slider">
                             <div class="row align-items-center justify-content-between">
                                 <div class="col-lg-3 col-sm-6">
                                     <div class="single_product_item">
@@ -331,7 +275,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -386,41 +330,16 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-12">
                     <div class="best_product_slider owl-carousel">
-                        <div class="single_product_item">
-                            <img src="user/img/product/product_1.png" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
+                        @foreach ($features as $product)
+                            <div class="single_product_item">
+                                <img src="{{ asset('products/' . $product->image) }}" alt="">
+                                <div class="single_product_text">
+                                    <h4 onclick="location.href='{{ route('single', $product) }}'">{{ $product->title }}
+                                    </h4>
+                                    <h3>${{ $product->price }}</h3>
+                                </div>
                             </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="user/img/product/product_2.png" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="user/img/product/product_3.png" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="user/img/product/product_4.png" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="user/img/product/product_5.png" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -494,29 +413,29 @@
 
 @section('extra-js')
     <!-- jquery plugins here-->
-    <script src={{ asset("user/js/jquery-1.12.1.min.js") }}></script>
+    <script src={{ asset('user/js/jquery-1.12.1.min.js') }}></script>
     <!-- popper js -->
-    <script src={{ asset("user/js/popper.min.js") }}></script>
+    <script src={{ asset('user/js/popper.min.js') }}></script>
     <!-- bootstrap js -->
-    <script src={{ asset("user/js/bootstrap.min.js") }}></script>
+    <script src={{ asset('user/js/bootstrap.min.js') }}></script>
     <!-- easing js -->
-    <script src={{ asset("user/js/jquery.magnific-popup.js") }}></script>
+    <script src={{ asset('user/js/jquery.magnific-popup.js') }}></script>
     <!-- swiper js -->
-    <script src={{ asset("user/js/swiper.min.js") }}></script>
+    <script src={{ asset('user/js/swiper.min.js') }}></script>
     <!-- swiper js -->
-    <script src={{ asset("user/js/masonry.pkgd.js") }}></script>
+    <script src={{ asset('user/js/masonry.pkgd.js') }}></script>
     <!-- particles js -->
-    <script src={{ asset("user/js/owl.carousel.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.nice-select.min.js") }}></script>
+    <script src={{ asset('user/js/owl.carousel.min.js') }}></script>
+    <script src={{ asset('user/js/jquery.nice-select.min.js') }}></script>
     <!-- slick js -->
-    <script src={{ asset("user/js/slick.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.counterup.min.js") }}></script>
-    <script src={{ asset("user/js/waypoints.min.js") }}></script>
-    <script src={{ asset("user/js/contact.js") }}></script>
-    <script src={{ asset("user/js/jquery.ajaxchimp.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.form.js") }}></script>
-    <script src={{ asset("user/js/jquery.validate.min.js") }}></script>
-    <script src={{ asset("user/js/mail-script.js") }}></script>
+    <script src={{ asset('user/js/slick.min.js') }}></script>
+    <script src={{ asset('user/js/jquery.counterup.min.js') }}></script>
+    <script src={{ asset('user/js/waypoints.min.js') }}></script>
+    <script src={{ asset('user/js/contact.js') }}></script>
+    <script src={{ asset('user/js/jquery.ajaxchimp.min.js') }}></script>
+    <script src={{ asset('user/js/jquery.form.js') }}></script>
+    <script src={{ asset('user/js/jquery.validate.min.js') }}></script>
+    <script src={{ asset('user/js/mail-script.js') }}></script>
     <!-- custom js -->
-    <script src={{ asset("user/js/custom.js") }}></script>
+    <script src={{ asset('user/js/custom.js') }}></script>
 @endsection

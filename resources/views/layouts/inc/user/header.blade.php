@@ -33,8 +33,17 @@
                         {{-- <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a> --}}
                         <ul class="navbar-nav1" style="display:flex;">
                             <li class="nav-item1">
-                                <a class="nav-link" href="{{ route('cart') }}">
-                                    <i class="fas fa-shopping-cart"></i>
+                                <a class="nav-link" href="{{ route('cart.index') }}" style="display: flex;">
+                                    <div>
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                    @if (Cart::count() > 0)
+                                        <div
+                                            style="border-radius:50%;background-color:#ff0000;color:#fff;width:14px;height:14px;font-size:10px;display:flex;align-items:center;justify-content:center;margin-top:-5px;margin-left:-5px;z-index:9999;">
+                                            {{ Cart::count() }}
+                                        </div>
+                                    @endif
+
                                 </a>
                             </li>
 

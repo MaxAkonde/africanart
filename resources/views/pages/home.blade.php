@@ -184,8 +184,14 @@
                                                 <h4 onclick="location.href='{{ route('single', $product) }}'">
                                                     {{ $product->title }}</h4>
                                                 <h3>${{ $product->price }}</h3>
-                                                <a href="#" class="add_cart">+ add to cart<i
-                                                        class="ti-heart"></i></a>
+                                                <form action="{{ route('cart.store') }}" class="addCartForm"
+                                                    method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="title" value="{{ $product->title }}">
+                                                    <input type="hidden" name="price" value="{{ $product->price }}">
+                                                    <a href="#" class="add_cart">+ ajouter au panier</a>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -438,4 +444,13 @@
     <script src={{ asset('user/js/mail-script.js') }}></script>
     <!-- custom js -->
     <script src={{ asset('user/js/custom.js') }}></script>
+
+    <script>
+        jQuery(document).ready(function($) {
+            $('a.add_cart').click(function(e) {
+                e.preventDefault();
+                $(this).parent().submit();
+            });
+        });
+    </script>
 @endsection

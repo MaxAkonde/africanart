@@ -15,9 +15,9 @@ function subTotal($price, $qty)
     if ($qty > 1) {
         $total = $price * $qty;
 
-        return getPrice($total);
+        return($total);
     }
-    return getPrice($price);
+    return ($price);
 }
 
 function getQty($qty)

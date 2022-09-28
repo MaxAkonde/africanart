@@ -64,27 +64,33 @@
                     <div class="s_product_text">
                         <h5>previous <span>|</span> next</h5>
                         <h3>{{ $product->title }}</h3>
-                        <h2>${{ $product->price }}</h2>
+                        <h2>{{ getPrice($product->price) }}</h2>
                         <ul class="list">
                             <li>
                                 <a class="active" href="#">
                                     <span>Category</span> : {{ $product->category->name }}</a>
                             </li>
                             <li>
-                                <a href="#"> <span>Availibility</span> : In Stock</a>
+                                <a href="#"> <span>Disponibilité</span> : En Stock</a>
                             </li>
                         </ul>
                         <p>
                             {{ $product->short_description }}
                         </p>
                         <div class="card_area d-flex justify-content-between align-items-center">
-                            <div class="product_count">
+                            {{-- <div class="product_count">
                                 <span class="inumber-decrement"> <i class="ti-minus"></i></span>
                                 <input class="input-number" type="text" value="1" min="0" max="10">
                                 <span class="number-increment"> <i class="ti-plus"></i></span>
-                            </div>
-                            <a href="#" class="btn_3">add to cart</a>
-                            <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
+                            </div> --}}
+                            {{-- <a href="#" class="btn_3">Ajouter au panier</a> --}}
+                            <form action="{{ route('cart.store') }}" class="addCartForm" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                <input type="hidden" name="title" value="{{ $product->title }}">
+                                <input type="hidden" name="price" value="{{ $product->price }}">
+                                <a href="#" class="btn_3">+ ajouter au panier</a>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -199,7 +205,8 @@
                                 <div class="review_item">
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="{{ asset('user/img/product/single-product/review-1.png') }}" alt="" />
+                                            <img src="{{ asset('user/img/product/single-product/review-1.png') }}"
+                                                alt="" />
                                         </div>
                                         <div class="media-body">
                                             <h4>Blake Ruiz</h4>
@@ -217,7 +224,8 @@
                                 <div class="review_item reply">
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="{{ asset('user/img/product/single-product/review-2.png') }}" alt="" />
+                                            <img src="{{ asset('user/img/product/single-product/review-2.png') }}"
+                                                alt="" />
                                         </div>
                                         <div class="media-body">
                                             <h4>Blake Ruiz</h4>
@@ -235,7 +243,8 @@
                                 <div class="review_item">
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="{{ asset('user/img/product/single-product/review-3.png') }}" alt="" />
+                                            <img src="{{ asset('user/img/product/single-product/review-3.png') }}"
+                                                alt="" />
                                         </div>
                                         <div class="media-body">
                                             <h4>Blake Ruiz</h4>
@@ -353,7 +362,8 @@
                                 <div class="review_item">
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="{{ asset('user/img/product/single-product/review-1.png') }}" alt="" />
+                                            <img src="{{ asset('user/img/product/single-product/review-1.png') }}"
+                                                alt="" />
                                         </div>
                                         <div class="media-body">
                                             <h4>Blake Ruiz</h4>
@@ -374,7 +384,8 @@
                                 <div class="review_item">
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="{{ asset('user/img/product/single-product/review-2.png') }}" alt="" />
+                                            <img src="{{ asset('user/img/product/single-product/review-2.png') }}"
+                                                alt="" />
                                         </div>
                                         <div class="media-body">
                                             <h4>Blake Ruiz</h4>
@@ -395,7 +406,8 @@
                                 <div class="review_item">
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="{{ asset('user/img/product/single-product/review-3.png') }}" alt="" />
+                                            <img src="{{ asset('user/img/product/single-product/review-3.png') }}"
+                                                alt="" />
                                         </div>
                                         <div class="media-body">
                                             <h4>Blake Ruiz</h4>
@@ -574,4 +586,13 @@
     <!-- custom js -->
     <script src="{{ asset('user/js/theme.js') }}"></script>
     <script src="{{ asset('user/js/custom.js') }}"></script>
+
+    <script>
+        jQuery(document).ready(function($) {
+            $('a.btn_3').click(function(e) {
+                e.preventDefault();
+                $(this).parent().submit();
+            });
+        });
+    </script>
 @endsection

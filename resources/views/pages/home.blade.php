@@ -183,7 +183,7 @@
                                             <div class="single_product_text">
                                                 <h4 onclick="location.href='{{ route('single', $product) }}'">
                                                     {{ $product->title }}</h4>
-                                                <h3>${{ $product->price }}</h3>
+                                                <h3>{{ $product->getPrice() }}</h3>
                                                 <form action="{{ route('cart.store') }}" class="addCartForm"
                                                     method="POST">
                                                     @csrf
@@ -342,7 +342,7 @@
                                 <div class="single_product_text">
                                     <h4 onclick="location.href='{{ route('single', $product) }}'">{{ $product->title }}
                                     </h4>
-                                    <h3>${{ $product->price }}</h3>
+                                    <h3>{{ $product->getPrice() }}</h3>
                                 </div>
                             </div>
                         @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -37,8 +38,12 @@ class PageController extends Controller
         ]);
     }
 
-    public function checkout()
+    public function confirmation($codepin)
     {
-        return view('pages.checkout');
+        $order = Order::where('pincode', '=', $codepin)->firstOrFail();
+        return view('pages.confirmation', [
+            'order' => $order,
+        ]);
     }
+
 }

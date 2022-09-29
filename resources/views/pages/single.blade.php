@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-lg-5 col-xl-4">
                     <div class="s_product_text">
-                        <h5>previous <span>|</span> next</h5>
+                        {{-- <h5>previous <span>|</span> next</h5> --}}
                         <h3>{{ $product->title }}</h3>
                         <h2>{{ getPrice($product->price) }}</h2>
                         <ul class="list">

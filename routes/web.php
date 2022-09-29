@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -19,8 +20,11 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [PageController::class, 'home'])->name('index');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/shop', [PageController::class, 'shop'])->name('shop');
-Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
 Route::get('/single/{product}', [PageController::class, 'single'])->name('single');
+Route::get('/confirmation/{codepin}', [PageController::class, 'confirmation'])->name('confirmation');
+
+Route::get('/checkout', [OrderController::class, 'create'])->name('order.create');
+Route::post('/checkout', [OrderController::class, 'store'])->name('order.store');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');

@@ -8,7 +8,7 @@
     <!-- owl carousel CSS -->
     <link rel="stylesheet" href={{ asset('user/css/owl.carousel.min.css') }}>
     <!-- nice select CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/nice-select.css') }}>
+    {{-- <link rel="stylesheet" href={{ asset('user/css/nice-select.css') }}> --}}
     <!-- font awesome CSS -->
     <link rel="stylesheet" href={{ asset('user/css/all.css') }}>
     <!-- flaticon CSS -->
@@ -77,8 +77,8 @@
                         <a class="lost_pass" href="#">Lost your password?</a>
                     </div>
                 </form>
-            </div> --}}
-            {{-- <div class="cupon_area">
+            </div>
+            <div class="cupon_area">
                 <div class="check_title">
                     <h2>
                         Have a coupon?
@@ -92,45 +92,205 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <h3>Détails de la facturation</h3>
-                        <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                        <form class="row contact_form" action="#" method="POST" novalidate="novalidate">
+                            @csrf
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="first" name="name" />
-                                <span class="placeholder" data-placeholder="Nom"></span>
+                                <input type="text" class="form-control @error('fname') is-invalid @enderror"
+                                    id="first" placeholder="Nom *" name="fname" value="{{ old('fname') }}" />
+                                @error('fname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="last" name="name" />
-                                <span class="placeholder" data-placeholder="Prénom"></span>
+                                <input type="text" class="form-control @error('lname') is-invalid @enderror"
+                                    id="last" name="lname" placeholder="Prénom *" value="{{ old('lname') }}" />
+                                @error('lname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-12 form-group">
                                 <input type="text" class="form-control" id="company" name="company"
-                                    placeholder="Entreprise" />
+                                    placeholder="Entreprise" value="{{ old('company') }}" />
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="number" name="number" />
-                                <span class="placeholder" data-placeholder="Numéro"></span>
+                                <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                                    id="number" placeholder="Numéro *" name="phone" value="{{ old('phone') }}" />
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="email" name="compemailany" />
-                                <span class="placeholder" data-placeholder="Adresse Email"></span>
+                                <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                    id="email" name="email" placeholder="Email *" value="{{ old('email') }}" />
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <select class="country_select">
-                                    <option value="1">-- Choisissez un pays --</option>
-                                    <option value="2">Country</option>
-                                    <option value="4">Country</option>
+                                <select class="form-control custom-select" name="city">
+                                    <option value="0">-- Choisissez un pays --</option>
+
+                                    <option value="Afrique Centrale">Afrique Centrale </option>
+                                    <option value="Afrique du sud">Afrique du Sud </option>
+                                    <option value="Algérie">Algérie </option>
+                                    <option value="Allemagne">Allemagne </option>
+                                    <option value="Angola">Angola </option>
+                                    <option value="Argentine">Argentine </option>
+                                    <option value="Australie">Australie </option>
+                                    <option value="Autriche">Autriche </option>
+
+                                    <option value="Belgique">Belgique </option>
+                                    <option value="Bénin">Bénin </option>
+                                    <option value="Botswana">Botswana </option>
+                                    <option value="Brésil">Brésil </option>
+                                    <option value="Bulgarie">Bulgarie </option>
+                                    <option value="Burkina Faso">Burkina Faso </option>
+                                    <option value="Burundi">Burundi </option>
+
+                                    <option value="Cameroun">Cameroun </option>
+                                    <option value="Canada">Canada </option>
+                                    <option value="Cap vert">Cap Vert </option>
+                                    <option value="Chili">Chili </option>
+                                    <option value="Chine">Chine </option>
+                                    <option value="Chypre">Chypre </option>
+                                    <option value="Colombie">Colombie </option>
+                                    <option value="Congo">Congo </option>
+                                    <option value="Congo démocratique">Congo démocratique </option>
+                                    <option value="Cote d'Ivoire">Côte d'Ivoire </option>
+
+                                    <option value="Danemark">Danemark </option>
+                                    <option value="Djibouti">Djibouti </option>
+
+                                    <option value="Egypte">Egypte </option>
+                                    <option value="Erythree">Erythree </option>
+                                    <option value="Espagne">Espagne </option>
+                                    <option value="Estonie">Estonie </option>
+                                    <option value="Etats Unis">Etats Unis </option>
+                                    <option value="Ethiopie">Ethiopie </option>
+
+                                    <option value="Finlande">Finlande </option>
+                                    <option value="France">France </option>
+
+                                    <option value="Gabon">Gabon </option>
+                                    <option value="Gambie">Gambie </option>
+                                    <option value="Ghana">Ghana </option>
+                                    <option value="Guinee">Guinee </option>
+                                    <option value="Guinee Bissau">Guinee Bissau </option>
+                                    <option value="Guinee equatoriale">Guinee Equatoriale </option>
+                                    <option value="Guyana">Guyana </option>
+
+                                    <option value="Haiti">Haiti </option>
+                                    <option value="Hawaii">Hawaii </option>
+                                    <option value="Honduras">Honduras </option>
+                                    <option value="Hong Kong">Hong Kong </option>
+                                    <option value="Hongrie">Hongrie </option>
+
+                                    <option value="Inde">Inde </option>
+                                    <option value="Indonesie">Indonesie </option>
+                                    <option value="Italie">italie </option>
+
+                                    <option value="Jamaique">Jamaique </option>
+                                    <option value="Japon">Japon </option>
+
+                                    <option value="Kenya">Kenya </option>
+
+                                    <option value="Laos">Laos </option>
+                                    <option value="Lesotho">Lesotho </option>
+                                    <option value="Lettonie">Lettonie </option>
+                                    <option value="Liban">Liban </option>
+                                    <option value="Liberia">Liberia </option>
+                                    <option value="Lybie">Lybie </option>
+
+                                    <option value="Macao">Macao </option>
+                                    <option value="Madagascar">Madagascar </option>
+                                    <option value="Malaisie">Malaisie </option>
+                                    <option value="Malawi">Malawi </option>
+                                    <option value="Maldives">Maldives </option>
+                                    <option value="Mali">Mali </option>
+                                    <option value="Malte">Malte </option>
+                                    <option value="Maroc">Maroc </option>
+                                    <option value="Maurice">Maurice </option>
+                                    <option value="Mauritanie">Mauritanie </option>
+                                    <option value="Mayotte">Mayotte </option>
+                                    <option value="Mexique">Mexique </option>
+                                    <option value="Moldavie">Moldavie </option>
+                                    <option value="Monaco">Monaco </option>
+                                    <option value="Mozambique">Mozambique </option>
+
+                                    <option value="Namibie">Namibie </option>
+                                    <option value="Niger">Niger </option>
+                                    <option value="Nigeria">Nigeria </option>
+                                    <option value="Norvege">Norvege </option>
+
+                                    <option value="Ouganda">Ouganda </option>
+
+                                    <option value="Paraguay">Paraguay </option>
+                                    <option value="Pays Bas">Pays Bas </option>
+                                    <option value="Perou">Perou </option>
+                                    <option value="Philippines">Philippines </option>
+                                    <option value="Pologne">Pologne </option>
+                                    <option value="Portugal">Portugal </option>
+
+                                    <option value="Reunion">Reunion </option>
+                                    <option value="Roumanie">Roumanie </option>
+                                    <option value="Royaume Uni">Royaume Uni </option>
+                                    <option value="Russie">Russie </option>
+                                    <option value="Rwanda">Rwanda </option>
+
+                                    <option value="Sénégal">Sénégal </option>
+                                    <option value="Seychelles">Seychelles </option>
+                                    <option value="Sierra Leone">Sierra Leone </option>
+                                    <option value="Somalie">Somalie </option>
+                                    <option value="Soudan">Soudan </option>
+                                    <option value="Suede">Suede </option>
+                                    <option value="Suisse">Suisse </option>
+
+                                    <option value="Tanzanie">Tanzanie </option>
+                                    <option value="Tchad">Tchad </option>
+                                    <option value="Togo">Togo </option>
+                                    <option value="Tunisie">Tunisie </option>
+                                    <option value="Turquie">Turquie </option>
+
+                                    <option value="Ukraine">Ukraine </option>
+                                    <option value="Uruguay">Uruguay </option>
+
+                                    <option value="Vietnam">Vietnam </option>
+
+                                    <option value="Zambie">Zambie </option>
+                                    <option value="Zimbabwe">Zimbabwe </option>
                                 </select>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="add1" name="add1" />
-                                <span class="placeholder" data-placeholder="Adresse 01"></span>
+                                <input type="text" class="form-control @error('address1') is-invalid @enderror"
+                                    id="add1" name="address1" placeholder="Adresse 01 *"
+                                    value="{{ old('address1') }}" />
+                                @error('address1')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="add2" name="add2" />
-                                <span class="placeholder" data-placeholder="Adresse 02"></span>
+                                <input type="text" class="form-control" id="add2" name="address2"
+                                    placeholder="Adresse 02" value="{{ old('address2') }}" />
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="city" name="city" />
-                                <span class="placeholder" data-placeholder="Ville/Quartier"></span>
+                                <input type="text" class="form-control @error('state') is-invalid @enderror"
+                                    id="city" name="state" placeholder="Ville/Quartier"
+                                    value="{{ old('state') }}" />
+                                @error('state')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             {{-- <div class="col-md-12 form-group p_star">
                                 <select class="country_select">
@@ -138,25 +298,25 @@
                                     <option value="2">District</option>
                                     <option value="4">District</option>
                                 </select>
-                            </div> --}}
-                            {{-- <div class="col-md-12 form-group">
+                            </div>
+                            <div class="col-md-12 form-group">
                                 <input type="text" class="form-control" id="zip" name="zip"
                                     placeholder="Postcode/ZIP" />
-                            </div> --}}
-                            {{-- <div class="col-md-12 form-group">
+                            </div>
+                            <div class="col-md-12 form-group">
                                 <div class="creat_account">
                                     <input type="checkbox" id="f-option2" name="selector" />
                                     <label for="f-option2">Create an account?</label>
                                 </div>
                             </div> --}}
-                            {{-- <div class="col-md-12 form-group">
-                                <div class="creat_account">
+                            <div class="col-md-12 form-group">
+                                {{-- <div class="creat_account">
                                     <h3>Shipping Details</h3>
                                     <input type="checkbox" id="f-option3" name="selector" />
                                     <label for="f-option3">Ship to a different address?</label>
-                                </div>
-                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>
-                            </div> --}}
+                                </div> --}}
+                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Votre message">{{ old('message') }}</textarea>
+                            </div>
                         </form>
                     </div>
                     <div class="col-lg-4">
@@ -171,8 +331,9 @@
                                 @foreach (Cart::content() as $product)
                                     <li>
                                         <a href="#">{{ $product->model->title }}
-                                            <span class="middle">x {{ $product->qty }}</span>
-                                            <span class="last">{{ subTotal($product->model->price,$product->qty) . " FCFA" }}</span>
+                                            <span class="middle">{{ $product->qty }}x</span>
+                                            <span
+                                                class="last">{{ number_format($product->model->price * $product->qty, 0, '.', ' ') }}</span>
                                         </a>
                                     </li>
                                 @endforeach
@@ -192,41 +353,39 @@
                             <ul class="list list_2">
                                 <li>
                                     <a href="#">Sous-Total
-                                        <span>{{ Cart::subtotal() . " FCFA" }}</span>
+                                        <span>{{ Cart::subtotal() . ' FCFA' }}</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">Livraison
-                                        <span>{{ Cart::tax() . " FCFA" }}</span>
+                                    <a href="#">Tax (TVA 18%)
+                                        <span>{{ Cart::tax() . ' FCFA' }}</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">Total
-                                        <span>{{ Cart::total() . " FCFA" }}</span>
+                                        <span>{{ Cart::total() . ' FCFA' }}</span>
                                     </a>
                                 </li>
                             </ul>
                             <div class="payment_item">
                                 <div class="radion_btn">
                                     <input type="radio" id="f-option5" name="selector" />
-                                    <label for="f-option5">Check payments</label>
+                                    <label for="f-option5">Cheque</label>
                                     <div class="check"></div>
                                 </div>
                                 <p>
-                                    Please send a check to Store Name, Store Street, Store Town,
-                                    Store State / County, Store Postcode.
+                                    Veuillez envoyer un chèque au nom du magasin, rue du magasin, ville du magasin, état/comté du magasin, code postal du magasin.
                                 </p>
                             </div>
                             <div class="payment_item active">
                                 <div class="radion_btn">
                                     <input type="radio" id="f-option6" name="selector" />
                                     <label for="f-option6">Paypal </label>
-                                    <img src="img/product/single-product/card.jpg" alt="" />
+                                    <img src="{{ asset('user/img/product/single-product/card.jpg') }}" alt="" />
                                     <div class="check"></div>
                                 </div>
                                 <p>
-                                    Please send a check to Store Name, Store Street, Store Town,
-                                    Store State / County, Store Postcode.
+                                    Veuillez envoyer un chèque au nom du magasin, rue du magasin, ville du magasin, état/comté du magasin, code postal du magasin.
                                 </p>
                             </div>
                             <div class="creat_account">
@@ -260,7 +419,7 @@
     <script src={{ asset('user/js/masonry.pkgd.js') }}></script>
     <!-- particles js -->
     <script src={{ asset('user/js/owl.carousel.min.js') }}></script>
-    <script src={{ asset('user/js/jquery.nice-select.min.js') }}></script>
+    {{-- <script src={{ asset('user/js/jquery.nice-select.min.js') }}></script> --}}
     <!-- slick js -->
     <script src={{ asset('user/js/slick.min.js') }}></script>
     <script src={{ asset('user/js/jquery.counterup.min.js') }}></script>
@@ -274,4 +433,13 @@
     <script src={{ asset('user/js/price_rangs.js') }}></script>
     <!-- custom js -->
     <script src={{ asset('user/js/custom.js') }}></script>
+
+    <script>
+        jQuery(document).ready(function($) {
+            $('a.btn_3').click(function(e) {
+                e.preventDefault();
+                $('form.contact_form').submit();
+            });
+        });
+    </script>
 @endsection

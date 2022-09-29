@@ -91,13 +91,14 @@
                                             <div class="product_count">
                                                 <span class="input-number-decrement {{ $product->id }}"> <i
                                                         class="ti-angle-down"></i></span>
-                                                <input class="input-number" data-id="{{ $product->rowId }}" type="text" readonly value="{{ getQty($product->qty) }}"  min="0"
+                                                <input class="input-number" data-id="{{ $product->rowId }}" type="text"
+                                                    readonly value="{{ getQty($product->qty) }}" min="0"
                                                     max="10">
                                                 <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
                                             </div>
                                         </td>
                                         <td>
-                                            <h5>{{ subTotal($product->model->price,$product->qty) }}</h5>
+                                            <h5>{{ subTotal($product->model->price, $product->qty) }}</h5>
                                         </td>
                                         <td>
                                             <form action="{{ route('cart.destroy', $product->rowId) }}" method="POST">
@@ -129,7 +130,7 @@
                                         <h5>Sous-Total</h5>
                                     </td>
                                     <td>
-                                        <h5>{{ Cart::subtotal() . " FCFA" }}</h5>
+                                        <h5>{{ getPrice(Cart::subtotal())  }}</h5>
                                     </td>
                                     <td></td>
                                 </tr>
@@ -145,7 +146,7 @@
                     <div class="checkout_btn_inner float-right">
                         <a class="btn_1" href="{{ route('shop') }}">Ajouter au panier</a>
                         @if (Cart::count() > 0)
-                            <a class="btn_1 checkout_btn_1" href="{{ route('checkout') }}">Commander</a>
+                            <a class="btn_1 checkout_btn_1" href="{{ route('order.create') }}">Commander</a>
                         @endif
                     </div>
                 </div>
@@ -219,18 +220,16 @@
                 }
             }
 
-            function updateCart(input, value)
-            {
+            function updateCart(input, value) {
                 var token = $('meta[name="csrf-token"]').attr('content');
                 var rowId = input.attr('data-id');
                 fetch(
-                    `/cart/${rowId}`,
-                    {
-                        headers : {
-                            "Content-Type" : "application/json",
-                            "Accept" : "application/json, text-plain, */*",
-                            "X-Requested-With" : "XMLHttpRequest",
-                            "X-CSRF-TOKEN" : token
+                    `/cart/${rowId}`, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json, text-plain, */*",
+                            "X-Requested-With": "XMLHttpRequest",
+                            "X-CSRF-TOKEN": token
                         },
                         method: 'patch',
                         body: JSON.stringify({

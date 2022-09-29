@@ -16,14 +16,19 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
+
     public function getPrice()
     {
         $price = $this->price;
         $devise = ' FCFA';
         if($price > 900)
         {
-            $price = floatval($price);
-            return number_format($price, 2, '.', ' ') . $devise;
+            $price = intval($price);
+            return number_format($price, 0, '.', ' ') . $devise;
         }
         return number_format($price, 0) . $devise;
     }

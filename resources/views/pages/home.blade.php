@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_banner_slider">
+                        {{-- <div class="single_banner_slider">
                             <div class="row">
                                 <div class="col-lg-5 col-md-8">
                                     <div class="banner_text">
@@ -70,7 +70,7 @@
                                     <img src={{ asset('user/img/DSC_0012.png') }} alt="">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="single_banner_slider">
                             <div class="row">
                                 <div class="col-lg-5 col-md-8">
@@ -170,6 +170,16 @@
                         <h2>Derniers produits</h2>
                     </div>
                 </div>
+                @if (session('success'))
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -376,7 +386,7 @@
     <!--::subscribe_area part end::-->
 
     <!-- subscribe_area part start-->
-    <section class="client_logo padding_top">
+    {{-- <section class="client_logo padding_top">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
@@ -413,7 +423,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--::subscribe_area part end::-->
 @endsection
 

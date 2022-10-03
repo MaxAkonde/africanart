@@ -21,6 +21,8 @@ Route::get('/', [PageController::class, 'home'])->name('index');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/shop', [PageController::class, 'shop'])->name('shop');
 Route::get('/single/{product}', [PageController::class, 'single'])->name('single');
+Route::get('/tracking', [PageController::class, 'tracking'])->name('tracking');
+Route::post('/tracking', [PageController::class, 'findOrder'])->name('findOrder');
 Route::get('/confirmation/{codepin}', [PageController::class, 'confirmation'])->name('confirmation');
 
 Route::get('/checkout', [OrderController::class, 'create'])->name('order.create');

@@ -7,8 +7,7 @@
     <link rel="stylesheet" href={{ asset('user/css/animate.css') }}>
     <!-- owl carousel CSS -->
     <link rel="stylesheet" href={{ asset('user/css/owl.carousel.min.css') }}>
-    <!-- nice select CSS -->
-    {{-- <link rel="stylesheet" href={{ asset('user/css/nice-select.css') }}> --}}
+    
     <!-- font awesome CSS -->
     <link rel="stylesheet" href={{ asset('user/css/all.css') }}>
     <!-- flaticon CSS -->
@@ -92,7 +91,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <h3>Détails de la facturation</h3>
-                        <form class="row contact_form" action="#" method="POST" novalidate="novalidate">
+                        <form class="row contact_form" action="{{ route('order.store') }}" method="POST" novalidate="novalidate">
                             @csrf
                             <div class="col-md-6 form-group p_star">
                                 <input type="text" class="form-control @error('fname') is-invalid @enderror"
@@ -419,7 +418,6 @@
     <script src={{ asset('user/js/masonry.pkgd.js') }}></script>
     <!-- particles js -->
     <script src={{ asset('user/js/owl.carousel.min.js') }}></script>
-    {{-- <script src={{ asset('user/js/jquery.nice-select.min.js') }}></script> --}}
     <!-- slick js -->
     <script src={{ asset('user/js/slick.min.js') }}></script>
     <script src={{ asset('user/js/jquery.counterup.min.js') }}></script>
@@ -432,7 +430,7 @@
     <script src={{ asset('user/js/stellar.js') }}></script>
     <script src={{ asset('user/js/price_rangs.js') }}></script>
     <!-- custom js -->
-    <script src={{ asset('user/js/custom.js') }}></script>
+    {{-- <script src={{ asset('user/js/custom.js') }}></script> --}}
 
     <script>
         jQuery(document).ready(function($) {

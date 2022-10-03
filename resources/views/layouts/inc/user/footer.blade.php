@@ -2,7 +2,7 @@
 <footer class="footer_part">
     <div class="container">
         <div class="row justify-content-around">
-            <div class="col-sm-6 col-lg-2">
+            {{-- <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
                     <h4>Top Products</h4>
                     <ul class="list-unstyled">
@@ -12,15 +12,15 @@
                         <li><a href="#">Marketing Service</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
-                    <h4>Quick Links</h4>
+                    <h4>Liens Utiles</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#">Jobs</a></li>
-                        <li><a href="#">Brand Assets</a></li>
-                        <li><a href="#">Investor Relations</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Conditions de commande</a></li>
+                        <li><a href="#">Politique de retours</a></li>
                     </ul>
                 </div>
             </div>
@@ -28,14 +28,15 @@
                 <div class="single_footer_part">
                     <h4>Features</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#">Jobs</a></li>
-                        <li><a href="#">Brand Assets</a></li>
-                        <li><a href="#">Investor Relations</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Boutique</a></li>
+                        <li><a href="#">A propos</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="{{ route('tracking') }}">Tracking</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-2">
+            {{-- <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
                     <h4>Resources</h4>
                     <ul class="list-unstyled">
@@ -45,7 +46,7 @@
                         <li><a href="#">Agencies</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-sm-6 col-lg-4">
                 <div class="single_footer_part">
                     <h4>Newsletter</h4>

@@ -44,6 +44,8 @@ class OrderController extends Controller
             $array[$item->id] = ['qty' => $item->qty, 'total' => $item->price * $item->qty];
         }
 
+        $amout = str_replace(' ', '', Cart::total());
+
         Cart::destroy();
 
 
@@ -61,6 +63,7 @@ class OrderController extends Controller
         $order->state = $request->state;
         $order->message = $request->message;
         $order->status = 0;
+        $order->amount = $amout;
 
         $order->save();
 

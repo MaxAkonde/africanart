@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -46,4 +47,22 @@ class PageController extends Controller
         ]);
     }
 
+    public function tracking()
+    {
+        return view('pages.tracking');
+    }
+
+    public function findOrder(Request $request)
+    {
+        //dd($request);
+        $order = DB::table('orders')
+            ->where('pincode', $request->order)
+            ->where('email', $request->email)
+            ->get();
+        if (count($order)) {
+            return redirect()->route('confirmation', $request->order);
+        }
+
+        return redirect()->route('tracking')->with('status', 'Veuillez entrer des informations');
+    }
 }

@@ -24,7 +24,7 @@
 @endsection
 
 @section('content')
-{{-- {!! dd($order->products) !!} --}}
+    {{-- {!! dd($order->products) !!} --}}
     <!--================Home Banner Area =================-->
     <!-- breadcrumb start-->
     <section class="breadcrumb breadcrumb_bg">
@@ -33,8 +33,8 @@
                 <div class="col-lg-8">
                     <div class="breadcrumb_iner">
                         <div class="breadcrumb_iner_item">
-                            <h2>Order Confirmation</h2>
-                            <p>Home <span>-</span> Order Confirmation</p>
+                            <h2>Confirmation de commande</h2>
+                            <p>Accueil <span>-</span> Confirmation de commande</p>
                         </div>
                     </div>
                 </div>
@@ -49,43 +49,48 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="confirmation_tittle">
-                        <span>Thank you. Your order has been received.</span>
+                        <span>Merci. Votre commande a été reçue.</span>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="alert alert-info" role="alert">
+                        Votre commande est en cours de traitement. Merci!
                     </div>
                 </div>
                 <div class="col-lg-6 col-lx-4">
                     <div class="single_confirmation_details">
-                        <h4>order info</h4>
+                        <h4>Information de la commande</h4>
                         <ul>
                             <li>
-                                <p>order number</p><span>: {{ $order->pincode }}</span>
+                                <p>N° commande</p><span>: {{ $order->pincode }}</span>
                             </li>
                             <li>
-                                <p>data</p><span>: Oct 03, 2017</span>
+                                <p>date</p><span>: {{ $order->created_at->format('j F, Y') }}</span>
                             </li>
                             <li>
-                                <p>total</p><span>: USD 2210</span>
+                                <p>total</p><span>: {{ getPrice($order->amount) }}</span>
                             </li>
                             <li>
-                                <p>mayment methord</p><span>: Check payments</span>
+                                <p>Methode de payement</p><span>: Mobile Money</span>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6 col-lx-4">
                     <div class="single_confirmation_details">
-                        <h4>Billing Address</h4>
+                        <h4>Adresse Facturaion</h4>
                         <ul>
                             <li>
-                                <p>Street</p><span>: 56/8</span>
+                                <p>Rue</p><span>: 56/8</span>
                             </li>
                             <li>
-                                <p>city</p><span>: Los Angeles</span>
+                                <p>Ville</p><span>: Los Angeles</span>
                             </li>
                             <li>
-                                <p>country</p><span>: United States</span>
+                                <p>Pays</p><span>: United States</span>
                             </li>
                             <li>
-                                <p>postcode</p><span>: 36952</span>
+                                <p>Code postal</p><span>: 36952</span>
                             </li>
                         </ul>
                     </div>
@@ -95,16 +100,16 @@
                         <h4>shipping Address</h4>
                         <ul>
                             <li>
-                                <p>Street</p><span>: 56/8</span>
+                                <p>Rue</p><span>: 56/8</span>
                             </li>
                             <li>
-                                <p>city</p><span>: Los Angeles</span>
+                                <p>Ville</p><span>: Los Angeles</span>
                             </li>
                             <li>
-                                <p>country</p><span>: United States</span>
+                                <p>Pays</p><span>: United States</span>
                             </li>
                             <li>
-                                <p>postcode</p><span>: 36952</span>
+                                <p>Code postal</p><span>: 36952</span>
                             </li>
                         </ul>
                     </div>
@@ -113,7 +118,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="order_details_iner">
-                        <h3>Order Details</h3>
+                        <h3>Détails de la commande</h3>
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -124,11 +129,11 @@
                             </thead>
                             <tbody>
                                 @foreach ($order->products as $item)
-                                <tr>
-                                    <th colspan="2"><span>{{ $item->title }}</span></th>
-                                    <th>x{{ $item->pivot->qty }}</th>
-                                    <th> <span>{{ $item->pivot->total }}</span></th>
-                                </tr>
+                                    <tr>
+                                        <th colspan="2"><span>{{ $item->title }}</span></th>
+                                        <th>x{{ $item->pivot->qty }}</th>
+                                        <th> <span>{{ getPrice($item->pivot->total) }}</span></th>
+                                    </tr>
                                 @endforeach
                                 {{-- <tr>
                                     <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>

@@ -31,7 +31,7 @@
     </div>
     <div class="row align-items-center py-3 px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
-            <a href="" class="text-decoration-none">
+            <a href="{{ route('index') }}" class="text-decoration-none">
                 <h1 class="m-0 display-5 font-weight-semi-bold"><span
                         class="text-primary font-weight-bold border px-3 mr-1">African</span>Art</h1>
             </a>
@@ -49,14 +49,16 @@
             </form>
         </div>
         <div class="col-lg-3 col-6 text-right">
-            <a href="" class="btn border">
+            <a href="{{ route('cart.index') }}" class="btn border">
                 <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge">0</span>
+                <span class="badge">{{ Cart::count() }}</span>
             </a>
-            <a href="" class="btn border">
-                <i class="fas fa-heart text-primary"></i>
-                <span class="badge">0</span>
-            </a>
+            @auth
+                <a href="" class="btn border">
+                    <i class="fas fa-user text-primary"></i>
+                    <span class="badge">{{ Auth::user()->name }}</span>
+                </a>
+            @endauth
         </div>
     </div>
 </div>
@@ -92,15 +94,17 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="#" class="nav-item nav-link active">Accueil</a>
-                            <a href="#" class="nav-item nav-link">Boutique</a>
+                            <a href="{{ route('index') }}" class="nav-item nav-link active">Accueil</a>
+                            <a href="{{ route('shop') }}" class="nav-item nav-link">Boutique</a>
                             <a href="#" class="nav-item nav-link">A propos</a>
-                            <a href="#" class="nav-item nav-link">Contact</a>
+                            <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                         </div>
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Connexion</a>
-                            <a href="" class="nav-item nav-link">Inscription</a>
-                        </div>
+                        @guest
+                            <div class="navbar-nav ml-auto py-0">
+                                <a href="{{ route('login') }}" class="nav-item nav-link">Connexion</a>
+                                <a href="{{ route('register') }}" class="nav-item nav-link">Inscription</a>
+                            </div>
+                        @endguest
                     </div>
                 </nav>
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
@@ -168,7 +172,7 @@
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
                         <h1 class="m-0 display-5 font-weight-semi-bold"><span
-                                class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                                class="text-primary font-weight-bold border px-3 mr-1">African</span>Art</h1>
                     </a>
                     <button type="button" class="navbar-toggler" data-toggle="collapse"
                         data-target="#navbarCollapse">
@@ -176,33 +180,21 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="#" class="nav-item nav-link active">Accueil</a>
-                            <a href="#" class="nav-item nav-link">Boutique</a>
+                            <a href="{{ route('index') }}" class="nav-item nav-link">Accueil</a>
+                            <a href="{{ route('shop') }}" class="nav-item nav-link">Boutique</a>
                             <a href="#" class="nav-item nav-link">A propos</a>
-                            <a href="#" class="nav-item nav-link">Contact</a>
+                            <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                         </div>
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Connexion</a>
-                            <a href="" class="nav-item nav-link">Inscription</a>
-                        </div>
+                        @guest
+                            <div class="navbar-nav ml-auto py-0">
+                                <a href="{{ route('login') }}" class="nav-item nav-link">Connexion</a>
+                                <a href="{{ route('register') }}" class="nav-item nav-link">Inscription</a>
+                            </div>
+                        @endguest
                     </div>
                 </nav>
             </div>
         </div>
     </div>
     <!-- Navbar End -->
-
-
-    {{-- <!-- Page Header Start -->
-    <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
-            <div class="d-inline-flex">
-                <p class="m-0"><a href="">Home</a></p>
-                <p class="m-0 px-2">-</p>
-                <p class="m-0">Shopping Cart</p>
-            </div>
-        </div>
-    </div>
-    <!-- Page Header End --> --}}
 @endif

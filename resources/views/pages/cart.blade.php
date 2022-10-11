@@ -1,250 +1,198 @@
 @extends('layouts.user')
 
 @section('extra-css')
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/bootstrap.min.css') }}>
-    <!-- animate CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/animate.css') }}>
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/owl.carousel.min.css') }}>
-    <!-- nice select CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/nice-select.css') }}>
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/all.css') }}>
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/flaticon.css') }}>
-    <link rel="stylesheet" href={{ asset('user/css/themify-icons.css') }}>
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/magnific-popup.css') }}>
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/slick.css') }}>
-    <link rel="stylesheet" href={{ asset('user/css/price_rangs.css') }}>
-    <!-- style CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/style.css') }}>
 @endsection
 
 @section('content')
-    <!--================Home Banner Area =================-->
-    <!-- breadcrumb start-->
-    <section class="breadcrumb breadcrumb_bg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="breadcrumb_iner">
-                        <div class="breadcrumb_iner_item">
-                            <h2>Votre panier</h2>
-                            <p>Acceuil <span>-</span> Panier</p>
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Shopping Cart</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Cart Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-bordered text-center mb-0">
+                    <thead class="bg-secondary text-dark">
+                        <tr>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        <tr>
+                            <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;">
+                                Colorful Stylish Shirt</td>
+                            <td class="align-middle">$150</td>
+                            <td class="align-middle">
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-minus">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm bg-secondary text-center"
+                                        value="1">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">$150</td>
+                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i
+                                        class="fa fa-times"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle"><img src="img/product-2.jpg" alt="" style="width: 50px;">
+                                Colorful Stylish Shirt</td>
+                            <td class="align-middle">$150</td>
+                            <td class="align-middle">
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-minus">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm bg-secondary text-center"
+                                        value="1">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">$150</td>
+                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i
+                                        class="fa fa-times"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle"><img src="img/product-3.jpg" alt="" style="width: 50px;">
+                                Colorful Stylish Shirt</td>
+                            <td class="align-middle">$150</td>
+                            <td class="align-middle">
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-minus">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm bg-secondary text-center"
+                                        value="1">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">$150</td>
+                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i
+                                        class="fa fa-times"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle"><img src="img/product-4.jpg" alt="" style="width: 50px;">
+                                Colorful Stylish Shirt</td>
+                            <td class="align-middle">$150</td>
+                            <td class="align-middle">
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-minus">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm bg-secondary text-center"
+                                        value="1">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">$150</td>
+                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i
+                                        class="fa fa-times"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle"><img src="img/product-5.jpg" alt="" style="width: 50px;">
+                                Colorful Stylish Shirt</td>
+                            <td class="align-middle">$150</td>
+                            <td class="align-middle">
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-minus">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm bg-secondary text-center"
+                                        value="1">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">$150</td>
+                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i
+                                        class="fa fa-times"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <form class="mb-5" action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control p-4" placeholder="Coupon Code">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary">Apply Coupon</button>
                         </div>
+                    </div>
+                </form>
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Subtotal</h6>
+                            <h6 class="font-weight-medium">$150</h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Shipping</h6>
+                            <h6 class="font-weight-medium">$10</h6>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5 class="font-weight-bold">Total</h5>
+                            <h5 class="font-weight-bold">$160</h5>
+                        </div>
+                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- breadcrumb start-->
-
-    <!--================Cart Area =================-->
-    <section class="cart_area padding_top">
-        <div class="container">
-            @if (session('success'))
-                <div class="row mb-3">
-                    <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            @endif
-            <div class="cart_inner">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Produit(s)</th>
-                                <th scope="col">Prix</th>
-                                <th scope="col">Quantitée</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (Cart::count() > 0)
-                                @foreach (Cart::content() as $product)
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="d-flex">
-                                                    <img src="{{ asset('products/' . $product->model->image) }}"
-                                                        alt="" style="width: 100px" />
-                                                </div>
-                                                <div class="media-body">
-                                                    <p>{{ $product->model->title }}</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5>{{ $product->model->getPrice() }}</h5>
-                                        </td>
-                                        <td>
-                                            <div class="product_count">
-                                                <span class="input-number-decrement {{ $product->id }}"> <i
-                                                        class="ti-angle-down"></i></span>
-                                                <input class="input-number" data-id="{{ $product->rowId }}" type="text"
-                                                    readonly value="{{ getQty($product->qty) }}" min="0"
-                                                    max="10">
-                                                <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5>{{ subTotal($product->model->price, $product->qty) }}</h5>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('cart.destroy', $product->rowId) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn" style="color:red"><i
-                                                        class="fa fa-trash"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                <tr class="bottom_button">
-                                    <td>
-                                        <a href="{{ route('cart.empty') }}" class="btn_1">Vider votre panier</a>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        {{-- <div class="cupon_text float-right">
-                                            <a class="btn_1" href="#">Close Coupon</a>
-                                        </div> --}}
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <h5>Sous-Total</h5>
-                                    </td>
-                                    <td>
-                                        <h5>{{ getPrice(Cart::subtotal())  }}</h5>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            @else
-                                <tr>
-                                    <td colspan="5">
-                                        <h2 class="text-center">Votre panier est vide.</h2>
-                                    </td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                    <div class="checkout_btn_inner float-right">
-                        <a class="btn_1" href="{{ route('shop') }}">Ajouter au panier</a>
-                        @if (Cart::count() > 0)
-                            <a class="btn_1 checkout_btn_1" href="{{ route('order.create') }}">Commander</a>
-                        @endif
-                    </div>
-                </div>
-            </div>
-    </section>
+    </div>
+    <!-- Cart End -->
 @endsection
 
 
 @section('extra-js')
-    <!-- jquery plugins here-->
-    <script src={{ asset('user/js/jquery-1.12.1.min.js') }}></script>
-    <!-- popper js -->
-    <script src={{ asset('user/js/popper.min.js') }}></script>
-    <!-- bootstrap js -->
-    <script src={{ asset('user/js/bootstrap.min.js') }}></script>
-    <!-- easing js -->
-    <script src={{ asset('user/js/jquery.magnific-popup.js') }}></script>
-    <!-- swiper js -->
-    <script src={{ asset('user/js/swiper.min.js') }}></script>
-    <!-- swiper js -->
-    <script src={{ asset('user/js/masonry.pkgd.js') }}></script>
-    <!-- particles js -->
-    <script src={{ asset('user/js/owl.carousel.min.js') }}></script>
-    <script src={{ asset('user/js/jquery.nice-select.min.js') }}></script>
-    <!-- slick js -->
-    <script src={{ asset('user/js/slick.min.js') }}></script>
-    <script src={{ asset('user/js/jquery.counterup.min.js') }}></script>
-    <script src={{ asset('user/js/waypoints.min.js') }}></script>
-    <script src={{ asset('user/js/contact.js') }}></script>
-    <script src={{ asset('user/js/jquery.ajaxchimp.min.js') }}></script>
-    <script src={{ asset('user/js/jquery.form.js') }}></script>
-    <script src={{ asset('user/js/jquery.validate.min.js') }}></script>
-    <script src={{ asset('user/js/mail-script.js') }}></script>
-    <script src={{ asset('user/js/stellar.js') }}></script>
-    <script src={{ asset('user/js/price_rangs.js') }}></script>
-    <!-- custom js -->
-    <script src={{ asset('user/js/custom.js') }}></script>
-
-    <script>
-        jQuery(document).ready(function($) {
-            var el = $('input.input-number');
-
-            var min = el.attr('min') || false;
-            var max = el.attr('max') || false;
-
-            el.prev().on('click', function() {
-                decrement($(this))
-            });
-
-            el.next().on('click', function() {
-                increment($(this))
-            });
-
-            function decrement(el) {
-                var input = el.next();
-                var value = input[0].value;
-                value--;
-                if (!min || value >= min) {
-                    updateCart(input, value);
-                    input[0].value = value;
-                }
-            }
-
-            function increment(el) {
-                var input = el.prev();
-                var value = input[0].value;
-                value++;
-                if (!min || value <= max) {
-                    updateCart(input, value);
-                    input[0].value = value++;
-                }
-            }
-
-            function updateCart(input, value) {
-                var token = $('meta[name="csrf-token"]').attr('content');
-                var rowId = input.attr('data-id');
-                fetch(
-                    `/cart/${rowId}`, {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Accept": "application/json, text-plain, */*",
-                            "X-Requested-With": "XMLHttpRequest",
-                            "X-CSRF-TOKEN": token
-                        },
-                        method: 'patch',
-                        body: JSON.stringify({
-                            qty: value
-                        })
-                    }
-                ).then((data) => {
-                    console.log(data);
-                    location.reload();
-                }).catch((error) => {
-                    console.log(error);
-                });
-                //console.log(value);
-            }
-
-        });
-    </script>
 @endsection

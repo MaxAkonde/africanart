@@ -1,184 +1,81 @@
 @extends('layouts.user')
 
 @section('extra-css')
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/bootstrap.min.css") }}>
-    <!-- animate CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/animate.css") }}>
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/owl.carousel.min.css") }}>
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/all.css") }}>
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/flaticon.css") }}>
-    <link rel="stylesheet" href={{ asset("user/css/themify-icons.css") }}>
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/magnific-popup.css") }}>
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/slick.css") }}>
-    <!-- style CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/style.css") }}>
 @endsection
 
 @section('content')
-    <!--================Home Banner Area =================-->
-  <!-- breadcrumb start-->
-  <section class="breadcrumb breadcrumb_bg">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="breadcrumb_iner">
-            <div class="breadcrumb_iner_item">
-              <h2>Contactez nous</h2>
-              <p>Acceuil <span>-</span> Contactez nous</p>
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Contact Us</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Contact</p>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
-  <!-- breadcrumb start-->
-
-  <!-- ================ contact section start ================= -->
-  <section class="contact-section padding_top">
-    <div class="container">
-      <div class="d-none d-sm-block mb-5 pb-4">
-        <div id="map" style="height: 480px;"></div>
-        <script>
-          function initMap() {
-            var uluru = {
-              lat: -25.363,
-              lng: 131.044
-            };
-            var grayStyles = [{
-                featureType: "all",
-                stylers: [{
-                    saturation: -90
-                  },
-                  {
-                    lightness: 50
-                  }
-                ]
-              },
-              {
-                elementType: 'labels.text.fill',
-                stylers: [{
-                  color: '#ccdee9'
-                }]
-              }
-            ];
-            var map = new google.maps.Map(document.getElementById('map'), {
-              center: {
-                lat: -31.197,
-                lng: 150.744
-              },
-              zoom: 9,
-              styles: grayStyles,
-              scrollwheel: false
-            });
-          }
-        </script>
-        <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap">
-        </script>
-
-      </div>
+    <!-- Page Header End -->
 
 
-      <div class="row">
-        <div class="col-12">
-          <h2 class="contact-title">Entrer en contact</h2>
+    <!-- Contact Start -->
+    <div class="container-fluid pt-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5"><span class="px-2">Contact For Any Queries</span></h2>
         </div>
-        <div class="col-lg-8">
-          <form class="form-contact contact_form" action="#" method="post" id="contactForm"
-            novalidate="novalidate">
-            <div class="row">
-              <div class="col-12">
-                <div class="form-group">
-
-                  <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Votre Message'"
-                    placeholder='Votre Message'></textarea>
+        <div class="row px-xl-5">
+            <div class="col-lg-7 mb-5">
+                <div class="contact-form">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="name" placeholder="Your Name"
+                                required="required" data-validation-required-message="Please enter your name" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control" id="email" placeholder="Your Email"
+                                required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject"
+                                required="required" data-validation-required-message="Please enter a subject" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control" rows="6" id="message" placeholder="Message" required="required"
+                                data-validation-required-message="Please enter your message"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send
+                                Message</button>
+                        </div>
+                    </form>
                 </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Votre nom'" placeholder='Votre nom'>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Votre email'" placeholder='Votre email'>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="form-group">
-                  <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Votre Sujet'" placeholder='Votre Sujet'>
-                </div>
-              </div>
             </div>
-            <div class="form-group mt-3">
-              <a href="#" class="btn_3 button-contactForm">Envoyer le message</a>
+            <div class="col-lg-5 mb-5">
+                <h5 class="font-weight-semi-bold mb-3">Get In Touch</h5>
+                <p>Justo sed diam ut sed amet duo amet lorem amet stet sea ipsum, sed duo amet et. Est elitr dolor elitr
+                    erat sit sit. Dolor diam et erat clita ipsum justo sed.</p>
+                <div class="d-flex flex-column mb-3">
+                    <h5 class="font-weight-semi-bold mb-3">Store 1</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+                </div>
+                <div class="d-flex flex-column">
+                    <h5 class="font-weight-semi-bold mb-3">Store 2</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+                    <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+                </div>
             </div>
-          </form>
         </div>
-        <div class="col-lg-4">
-          <div class="media contact-info">
-            <span class="contact-info__icon"><i class="ti-home"></i></span>
-            <div class="media-body">
-              <h3>Buttonwood, California.</h3>
-              <p>Rosemead, CA 91770</p>
-            </div>
-          </div>
-          <div class="media contact-info">
-            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
-            <div class="media-body">
-              <h3>00 (440) 9865 562</h3>
-              <p>Mon to Fri 9am to 6pm</p>
-            </div>
-          </div>
-          <div class="media contact-info">
-            <span class="contact-info__icon"><i class="ti-email"></i></span>
-            <div class="media-body">
-              <h3>support@colorlib.com</h3>
-              <p>Envoyez-nous votre requête à tout moment !</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
-  <!-- ================ contact section end ================= -->
+    <!-- Contact End -->
 @endsection
 
 @section('extra-js')
-    <!-- jquery plugins here-->
-    <script src={{ asset("user/js/jquery-1.12.1.min.js") }}></script>
-    <!-- popper js -->
-    <script src={{ asset("user/js/popper.min.js") }}></script>
-    <!-- bootstrap js -->
-    <script src={{ asset("user/js/bootstrap.min.js") }}></script>
-    <!-- easing js -->
-    <script src={{ asset("user/js/jquery.magnific-popup.js") }}></script>
-    <!-- swiper js -->
-    <script src={{ asset("user/js/swiper.min.js") }}></script>
-    <!-- swiper js -->
-    <script src={{ asset("user/js/masonry.pkgd.js") }}></script>
-    <!-- particles js -->
-    <script src={{ asset("user/js/owl.carousel.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.nice-select.min.js") }}></script>
-    <!-- slick js -->
-    <script src={{ asset("user/js/slick.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.counterup.min.js") }}></script>
-    <script src={{ asset("user/js/waypoints.min.js") }}></script>
-    <script src={{ asset("user/js/contact.js") }}></script>
-    <script src={{ asset("user/js/jquery.ajaxchimp.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.form.js") }}></script>
-    <script src={{ asset("user/js/jquery.validate.min.js") }}></script>
-    <script src={{ asset("user/js/mail-script.js") }}></script>
-    <!-- custom js -->
-    <script src={{ asset("user/js/custom.js") }}></script>
 @endsection

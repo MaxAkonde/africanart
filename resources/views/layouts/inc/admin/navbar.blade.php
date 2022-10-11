@@ -20,8 +20,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"> <i class="menu-icon fa fa-shopping-cart"></i>Produits</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-plus"></i><a href="{{ route('admin.produits.create') }}">Ajouter</a></li>
-                        <li><i class="fa fa-list"></i><a href="{{ route('admin.produits.index') }}">Liste</a></li>
+                        <li><i class="fa fa-plus"></i><a href="{{ route('admin.products.create') }}">Ajouter</a></li>
+                        <li><i class="fa fa-list"></i><a href="{{ route('admin.products.index') }}">Liste</a></li>
                     </ul>
                 </li>
 

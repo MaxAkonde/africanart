@@ -43,12 +43,6 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'namespace' => 'App\Http\Cont
     Route::resource('roles', 'RoleController');
     Route::resource('categories', 'CategoryController');
     Route::resource('users', 'UserController');
+    Route::resource('products', 'ProductController');
 
-    Route::get('/produits', 'ProductController@index')->name('produits.index');
-    Route::post('/produits', 'ProductController@store')->name('produits.store');
-    Route::get('/produits/create', 'ProductController@create')->name('produits.create');
-    Route::get('/produits/{product}', 'ProductController@show')->name('produits.show');
-    Route::match(array('PUT', 'PATCH'), '/produits/{product}', 'ProductController@update')->name('produits.update');
-    Route::delete('/produits/{product}', 'ProductController@destroy')->name('produits.destroy');
-    Route::get('/produits/{product}/edit', 'ProductController@edit')->name('produits.edit');
 });

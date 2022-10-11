@@ -1,466 +1,265 @@
 @extends('layouts.user')
 
 @section('extra-css')
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/bootstrap.min.css') }}>
-    <!-- animate CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/animate.css') }}>
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/owl.carousel.min.css') }}>
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/all.css') }}>
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/flaticon.css') }}>
-    <link rel="stylesheet" href={{ asset('user/css/themify-icons.css') }}>
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/magnific-popup.css') }}>
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/slick.css') }}>
-    <!-- style CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/style.css') }}>
-
-    <style>
-        .single_product_text h4:hover {
-            color: #ff3368;
-        }
-
-        .single_product_text h4 {
-            cursor: pointer;
-        }
-    </style>
 @endsection
 
 @section('content')
-    <!-- banner part start-->
-    <section class="banner_part">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="banner_slider owl-carousel">
-                        <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                            <h1>Eventails</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">Acheter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src={{ asset('user/img/DSC_1248.png') }} alt="">
-                                </div>
-                            </div>
-                        </div>
-                        {{-- <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                            <h1>Tissus</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">Acheter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src={{ asset('user/img/DSC_0012.png') }} alt="">
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                            <h1>Pièces Antiques</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">Acheter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src={{ asset('user/img/DSC_1230.png') }} alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                            <h1>Meubles</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">Acheter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src="user/img/DSC_1194.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-counter"></div>
+    <!-- Featured Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Produit de qualité</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Livraison gratuite</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Retour sous 14 jours</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">24h/24 et 7j/7</h5>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- banner part start-->
+    </div>
+    <!-- Featured End -->
 
-    <!-- feature_part start-->
-    <section class="feature_part padding_top">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section_tittle text-center">
-                        <h2>Catégorie en vedette</h2>
+
+    <!-- Categories Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+            @foreach ($categories as $item)
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="cat-item d-flex flex-column border mb-4" style="box-shadow: 1px 1px 5px #ddd;padding:30px;">
+                        <p class="text-right">15 Products</p>
+                        <a href="#" class="cat-img position-relative overflow-hidden mb-3">
+                            <img class="img-fluid" style="" src="{{ asset('assets/categories/' . $item->image) }}"
+                                alt="">
+                        </a>
+                        <h5 class="font-weight-semi-bold m-0">{{ $item->name }}</h5>
+                    </div>
+                </div>
+            @endforeach
+
+            {{-- <div class="col-lg-4 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <p class="text-right">15 Products</p>
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{{ asset('user/img/cat-2.jpg') }}" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">Women's dresses</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <p class="text-right">15 Products</p>
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{{ asset('user/img/cat-3.jpg') }}" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">Baby's dresses</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <p class="text-right">15 Products</p>
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{{ asset('user/img/cat-4.jpg') }}" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">Accerssories</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <p class="text-right">15 Products</p>
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{{ asset('user/img/cat-5.jpg') }}" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">Bags</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <p class="text-right">15 Products</p>
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{{ asset('user/img/cat-6.jpg') }}" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">Shoes</h5>
+                </div>
+            </div> --}}
+        </div>
+    </div>
+    <!-- Categories End -->
+
+
+    <!-- Offer Start -->
+    <div class="container-fluid offer pt-5">
+        <div class="row px-xl-5">
+            <div class="col-md-6 pb-4">
+                <div class="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
+                    <img src="{{ asset('user/img/offer-1.png') }}" alt="">
+                    <div class="position-relative" style="z-index: 1;">
+                        <h5 class="text-uppercase text-primary mb-3">20 % DE RÉDUCTION SUR TOUTE LA COMMANDE</h5>
+                        <h1 class="mb-4 font-weight-semi-bold text-light">Masques African</h1>
+                        <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Commander</a>
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-7 col-sm-6">
-                    <div class="single_feature_post_text">
-                        {{-- <p>Premium Quality</p> --}}
-                        <h3>Eventails</h3>
-                        <a href="#" class="feature_btn">EXPLORE NOW <i class="fas fa-play"></i></a>
-                        <img src="user/img/feature/DSC_0001.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-5 col-sm-6">
-                    <div class="single_feature_post_text">
-                        {{-- <p>Premium Quality</p> --}}
-                        <h3>Tissus</h3>
-                        <a href="#" class="feature_btn">EXPLORE NOW <i class="fas fa-play"></i></a>
-                        <img src="user/img/feature/DSC_0009.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-5 col-sm-6">
-                    <div class="single_feature_post_text">
-                        {{-- <p>Premium Quality</p> --}}
-                        <h3>Pièces Antiques</h3>
-                        <a href="#" class="feature_btn">EXPLORE NOW <i class="fas fa-play"></i></a>
-                        <img src="user/img/feature/DSC_0186.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-7 col-sm-6">
-                    <div class="single_feature_post_text">
-                        {{-- <p>Premium Quality</p> --}}
-                        <h3>Meubles</h3>
-                        <a href="#" class="feature_btn">EXPLORE NOW <i class="fas fa-play"></i></a>
-                        <img src="user/img/feature/DSC_1194.png" alt="">
+            <div class="col-md-6 pb-4">
+                <div class="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
+                    <img src="{{ asset('user/img/offer-2.png') }}" alt="">
+                    <div class="position-relative" style="z-index: 1;">
+                        <h5 class="text-uppercase text-primary mb-3">20 % DE RÉDUCTION SUR TOUTE LA COMMANDE</h5>
+                        <h1 class="mb-4 font-weight-semi-bold text-light">Pièces Antiques</h1>
+                        <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Commander</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- upcoming_event part start-->
+    </div>
+    <!-- Offer End -->
 
-    <!-- product_list start-->
-    <section class="product_list section_padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="section_tittle text-center">
-                        <h2>Derniers produits</h2>
-                    </div>
-                </div>
-                @if (session('success'))
-                    <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
-                @endif
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="product_list_slider owl-carousel">
-                        <div class="single_product_list_slider">
-                            <div class="row align-items-center justify-content-between">
-                                @foreach ($latest as $product)
-                                    <div class="col-lg-3 col-sm-6">
-                                        <div class="single_product_item">
-                                            <img src="{{ asset('products/' . $product->image) }}" alt="">
-                                            <div class="single_product_text">
-                                                <h4 onclick="location.href='{{ route('single', $product) }}'">
-                                                    {{ $product->title }}</h4>
-                                                <h3>{{ $product->getPrice() }}</h3>
-                                                <form action="{{ route('cart.store') }}" class="addCartForm"
-                                                    method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{ $product->id }}">
-                                                    <input type="hidden" name="title" value="{{ $product->title }}">
-                                                    <input type="hidden" name="price" value="{{ $product->price }}">
-                                                    <a href="#" class="add_cart">+ ajouter au panier</a>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        {{-- <div class="single_product_list_slider">
-                            <div class="row align-items-center justify-content-between">
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_1.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_2.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_3.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_4.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_5.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_6.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_7.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="user/img/product/product_8.png" alt="">
-                                        <div class="single_product_text">
-                                            <h4>Quartz Belt Watch</h4>
-                                            <h3>$150.00</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
+
+    <!-- Products Start -->
+    <div class="container-fluid pt-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5"><span class="px-2">Produits tendance</span></h2>
         </div>
-    </section>
-    <!-- product_list part start-->
-
-    <!-- awesome_shop start-->
-    <section class="our_offer section_padding">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 col-md-6">
-                    <div class="offer_img">
-                        <img src="user/img/DSC_1208-scaled.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="offer_text">
-                        <h2>Vente hebdomadaire, 60 % de réduction sur tous les produits</h2>
-                        <div class="date_countdown">
-                            <div id="timer">
-                                <div id="days" class="date"></div>
-                                <div id="hours" class="date"></div>
-                                <div id="minutes" class="date"></div>
-                                <div id="seconds" class="date"></div>
+        <div class="row px-xl-5 pb-3">
+            @foreach ($latest as $item)
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="card product-item mb-4" style="border:1px solid #f3f3f3;">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0"
+                            style="box-shadow: 1px 1px 5px #ddd">
+                            <img class="img-fluid w-100" style="width: 500px; height:350px;"
+                                src="{{ asset('assets/products/' . $item->image) }}" alt="">
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3"
+                            style="box-shadow: 1px 1px 5px #ddd">
+                            <h6 class="text-truncate mb-3">{{ $item->title }}</h6>
+                            <div class="d-flex justify-content-center">
+                                <h6>{{ $item->getPrice() }}</h6>
+                                {{-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> --}}
                             </div>
                         </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Votre adresse mail"
-                                aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <a href="#" class="input-group-text btn_2" id="basic-addon2">Reserver</a>
-                            </div>
+                        <div class="card-footer d-flex justify-content-between bg-light border"
+                            style="box-shadow: 1px 1px 5px #ddd">
+                            <a href="" class="btn btn-sm text-dark p-0"><i
+                                    class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                            <a href="" class="btn btn-sm text-dark p-0"><i
+                                    class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                         </div>
                     </div>
                 </div>
+            @endforeach
+        </div>
+    </div>
+    <!-- Products End -->
+
+
+    <!-- Subscribe Start -->
+    <div class="container-fluid bg-secondary my-5">
+        <div class="row justify-content-md-center py-5 px-xl-5">
+            <div class="col-md-6 col-12 py-5">
+                <div class="text-center mb-2 pb-2">
+                    <h2 class="section-title px-5 mb-3 text-light"><span class="bg-secondary px-2">Restez à jour</span></h2>
+                    <p class="text-light">Amet lorem at rebum amet dolores. Elitr lorem dolor sed amet diam labore at justo
+                        ipsum eirmod
+                        duo labore labore.</p>
+                </div>
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-white p-4" placeholder="Votre Email">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary px-4">Abonnez-vous</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
-    <!-- awesome_shop part start-->
+    </div>
+    <!-- Subscribe End -->
 
-    <!-- product_list part start-->
-    <section class="product_list best_seller section_padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="section_tittle text-center">
-                        <h2>Produits vedettes </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-12">
-                    <div class="best_product_slider owl-carousel">
-                        @foreach ($features as $product)
-                            <div class="single_product_item">
-                                <img src="{{ asset('products/' . $product->image) }}" alt="">
-                                <div class="single_product_text">
-                                    <h4 onclick="location.href='{{ route('single', $product) }}'">{{ $product->title }}
-                                    </h4>
-                                    <h3>{{ $product->getPrice() }}</h3>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+
+    <!-- Products Start -->
+    <div class="container-fluid pt-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5"><span class="px-2">Vient d'arriver</span></h2>
         </div>
-    </section>
-    <!-- product_list part end-->
-
-    <!-- subscribe_area part start-->
-    <section class="subscribe_area section_padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="subscribe_area_text text-center">
-                        <h5>Rejoignez notre newsletter</h5>
-                        <h2>Abonnez-vous pour être mis à jour avec de nouvelles offres</h2>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Votre adresse email"
-                                aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <a href="#" class="input-group-text btn_2" id="basic-addon2">Abonnez-vous</a>
+        <div class="row px-xl-5 pb-3">
+            @foreach ($latest as $item)
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="card product-item border-0 mb-4">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <img class="img-fluid w-100" style="width: 500px; height:350px;" src="{{ asset('assets/products/' . $item->image) }}" alt="">
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                            <h6 class="text-truncate mb-3">{{ $item->title }}</h6>
+                            <div class="d-flex justify-content-center">
+                                <h6>{{ $item->getPrice() }}</h6>
+                                {{-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> --}}
                             </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between bg-light border">
+                            <a href="" class="btn btn-sm text-dark p-0"><i
+                                    class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                            <a href="" class="btn btn-sm text-dark p-0"><i
+                                    class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!--::subscribe_area part end::-->
+            @endforeach
 
-    <!-- subscribe_area part start-->
-    {{-- <section class="client_logo padding_top">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="single_client_logo">
-                        <img src="user/img/client_logo/client_logo_1.png" alt="">
+        </div>
+    </div>
+    <!-- Products End -->
+
+
+    <!-- Vendor Start -->
+    {{-- <div class="container-fluid py-5">
+        <div class="row px-xl-5">
+            <div class="col">
+                <div class="owl-carousel vendor-carousel">
+                    <div class="vendor-item border p-4">
+                        <img src="{{ asset('user/img/vendor-1.jpg') }}" alt="">
                     </div>
-                    <div class="single_client_logo">
-                        <img src="user/img/client_logo/client_logo_2.png" alt="">
+                    <div class="vendor-item border p-4">
+                        <img src="{{ asset('user/img/vendor-2.jpg') }}" alt="">
                     </div>
-                    <div class="single_client_logo">
-                        <img src="user/img/client_logo/client_logo_3.png" alt="">
+                    <div class="vendor-item border p-4">
+                        <img src="{{ asset('user/img/vendor-3.jpg') }}" alt="">
                     </div>
-                    <div class="single_client_logo">
-                        <img src="user/img/client_logo/client_logo_4.png" alt="">
+                    <div class="vendor-item border p-4">
+                        <img src="{{ asset('user/img/vendor-4.jpg') }}" alt="">
                     </div>
-                    <div class="single_client_logo">
-                        <img src="user/img/client_logo/client_logo_5.png" alt="">
+                    <div class="vendor-item border p-4">
+                        <img src="{{ asset('user/img/vendor-5.jpg') }}" alt="">
                     </div>
-                    <div class="single_client_logo">
-                        <img src="user/img/client_logo/client_logo_3.png" alt="">
+                    <div class="vendor-item border p-4">
+                        <img src="{{ asset('user/img/vendor-6.jpg') }}" alt="">
                     </div>
-                    <div class="single_client_logo">
-                        <img src="user/img/client_logo/client_logo_1.png" alt="">
+                    <div class="vendor-item border p-4">
+                        <img src="{{ asset('user/img/vendor-7.jpg') }}" alt="">
                     </div>
-                    <div class="single_client_logo">
-                        <img src="user/img/client_logo/client_logo_2.png" alt="">
-                    </div>
-                    <div class="single_client_logo">
-                        <img src="user/img/client_logo/client_logo_3.png" alt="">
-                    </div>
-                    <div class="single_client_logo">
-                        <img src="user/img/client_logo/client_logo_4.png" alt="">
+                    <div class="vendor-item border p-4">
+                        <img src="{{ asset('user/img/vendor-8.jpg') }}" alt="">
                     </div>
                 </div>
             </div>
         </div>
-    </section> --}}
-    <!--::subscribe_area part end::-->
+    </div> --}}
+    <!-- Vendor End -->
 @endsection
 
 @section('extra-js')
-    <!-- jquery plugins here-->
-    <script src={{ asset('user/js/jquery-1.12.1.min.js') }}></script>
-    <!-- popper js -->
-    <script src={{ asset('user/js/popper.min.js') }}></script>
-    <!-- bootstrap js -->
-    <script src={{ asset('user/js/bootstrap.min.js') }}></script>
-    <!-- easing js -->
-    <script src={{ asset('user/js/jquery.magnific-popup.js') }}></script>
-    <!-- swiper js -->
-    <script src={{ asset('user/js/swiper.min.js') }}></script>
-    <!-- swiper js -->
-    <script src={{ asset('user/js/masonry.pkgd.js') }}></script>
-    <!-- particles js -->
-    <script src={{ asset('user/js/owl.carousel.min.js') }}></script>
-    <script src={{ asset('user/js/jquery.nice-select.min.js') }}></script>
-    <!-- slick js -->
-    <script src={{ asset('user/js/slick.min.js') }}></script>
-    <script src={{ asset('user/js/jquery.counterup.min.js') }}></script>
-    <script src={{ asset('user/js/waypoints.min.js') }}></script>
-    <script src={{ asset('user/js/contact.js') }}></script>
-    <script src={{ asset('user/js/jquery.ajaxchimp.min.js') }}></script>
-    <script src={{ asset('user/js/jquery.form.js') }}></script>
-    <script src={{ asset('user/js/jquery.validate.min.js') }}></script>
-    <script src={{ asset('user/js/mail-script.js') }}></script>
-    <!-- custom js -->
-    <script src={{ asset('user/js/custom.js') }}></script>
-
-    <script>
-        jQuery(document).ready(function($) {
-            $('a.add_cart').click(function(e) {
-                e.preventDefault();
-                $(this).parent().submit();
-            });
-        });
-    </script>
 @endsection

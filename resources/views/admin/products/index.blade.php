@@ -83,15 +83,15 @@
                                 <tr>
                                     <th scope="row">{{ $product->id }}</th>
                                     <td>
-                                        <img src="{{ asset('products/'. $product->image) }}" class="" style="width: 45px" alt="Image a la une products {{ $product->id }}">
+                                        <img src="{{ asset('assets/products/'. $product->image) }}" class="" style="width: 45px" alt="Image a la une products {{ $product->id }}">
                                     </td>
                                     <td>{{ $product->title }}</td>
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>
-                                        <a href="{{ route('admin.produits.edit', $product->id) }}"
+                                        <a href="{{ route('admin.products.edit', $product->id) }}"
                                             class="fa fa-pencil edit-button" title="Modifier"></a>
-                                        <form action="{{ route('admin.produits.destroy', $product->id) }}" method="POST"
+                                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
                                             onsubmit="" style="display: inline" id="delete_form">
                                             @csrf
                                             @method('DELETE')

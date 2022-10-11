@@ -53,12 +53,25 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        $role = new Category();
-        $role->name = $request->name;
-        $role->slug = Str::slug($role->name);
-        $role->save();
+        $category = new Category();
+        $category->name = $request->name;
+        $category->slug = Str::slug($category->name);
+
+        $category->image = $this->uploadImage($request->file('image'));
+
+        $category->save();
 
         return redirect()->route('admin.categories.index')->with('status', $request->name . ' a été enregistrer avec succes !');
+    }
+
+    private function uploadImage($requestImage)
+    {
+        if ($requestImage) {
+            $file = $requestImage;
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('assets/categories'), $filename);
+            return $filename;
+        }
     }
 
     /**
@@ -95,7 +108,21 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $category->update($request->all());
+        //$category->update($request->all());
+
+        $image = $request->file('image');
+        if ($image) {
+            unlink("assets/categories/" . $category->image);
+        }
+
+        $category->name = $request->name;
+        $category->slug = Str::slug($category->name);
+
+        if ($image) {
+            $category->image = $this->uploadImage($request->file('image'));
+        }
+
+        $category->update();
 
         return redirect()->route('admin.categories.index')->with('status', $request->name . ' a été modifier avec success !');
     }

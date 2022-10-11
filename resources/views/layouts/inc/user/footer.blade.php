@@ -1,107 +1,66 @@
-<!--::footer_part start::-->
-<footer class="footer_part">
-    <div class="container">
-        <div class="row justify-content-around">
-            {{-- <div class="col-sm-6 col-lg-2">
-                <div class="single_footer_part">
-                    <h4>Top Products</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Managed Website</a></li>
-                        <li><a href="#">Manage Reputation</a></li>
-                        <li><a href="#">Power Tools</a></li>
-                        <li><a href="#">Marketing Service</a></li>
-                    </ul>
-                </div>
-            </div> --}}
-            <div class="col-sm-6 col-lg-2">
-                <div class="single_footer_part">
-                    <h4>Liens Utiles</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Mentions légales</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Conditions de commande</a></li>
-                        <li><a href="#">Politique de retours</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-2">
-                <div class="single_footer_part">
-                    <h4>Features</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Boutique</a></li>
-                        <li><a href="#">A propos</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="{{ route('tracking') }}">Tracking</a></li>
-                    </ul>
-                </div>
-            </div>
-            {{-- <div class="col-sm-6 col-lg-2">
-                <div class="single_footer_part">
-                    <h4>Resources</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Guides</a></li>
-                        <li><a href="#">Research</a></li>
-                        <li><a href="#">Experts</a></li>
-                        <li><a href="#">Agencies</a></li>
-                    </ul>
-                </div>
-            </div> --}}
-            <div class="col-sm-6 col-lg-4">
-                <div class="single_footer_part">
-                    <h4>Newsletter</h4>
-                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping
-                    </p>
-                    <div id="mc_embed_signup">
-                        <form target="_blank"
-                            action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                            method="get" class="subscribe_form relative mail_part">
-                            <input type="email" name="email" id="newsletter-form-email"
-                                placeholder="Email Address" class="placeholder hide-on-focus"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = ' Email Address '">
-                            <button type="submit" name="submit" id="newsletter-submit"
-                                class="email_icon newsletter-submit button-contactForm">subscribe</button>
-                            <div class="mt-10 info"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+<div class="container-fluid bg-secondary text-light mt-5 pt-5">
+    <div class="row px-xl-5 pt-5">
+        <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+            <a href="" class="text-decoration-none">
+                <h1 class="mb-4 display-5 font-weight-semi-bold"><span
+                        class="text-primary font-weight-bold border border-white px-3 mr-1">African</span>Art</h1>
+            </a>
+            <p>Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no sit erat lorem et magna ipsum
+                dolore amet erat.</p>
+            <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+            <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+            <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
         </div>
-
-    </div>
-    <div class="copyright_part">
-        <div class="container">
+        <div class="col-lg-8 col-md-12">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="copyright_text">
-                        <P>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script> All rights reserved | This template is made with <i
-                                class="ti-heart" aria-hidden="true"></i> by <a href="#"
-                                target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </P>
+                <div class="col-md-4 mb-5">
+                    <h5 class="font-weight-bold text-light mb-4">Liens Utiles</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Mentions Légales</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Livraison & Retour</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Condition de vente</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Politique de confidentialité</a>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="footer_icon social_icon">
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="single_social_icon"><i
-                                        class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#" class="single_social_icon"><i class="fab fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#" class="single_social_icon"><i class="fas fa-globe"></i></a>
-                            </li>
-                            <li><a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a>
-                            </li>
-                        </ul>
+                <div class="col-md-4 mb-5">
+                    <h5 class="font-weight-bold text-light mb-4">Navigation</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Accueil</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Boutique</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>A propos</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Mon compte</a>
+                        <a class="text-light" href="#"><i class="fa fa-angle-right mr-2"></i>Tracking</a>
                     </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class="font-weight-bold text-light mb-4">Newsletter</h5>
+                    <form action="">
+                        <div class="form-group">
+                            <input type="text" class="form-control border-0 py-4" placeholder="Votre Nom"
+                                required="required" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control border-0 py-4" placeholder="Votre Email"
+                                required="required" />
+                        </div>
+                        <div>
+                            <button class="btn btn-primary btn-block border-0 py-3" type="submit">Abonnez-vous</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</footer>
-<!--::footer_part end::-->
+    <div class="row border-top border-light mx-xl-5 py-4">
+        <div class="col-md-6 px-xl-0">
+            <p class="mb-md-0 text-center text-md-left text-light">
+                &copy; <a class="text-light font-weight-semi-bold" href="#">Afrian Art</a>. Tous les droits sont réservés. Conçu par <a class="text-light font-weight-semi-bold" href="#">DIVO HOME</a><br>
+                {{-- Distributed By <a href="#" target="_blank">ThemeWagon</a> --}}
+            </p>
+        </div>
+        <div class="col-md-6 px-xl-0 text-center text-md-right">
+            <img class="img-fluid" src="{{ asset('user/img/payments.png') }}" alt="">
+        </div>
+    </div>
+</div>

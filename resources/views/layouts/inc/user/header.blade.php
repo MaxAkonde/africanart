@@ -1,98 +1,208 @@
-<!--::header part start::-->
-<header class="main_menu home_menu">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-12">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="{{ route('index') }}"> <img src={{ asset('user/img/logo.png') }} alt="logo"> </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="menu_icon"><i class="fas fa-bars"></i></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('index') }}">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('shop') }}">
-                                    Boutique
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">A Propos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('contact') }}">Contact</a>
-                            </li>
-                        </ul>
+<div class="container-fluid">
+    <div class="row bg-secondary py-2 px-xl-5">
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="d-inline-flex align-items-center">
+                {{-- <a class="text-light" href="#">FAQs</a>
+                <span class="text-muted px-2">|</span>
+                <a class="text-light" href="#">Help</a>
+                <span class="text-muted px-2">|</span>
+                <a class="text-light" href="#">Support</a> --}}
+            </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+            <div class="d-inline-flex align-items-center">
+                <a class="text-light px-2" href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="text-light px-2" href="#">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class="text-light px-2" href="#">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a class="text-light px-2" href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a class="text-light pl-2" href="#">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center py-3 px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a href="" class="text-decoration-none">
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                        class="text-primary font-weight-bold border px-3 mr-1">African</span>Art</h1>
+            </a>
+        </div>
+        <div class="col-lg-6 col-6 text-left">
+            <form action="">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Rechercher un produit">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-transparent text-primary">
+                            <i class="fa fa-search"></i>
+                        </span>
                     </div>
-                    <div class="hearer_icon1 d-flex1">
-                        {{-- <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a> --}}
-                        <ul class="navbar-nav1" style="display:flex;">
-                            <li class="nav-item1">
-                                <a class="nav-link" href="{{ route('cart.index') }}" style="display: flex;">
-                                    <div>
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </div>
-                                    @if (Cart::count() > 0)
-                                        <div
-                                            style="border-radius:50%;background-color:#ff0000;color:#fff;width:14px;height:14px;font-size:10px;display:flex;align-items:center;justify-content:center;margin-top:-5px;margin-left:-5px;z-index:9999;">
-                                            {{ Cart::count() }}
-                                        </div>
-                                    @endif
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3 col-6 text-right">
+            <a href="" class="btn border">
+                <i class="fas fa-shopping-cart text-primary"></i>
+                <span class="badge">0</span>
+            </a>
+            <a href="" class="btn border">
+                <i class="fas fa-heart text-primary"></i>
+                <span class="badge">0</span>
+            </a>
+        </div>
+    </div>
+</div>
 
-                                </a>
-                            </li>
-
-                            <li class="nav-item1 dropdown" style="padding:0px;">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_3" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{-- <i class="ti-user"></i> --}}
-                                    @guest
-                                        <i class="fas fa-user"style="margin:0px"></i>
-                                    @else
-                                        <i class="fas fa-user-check" style="margin: 0px"></i>
-                                    @endguest
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2"
-                                    style="margin-left:-102px;">
-                                    @guest
-                                        <a class="dropdown-item" href="{{ route('login') }}">Se connectez</a>
-                                        <a class="dropdown-item" href="{{ route('register') }}">Créer un compte</a>
-                                    @else
-                                        <a class="dropdown-item" href="#"
-                                            style="text-decoration: none">{{ Auth::user()->name }}</a>
-                                        <hr>
-                                        <a class="dropdown-item" href="#">Commandes</a>
-                                        <a class="dropdown-item" href="#">Profile</a>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                    @endguest
+@if (isset($active) && $active === 'home')
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+                    data-toggle="collapse" href="#navbar-vertical"
+                    style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                    <h6 class="m-0">Categories</h6>
+                    <i class="fa fa-angle-down text-dark"></i>
+                </a>
+                <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
+                    id="navbar-vertical">
+                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                        @foreach (\App\Models\Category::all() as $item)
+                            <a href="" class="nav-item nav-link">{{ $item->name }}</a>
+                        @endforeach
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                        <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                                class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="#" class="nav-item nav-link active">Accueil</a>
+                            <a href="#" class="nav-item nav-link">Boutique</a>
+                            <a href="#" class="nav-item nav-link">A propos</a>
+                            <a href="#" class="nav-item nav-link">Contact</a>
+                        </div>
+                        <div class="navbar-nav ml-auto py-0">
+                            <a href="" class="nav-item nav-link">Connexion</a>
+                            <a href="" class="nav-item nav-link">Inscription</a>
+                        </div>
+                    </div>
+                </nav>
+                <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" style="height: 410px;">
+                            <img class="img-fluid" src="{{ asset('user/img/aka.webp') }}" alt="Image">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                {{-- <div class="p-3" style="max-width: 700px;">
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
+                                        Order</h4>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
+                                    <a href="#" class="btn btn-light py-2 px-3">Shop Now</a>
+                                </div> --}}
+                            </div>
+                        </div>
+                        {{-- <div class="carousel-item" style="height: 410px;">
+                            <img class="img-fluid" src="{{ asset('user/img/carousel-2.jpg') }}" alt="Image">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
+                                        Order</h4>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
+                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
-                            </li>
-
-                        </ul>
-
-                        {{-- <a href="{{ route('login') }}"><i class="ti-user"></i></a> --}}
+                            </div>
+                        </div> --}}
+                    </div>
+                    <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                            <span class="carousel-control-prev-icon mb-n2"></span>
+                        </div>
+                    </a>
+                    <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                            <span class="carousel-control-next-icon mb-n2"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+@else
+    <!-- Navbar Start -->
+    <div class="container-fluid">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+                    data-toggle="collapse" href="#navbar-vertical"
+                    style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                    <h6 class="m-0">Categories</h6>
+                    <i class="fa fa-angle-down text-dark"></i>
+                </a>
+                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light"
+                    id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
+                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                        <div class="nav-item dropdown">
+                            @foreach (\App\Models\Category::all() as $item)
+                                <a href="" class="nav-item nav-link">{{ $item->name }}</a>
+                            @endforeach
+                        </div>
+                </nav>
+            </div>
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                        <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                                class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse"
+                        data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="#" class="nav-item nav-link active">Accueil</a>
+                            <a href="#" class="nav-item nav-link">Boutique</a>
+                            <a href="#" class="nav-item nav-link">A propos</a>
+                            <a href="#" class="nav-item nav-link">Contact</a>
+                        </div>
+                        <div class="navbar-nav ml-auto py-0">
+                            <a href="" class="nav-item nav-link">Connexion</a>
+                            <a href="" class="nav-item nav-link">Inscription</a>
+                        </div>
                     </div>
                 </nav>
             </div>
         </div>
     </div>
-    {{-- <div class="search_input" id="search_input_box">
-        <div class="container ">
-            <form class="d-flex justify-content-between search-inner">
-                <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                <button type="submit" class="btn"></button>
-                <span class="ti-close" id="close_search" title="Close Search"></span>
-            </form>
+    <!-- Navbar End -->
+
+
+    {{-- <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Shopping Cart</p>
+            </div>
         </div>
-    </div> --}}
-</header>
-<!-- Header part end-->
+    </div>
+    <!-- Page Header End --> --}}
+@endif

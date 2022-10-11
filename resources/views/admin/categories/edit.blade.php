@@ -33,7 +33,7 @@
             <div class="card">
                 <div class="card-header">Modifier</div>
                 <div class="card-body card-block">
-                    <form action="{{ route('admin.categories.update', $category->id) }}" method="post" class="">
+                    <form action="{{ route('admin.categories.update', $category->id) }}" method="post" enctype="multipart/form-data" class="">
                         @csrf
                         @method('PUT')
 
@@ -49,6 +49,19 @@
                                 </span>
                             @enderror
                         </div>
+
+                        <div class="form-group">
+                            <label for="image" class="d-block">Image à la une</label>
+                            <img src="@if($category->image) {{ asset('assets/categories/'. $category->image) }} @else https://via.placeholder.com/200 @endif" class="img-thumbnail mb-2" alt="Image à la une"
+                                style="height: 200px;width: 200px">
+                                <input type="file" id="image" name="image" class="form-control-file @error('image') is-invalid @enderror">
+
+                            @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         <div class="form-actions form-group">
                             <button type="submit" class="btn btn-secondary btn-sm">Modifier</button>
                         </div>
@@ -57,4 +70,32 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('extra-js')
+    <script>
+        jQuery(document).ready(function($) {
+
+            $('#image').on('change', function(e) {
+                //alert('1');
+                var input = this;
+                var url = $(this).val();
+                var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+                if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('img.img-thumbnail').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    $('img.img-thumbnail').attr('src', 'https://via.placeholder.com/200');
+                }
+            });
+
+            $("img.img-thumbnail").click(function() {
+                $("#image").click();
+            });
+        });
+    </script>
 @endsection

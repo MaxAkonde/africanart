@@ -41,7 +41,7 @@
             <div class="card">
                 <div class="card-header">Ajouter un produit</div>
                 <div class="card-body card-block">
-                    <form action="{{ route('admin.produits.store') }}" method="post" class="" enctype="multipart/form-data">
+                    <form action="{{ route('admin.products.store') }}" method="post" class="" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">

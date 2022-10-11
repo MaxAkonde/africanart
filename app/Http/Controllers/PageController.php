@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,10 +13,12 @@ class PageController extends Controller
     public function home()
     {
         $latest = Product::latest()->paginate(8);
-        $features = Product::paginate(5);
+        $categories = Category::all();
+        $active = "home";
         return view('pages.home', [
             'latest' => $latest,
-            'features' => $features,
+            'categories' => $categories,
+            'active' => $active,
         ]);
     }
 

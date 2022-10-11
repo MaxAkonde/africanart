@@ -41,7 +41,7 @@
             <div class="card">
                 <div class="card-header">Modifier</div>
                 <div class="card-body card-block">
-                    <form action="{{ route('admin.produits.update', $product) }}" method="post" class="" enctype="multipart/form-data">
+                    <form action="{{ route('admin.products.update', $product) }}" method="post" class="" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -113,7 +113,7 @@
 
                         <div class="form-group">
                             <label for="image" class="d-block">Image à la une</label>
-                            <img src="@if($product->image) {{ asset('products/'. $product->image) }} @else https://via.placeholder.com/200 @endif" class="img-thumbnail mb-2" alt="Image à la une"
+                            <img src="@if($product->image) {{ asset('assets/products/'. $product->image) }} @else https://via.placeholder.com/200 @endif" class="img-thumbnail mb-2" alt="Image à la une"
                                 style="height: 200px;width: 200px">
                                 <input type="file" id="image" name="image" class="form-control-file @error('image') is-invalid @enderror">
 

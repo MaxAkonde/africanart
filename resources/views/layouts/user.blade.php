@@ -1,32 +1,63 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>African Art</title>
-    <link rel="icon" href={{ asset("user/img/favicon.png") }}>
+    <title>African Art - Site Ecommerce d'Art african</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- Favicon -->
+    <link href="{{ asset('user/img/favicon.ico') }}" rel="icon">
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ asset('user/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
 
     @yield('extra-css')
 </head>
 
 <body>
-    
+    <!-- Topbar Start -->
     @include('layouts.inc.user.header')
+    <!-- Topbar End -->
+
 
     @yield('content')
 
+
+    <!-- Footer Start -->
     @include('layouts.inc.user.footer')
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('user/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('user/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{{ asset('user/mail/jqBootstrapValidation.min.js') }}"></script>
+    <script src="{{ asset('user/mail/contact.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ asset('user/js/main.js') }}"></script>
 
     @yield('extra-js')
 </body>

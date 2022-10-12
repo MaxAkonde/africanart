@@ -172,7 +172,8 @@
                             <div class="card product-item border-0 mb-4">
                                 <div
                                     class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                    <img class="img-fluid w-100" style="width: 500px; height:350px;" src="{{ asset('assets/products/' . $item->image) }}" alt="">
+                                    <img class="img-fluid w-100" style="width: 500px; height:350px;"
+                                        src="{{ asset('assets/products/' . $item->image) }}" alt="">
                                 </div>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                     <h6 class="text-truncate mb-3">{{ $item->title }}</h6>
@@ -182,15 +183,21 @@
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <a href="" class="btn btn-sm text-dark p-0"><i
+                                    <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
                                             class="fas fa-eye text-primary mr-1"></i>Voir les détails</a>
-                                    <a href="" class="btn btn-sm text-dark p-0"><i
-                                            class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au panier</a>
+                                    <form action="">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                        <input type="hidden" name="title" value="{{ $item->title }}">
+                                        <input type="hidden" name="price" value="{{ $item->price }}">
+                                        <button type="submit" class="btn btn-sm text-dark p-0"><i
+                                            class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au panier</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                    
+
                     <div class="col-12 pb-1">
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center mb-3">

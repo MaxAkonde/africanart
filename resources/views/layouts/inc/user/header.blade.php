@@ -2,28 +2,28 @@
     <div class="row bg-secondary py-2 px-xl-5">
         <div class="col-lg-6 d-none d-lg-block">
             <div class="d-inline-flex align-items-center">
-                {{-- <a class="text-light" href="#">FAQs</a>
+                {{-- <a class="text-dark" href="#">FAQs</a>
                 <span class="text-muted px-2">|</span>
-                <a class="text-light" href="#">Help</a>
+                <a class="text-dark" href="#">Help</a>
                 <span class="text-muted px-2">|</span>
-                <a class="text-light" href="#">Support</a> --}}
+                <a class="text-dark" href="#">Support</a> --}}
             </div>
         </div>
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
-                <a class="text-light px-2" href="#">
+                <a class="text-dark px-2" href="#">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a class="text-light px-2" href="#">
+                <a class="text-dark px-2" href="#">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a class="text-light px-2" href="#">
+                <a class="text-dark px-2" href="#">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a class="text-light px-2" href="#">
+                <a class="text-dark px-2" href="#">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a class="text-light pl-2" href="#">
+                <a class="text-dark pl-2" href="#">
                     <i class="fab fa-youtube"></i>
                 </a>
             </div>
@@ -113,7 +113,7 @@
                             <img class="img-fluid" src="{{ asset('user/img/aka.webp') }}" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 {{-- <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
+                                    <h4 class="text-dark text-uppercase font-weight-medium mb-3">10% Off Your First
                                         Order</h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
                                     <a href="#" class="btn btn-light py-2 px-3">Shop Now</a>
@@ -124,7 +124,7 @@
                             <img class="img-fluid" src="{{ asset('user/img/carousel-2.jpg') }}" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
+                                    <h4 class="text-dark text-uppercase font-weight-medium mb-3">10% Off Your First
                                         Order</h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
                                     <a href="" class="btn btn-light py-2 px-3">Shop Now</a>

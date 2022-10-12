@@ -1,113 +1,60 @@
 @extends('layouts.user')
 
 @section('extra-css')
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/bootstrap.min.css") }}>
-    <!-- animate CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/animate.css") }}>
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/owl.carousel.min.css") }}>
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/all.css") }}>
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/flaticon.css") }}>
-    <link rel="stylesheet" href={{ asset("user/css/themify-icons.css") }}>
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/magnific-popup.css") }}>
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/slick.css") }}>
-    <!-- style CSS -->
-    <link rel="stylesheet" href={{ asset("user/css/style.css") }}>
 @endsection
 
 @section('content')
-    <!-- breadcrumb start-->
-    <section class="breadcrumb breadcrumb_bg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="breadcrumb_iner">
-                        <div class="breadcrumb_iner_item">
-                            <h2>Mot de passe oublier ?</h2>
-                            <p>Acceuil <span>-</span> Mot de passe oublier ?</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Mot de passe oublier ?</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="{{ route('index') }}">Accueil</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Mot de passe oublier ?</p>
             </div>
         </div>
-    </section>
-    <!-- breadcrumb start-->
+    </div>
+    <!-- Page Header End -->
 
-    <!--================login_part Area =================-->
-    <section class="login_part padding_top">
+    <!-- Reset Password Start -->
+    <div class="container-fluid pt-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5"><span class="px-2">Réinitialiser votre mot de passe</span></h2>
+        </div>
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12 col-md-12">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <div class="login_part_form">
-                        <div class="login_part_form_iner">
-                            <h3>Réinitialiser votre mot de passe</h3>
-                            <form class="row contact_form" method="POST" action="{{ route('password.email') }}"
-                                novalidate="novalidate">
-                                @csrf
-
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                        id="email" name="email" value="{{ old('email') }}" placeholder="Email"
-                                        required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <button type="submit" class="btn_3">
-                                        Envoyer le lien de réinitialisation du mot de passe
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
                 </div>
+            @endif
+            <div class="contact-form">
+                <form class="row contact_form" method="POST" action="{{ route('password.email') }}"
+                    novalidate="novalidate">
+                    @csrf
+
+                    <div class="col-md-12 form-group">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                            name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email"
+                            autofocus>
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            Envoyer le lien de réinitialisation du mot de passe
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
-    <!--================login_part end =================-->
+    </div>
+    <!-- Reset Password End -->
 @endsection
 
 @section('extra-js')
-    <!-- jquery -->
-    <script src={{ asset("user/js/jquery-1.12.1.min.js") }}></script>
-    <!-- popper js -->
-    <script src={{ asset("user/js/popper.min.js") }}></script>
-    <!-- bootstrap js -->
-    <script src={{ asset("user/js/bootstrap.min.js") }}></script>
-    <!-- easing js -->
-    <script src={{ asset("user/js/jquery.magnific-popup.js") }}></script>
-    <!-- swiper js -->
-    <script src={{ asset("user/js/swiper.min.js") }}></script>
-    <!-- swiper js -->
-    <script src={{ asset("user/js/masonry.pkgd.js") }}></script>
-    <!-- particles js -->
-    <script src={{ asset("user/js/owl.carousel.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.nice-select.min.js") }}></script>
-    <!-- slick js -->
-    <script src={{ asset("user/js/slick.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.counterup.min.js") }}></script>
-    <script src={{ asset("user/js/waypoints.min.js") }}></script>
-    <script src={{ asset("user/js/contact.js") }}></script>
-    <script src={{ asset("user/js/jquery.ajaxchimp.min.js") }}></script>
-    <script src={{ asset("user/js/jquery.form.js") }}></script>
-    <script src={{ asset("user/js/jquery.validate.min.js") }}></script>
-    <script src={{ asset("user/js/mail-script.js") }}></script>
-    <script src={{ asset("user/js/stellar.js") }}></script>
-    <script src={{ asset("user/js/price_rangs.js") }}></script>
-    <!-- custom js -->
-    <script src={{ asset("js/custom.js") }}></script>
 @endsection

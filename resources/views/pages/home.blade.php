@@ -64,7 +64,7 @@
                     <img src="{{ asset('user/img/offer-1.png') }}" alt="">
                     <div class="position-relative" style="z-index: 1;">
                         <h5 class="text-uppercase text-primary mb-3">20 % DE RÉDUCTION SUR TOUTE LA COMMANDE</h5>
-                        <h1 class="mb-4 font-weight-semi-bold text-light">Masques African</h1>
+                        <h1 class="mb-4 font-weight-semi-bold text-dark">Masques African</h1>
                         <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Commander</a>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                     <img src="{{ asset('user/img/offer-2.png') }}" alt="">
                     <div class="position-relative" style="z-index: 1;">
                         <h5 class="text-uppercase text-primary mb-3">20 % DE RÉDUCTION SUR TOUTE LA COMMANDE</h5>
-                        <h1 class="mb-4 font-weight-semi-bold text-light">Pièces Antiques</h1>
+                        <h1 class="mb-4 font-weight-semi-bold text-dark">Pièces Antiques</h1>
                         <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Commander</a>
                     </div>
                 </div>
@@ -108,10 +108,16 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border"
                             style="box-shadow: 1px 1px 5px #ddd">
-                            <a href="" class="btn btn-sm text-dark p-0"><i
+                            <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
                                     class="fas fa-eye text-primary mr-1"></i>Voir les détails</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i
-                                    class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au panier</a>
+                            <form action="{{ route('cart.store') }}" class="addCartForm" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                <input type="hidden" name="title" value="{{ $item->title }}">
+                                <input type="hidden" name="price" value="{{ $item->price }}">
+                                <button type="submit" class="btn btn-sm text-dark p-0"><i
+                                        class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au panier</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -126,8 +132,8 @@
         <div class="row justify-content-md-center py-5 px-xl-5">
             <div class="col-md-6 col-12 py-5">
                 <div class="text-center mb-2 pb-2">
-                    <h2 class="section-title px-5 mb-3 text-light"><span class="bg-secondary px-2">Restez à jour</span></h2>
-                    <p class="text-light">Amet lorem at rebum amet dolores. Elitr lorem dolor sed amet diam labore at justo
+                    <h2 class="section-title px-5 mb-3 text-dark"><span class="bg-secondary px-2">Restez à jour</span></h2>
+                    <p class="text-dark">Amet lorem at rebum amet dolores. Elitr lorem dolor sed amet diam labore at justo
                         ipsum eirmod
                         duo labore labore.</p>
                 </div>
@@ -155,7 +161,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="card product-item border-0 mb-4">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" style="width: 500px; height:350px;" src="{{ asset('assets/products/' . $item->image) }}" alt="">
+                            <img class="img-fluid w-100" style="width: 500px; height:350px;"
+                                src="{{ asset('assets/products/' . $item->image) }}" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">{{ $item->title }}</h6>
@@ -165,10 +172,16 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i
+                            <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
                                     class="fas fa-eye text-primary mr-1"></i>Voir les détails</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i
-                                    class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au panier</a>
+                            <form action="{{ route('cart.store') }}" class="addCartForm" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                <input type="hidden" name="title" value="{{ $item->title }}">
+                                <input type="hidden" name="price" value="{{ $item->price }}">
+                                <button type="submit" class="btn btn-sm text-dark p-0"><i
+                                    class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au panier</button>
+                            </form>
                         </div>
                     </div>
                 </div>

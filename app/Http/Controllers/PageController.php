@@ -37,8 +37,11 @@ class PageController extends Controller
 
     public function single(Product $product)
     {
+        $latest = Product::latest()->paginate(4);
+        
         return view('pages.single', [
-            'product' => $product
+            'product' => $product,
+            'latest'=> $latest,
         ]);
     }
 

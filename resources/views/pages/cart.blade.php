@@ -42,14 +42,15 @@
                                 <td class="align-middle">
                                     <div class="input-group quantity mx-auto" style="width: 100px;">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-primary btn-minus">
+                                            <button class="decrement btn btn-sm btn-primary btn-minus">
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" class="form-control form-control-sm bg-secondary text-center"
-                                            value="{{ getQty($item->qty) }}">
+                                        <input type="text" data-id="{{ $item->rowId }}"
+                                            class="qty form-control form-control-sm bg-secondary text-center"
+                                            value="{{ getQty($item->qty) }}" readonly>
                                         <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-primary btn-plus">
+                                            <button class="increment btn btn-sm btn-primary btn-plus">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
@@ -61,7 +62,8 @@
                                     <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button>
+                                        <button type="submit" class="btn btn-sm btn-primary"><i
+                                                class="fa fa-times"></i></button>
                                     </form>
                                 </td>
                             </tr>
@@ -104,7 +106,7 @@
                             <h5 class="font-weight-bold">{{ getPrice(Cart::total()) }}</h5>
                         </div>
                         @if (Cart::count() > 0)
-                            <button class="btn btn-block btn-primary my-3 py-3">Commander</button>
+                            <a href="{{ route('order.create') }}" class="btn btn-block btn-primary my-3 py-3">Commander</a>
                         @endif
                     </div>
                 </div>
@@ -116,4 +118,60 @@
 
 
 @section('extra-js')
+    <script>
+        jQuery(document).ready(function($) {
+
+            const MAX = 10;
+            const MIN = 1;
+
+            $('button.increment').click(function(e) {
+                e.preventDefault();
+                let qty = $(this).parent().prev('input.qty');
+                console.log(qty.val());
+                if (qty.val() > MAX) {
+                    qty.val(10);
+                } else {
+                    updateCart(qty, qty.val());
+                }
+            });
+
+
+            $('button.decrement').click(function(e) {
+                e.preventDefault();
+                let qty = $(this).parent().next('input.qty');
+                console.log(qty.val());
+                if (qty.val() < MIN) {
+                    qty.val(1);
+                } else {
+                    updateCart(qty, qty.val());
+                }
+            });
+
+            function updateCart(input, value) {
+                var token = $('meta[name="csrf-token"]').attr('content');
+                var rowId = input.attr('data-id');
+                fetch(
+                    `/cart/${rowId}`, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json, text-plain, */*",
+                            "X-Requested-With": "XMLHttpRequest",
+                            "X-CSRF-TOKEN": token
+                        },
+                        method: 'patch',
+                        body: JSON.stringify({
+                            qty: value
+                        })
+                    }
+                ).then((data) => {
+                    console.log(data);
+                    location.reload();
+                }).catch((error) => {
+                    console.log(error);
+                });
+                //console.log(value);
+            }
+
+        });
+    </script>
 @endsection

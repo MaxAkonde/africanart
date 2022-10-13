@@ -46,6 +46,10 @@ class OrderController extends Controller
 
         $amout = str_replace(' ', '', Cart::total());
 
+        $subtotal = Cart::subtotal();
+        $tax = Cart::tax();
+        $shipping = 0;
+
         Cart::destroy();
 
 
@@ -64,6 +68,10 @@ class OrderController extends Controller
         $order->message = $request->message;
         $order->status = 0;
         $order->amount = $amout;
+
+        $order->subtotal = $subtotal;
+        $order->tax = $tax;
+        $order->shipping = $shipping;
 
         $order->save();
 

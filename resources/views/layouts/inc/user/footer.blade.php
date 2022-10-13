@@ -30,7 +30,7 @@
                         <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>A propos</a>
                         <a class="text-dark mb-2" href="{{ route('contact') }}"><i class="fa fa-angle-right mr-2"></i>Contact</a>
                         <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Mon compte</a>
-                        <a class="text-dark" href="#"><i class="fa fa-angle-right mr-2"></i>Tracking</a>
+                        <a class="text-dark" href="{{ route('tracking') }}"><i class="fa fa-angle-right mr-2"></i>Tracking</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">

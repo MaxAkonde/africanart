@@ -1,206 +1,152 @@
 @extends('layouts.user')
 
 @section('extra-css')
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/bootstrap.min.css') }}>
-    <!-- animate CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/animate.css') }}>
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/owl.carousel.min.css') }}>
-    <!-- nice select CSS -->
-    <link rel="stylesheet" href="{{ asset('user/css/nice-select.css') }}">
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/all.css') }}>
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/flaticon.css') }}>
-    <link rel="stylesheet" href={{ asset('user/css/themify-icons.css') }}>
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/magnific-popup.css') }}>
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/slick.css') }}>
-    <link rel="stylesheet" href="{{ asset('user/css/price_rangs.css') }}">
-    <!-- style CSS -->
-    <link rel="stylesheet" href={{ asset('user/css/style.css') }}>
 @endsection
 
 @section('content')
-    {{-- {!! dd($order->products) !!} --}}
-    <!--================Home Banner Area =================-->
-    <!-- breadcrumb start-->
-    <section class="breadcrumb breadcrumb_bg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="breadcrumb_iner">
-                        <div class="breadcrumb_iner_item">
-                            <h2>Confirmation de commande</h2>
-                            <p>Accueil <span>-</span> Confirmation de commande</p>
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Confirmation de commande</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="{{ route('index') }}">Accueil</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Confirmation de commande</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-12">
+                <div class="alert alert-info" role="alert">
+                    Votre commande est en cours de traitement. Merci!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-6">
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Information de la commande</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">N° commande</h6>
+                            <h6 class="font-weight-medium">{{ $order->pincode }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Nom du client</h6>
+                            <h6 class="font-weight-medium">{{ $order->fname }} {{ $order->lname }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Date</h6>
+                            <h6 class="font-weight-medium">{{ $order->created_at->format('j F, Y') }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Méthod de paiement</h6>
+                            <h6 class="font-weight-medium">Mobile Money</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Adresse Facturaion</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Adresse</h6>
+                            <h6 class="font-weight-medium">{{ $order->address1 }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Téléphone</h6>
+                            <h6 class="font-weight-medium">{{ $order->phone }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Ville</h6>
+                            <h6 class="font-weight-medium">{{ $order->city }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Etat</h6>
+                            <h6 class="font-weight-medium">{{ $order->state }}</h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- breadcrumb start-->
+    </div>
 
-    <!--================ confirmation part start =================-->
-    <section class="confirmation_part padding_top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="confirmation_tittle">
-                        <span>Merci. Votre commande a été reçue.</span>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="alert alert-info" role="alert">
-                        Votre commande est en cours de traitement. Merci!
-                    </div>
-                </div>
-                <div class="col-lg-6 col-lx-4">
-                    <div class="single_confirmation_details">
-                        <h4>Information de la commande</h4>
-                        <ul>
-                            <li>
-                                <p>N° commande</p><span>: {{ $order->pincode }}</span>
-                            </li>
-                            <li>
-                                <p>date</p><span>: {{ $order->created_at->format('j F, Y') }}</span>
-                            </li>
-                            <li>
-                                <p>total</p><span>: {{ getPrice($order->amount) }}</span>
-                            </li>
-                            <li>
-                                <p>Methode de payement</p><span>: Mobile Money</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-lx-4">
-                    <div class="single_confirmation_details">
-                        <h4>Adresse Facturaion</h4>
-                        <ul>
-                            <li>
-                                <p>Rue</p><span>: 56/8</span>
-                            </li>
-                            <li>
-                                <p>Ville</p><span>: Los Angeles</span>
-                            </li>
-                            <li>
-                                <p>Pays</p><span>: United States</span>
-                            </li>
-                            <li>
-                                <p>Code postal</p><span>: 36952</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-lx-4">
-                    <div class="single_confirmation_details">
-                        <h4>shipping Address</h4>
-                        <ul>
-                            <li>
-                                <p>Rue</p><span>: 56/8</span>
-                            </li>
-                            <li>
-                                <p>Ville</p><span>: Los Angeles</span>
-                            </li>
-                            <li>
-                                <p>Pays</p><span>: United States</span>
-                            </li>
-                            <li>
-                                <p>Code postal</p><span>: 36952</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-12 table-responsive mb-5">
+                <table class="table table-bordered text-center mb-0">
+                    <thead class="bg-secondary text-dark">
+                        <tr>
+                            <th>Produits</th>
+                            <th>Prix</th>
+                            <th>Quantitée(s)</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        @foreach ($order->products as $item)
+                            <tr>
+                                <td class="align-middle"><img src="{{ asset('assets/products/' . $item->image) }}"
+                                        alt="" style="width: 50px;">
+                                    {{ $item->title }}</td>
+                                <td class="align-middle">{{ $item->getPrice() }}</td>
+                                <td class="align-middle">
+                                    {{ getQty($item->pivot->qty) }}
+                                </td>
+                                <td class="align-middle">{{ subTotal($item->price, $item->pivot->qty) }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="order_details_iner">
-                        <h3>Détails de la commande</h3>
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col" colspan="2">Produit(s)</th>
-                                    <th scope="col">Quantitée(s)</th>
-                                    <th scope="col">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($order->products as $item)
-                                    <tr>
-                                        <th colspan="2"><span>{{ $item->title }}</span></th>
-                                        <th>x{{ $item->pivot->qty }}</th>
-                                        <th> <span>{{ getPrice($item->pivot->total) }}</span></th>
-                                    </tr>
-                                @endforeach
-                                {{-- <tr>
-                                    <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                                    <th>x02</th>
-                                    <th> <span>$720.00</span></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                                    <th>x02</th>
-                                    <th> <span>$720.00</span></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                                    <th>x02</th>
-                                    <th> <span>$720.00</span></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="3">Subtotal</th>
-                                    <th> <span>$2160.00</span></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="3">shipping</th>
-                                    <th><span>flat rate: $50.00</span></th>
-                                </tr> --}}
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th scope="col" colspan="3">Quantitée(s)</th>
-                                    <th scope="col">Total</th>
-                                </tr>
-                            </tfoot>
-                        </table>
+        </div>
+    </div>
+
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6">
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Détails de la commande</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Sous-Total</h6>
+                            <h6 class="font-weight-medium">{{ getPrice($order->subtotal) }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">TAX</h6>
+                            <h6 class="font-weight-medium">{{ getPrice($order->tax) }}</h6>
+                        </div>
+                        {{-- <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Livraison</h6>
+                            <h6 class="font-weight-medium">{{ getPrice($order->shipping) }}</h6>
+                        </div> --}}
+                        <div class="card-footer border-secondary bg-transparent">
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5 class="font-weight-bold">Total</h5>
+                                <h5 class="font-weight-bold">{{ getPrice($order->amount) }}</h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!--================ confirmation part end =================-->
+    </div>
 @endsection
 
 @section('extra-js')
-    <!-- jquery plugins here-->
-    <script src={{ asset('user/js/jquery-1.12.1.min.js') }}></script>
-    <!-- popper js -->
-    <script src={{ asset('user/js/popper.min.js') }}></script>
-    <!-- bootstrap js -->
-    <script src={{ asset('user/js/bootstrap.min.js') }}></script>
-    <!-- easing js -->
-    <script src={{ asset('user/js/jquery.magnific-popup.js') }}></script>
-    <!-- swiper js -->
-    <script src={{ asset('user/js/swiper.min.js') }}></script>
-    <!-- swiper js -->
-    <script src={{ asset('user/js/masonry.pkgd.js') }}></script>
-    <!-- particles js -->
-    <script src={{ asset('user/js/owl.carousel.min.js') }}></script>
-    <script src={{ asset('user/js/jquery.nice-select.min.js') }}></script>
-    <!-- slick js -->
-    <script src={{ asset('user/js/slick.min.js') }}></script>
-    <script src={{ asset('user/js/jquery.counterup.min.js') }}></script>
-    <script src={{ asset('user/js/waypoints.min.js') }}></script>
-    <script src={{ asset('user/js/contact.js') }}></script>
-    <script src={{ asset('user/js/jquery.ajaxchimp.min.js') }}></script>
-    <script src={{ asset('user/js/jquery.form.js') }}></script>
-    <script src={{ asset('user/js/jquery.validate.min.js') }}></script>
-    <script src={{ asset('user/js/mail-script.js') }}></script>
-    <script src="{{ asset('js/stellar.js') }}"></script>
-    <script src="{{ asset('js/price_rangs.js') }}"></script>
-    <!-- custom js -->
-    <script src={{ asset('user/js/custom.js') }}></script>
 @endsection

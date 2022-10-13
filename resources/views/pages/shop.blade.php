@@ -185,7 +185,7 @@
                                 <div class="card-footer d-flex justify-content-between bg-light border">
                                     <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
                                             class="fas fa-eye text-primary mr-1"></i>Voir les détails</a>
-                                    <form action="">
+                                    <form action="{{ route('cart.store') }}" class="addCartForm" method="POST">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $item->id }}">
                                         <input type="hidden" name="title" value="{{ $item->title }}">

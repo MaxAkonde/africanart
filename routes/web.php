@@ -28,6 +28,8 @@ Route::get('/confirmation/{codepin}', [PageController::class, 'confirmation'])->
 Route::get('/checkout', [OrderController::class, 'create'])->name('order.create');
 Route::post('/checkout', [OrderController::class, 'store'])->name('order.store');
 
+Route::resource('orders', 'App\Http\Controllers\OrderController')->except('create', 'store')->middleware('auth');
+
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 Route::match(array('PUT', 'PATCH'), '/cart/{rowId}', [CartController::class, 'update'])->name('cart.update');

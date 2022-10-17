@@ -44,6 +44,10 @@
                             <h6 class="font-weight-medium">{{ $order->fname }} {{ $order->lname }}</h6>
                         </div>
                         <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">E-mail</h6>
+                            <h6 class="font-weight-medium">{{ $order->email }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Date</h6>
                             <h6 class="font-weight-medium">{{ $order->created_at->format('j F, Y') }}</h6>
                         </div>
@@ -73,9 +77,13 @@
                             <h6 class="font-weight-medium">Ville</h6>
                             <h6 class="font-weight-medium">{{ $order->city }}</h6>
                         </div>
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Etat</h6>
+                            <h6 class="font-weight-medium">{{ $order->state }}</h6>
+                        </div>
                         <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Pays / Etat</h6>
-                            <h6 class="font-weight-medium">{{ $order->country->name }}, {{ $order->state }}</h6>
+                            <h6 class="font-weight-medium">Pays</h6>
+                            <h6 class="font-weight-medium">{{ $order->country->name }}</h6>
                         </div>
                     </div>
                 </div>

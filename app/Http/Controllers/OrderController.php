@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Http\Requests\Order\StoreOrderRequest;
 use App\Models\Country;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Requests\Order\StoreOrderRequest;
 
 class OrderController extends Controller
 {
@@ -17,7 +18,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::latest()->get();
+        return view('admin.orders.index', [
+            'orders' => $orders,
+            'active' => 'orders',
+        ]);
     }
 
     /**
@@ -44,7 +49,7 @@ class OrderController extends Controller
         $cart_content = Cart::content();
 
         $array = [];
-        foreach($cart_content as $item) {
+        foreach ($cart_content as $item) {
             $array[$item->id] = ['qty' => $item->qty, 'total' => $item->price * $item->qty];
         }
 
@@ -83,7 +88,6 @@ class OrderController extends Controller
         $order->products()->attach($array);
 
         return redirect()->route('confirmation', $order->pincode);
-
     }
 
     /**
@@ -94,7 +98,10 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('admin.orders.show', [
+            'order' => $order,
+            'active' => 'orders',
+        ]);
     }
 
     /**

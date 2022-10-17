@@ -74,8 +74,8 @@
                             <h6 class="font-weight-medium">{{ $order->city }}</h6>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Etat</h6>
-                            <h6 class="font-weight-medium">{{ $order->state }}</h6>
+                            <h6 class="font-weight-medium">Pays / Etat</h6>
+                            <h6 class="font-weight-medium">{{ $order->country->name }}, {{ $order->state }}</h6>
                         </div>
                     </div>
                 </div>

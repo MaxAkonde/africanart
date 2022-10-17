@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Http\Requests\Order\StoreOrderRequest;
+use App\Models\Country;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,10 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('pages.checkout');
+        $countries = Country::all();
+        return view('pages.checkout', [
+            'countries' => $countries,
+        ]);
     }
 
     /**
@@ -67,6 +71,7 @@ class OrderController extends Controller
         $order->state = $request->state;
         $order->message = $request->message;
         $order->status = 0;
+        $order->country_id = $request->country;
         $order->amount = $amout;
 
         $order->subtotal = $subtotal;

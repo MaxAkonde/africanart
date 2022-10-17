@@ -65,13 +65,13 @@
                     <div class="col-md-12 form-group">
                         <div class="form-group">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="role" id="client">
+                                <input type="radio" class="custom-control-input" name="role" value="1" id="client">
                                 <label class="custom-control-label" for="client">Client</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="role" id="vendeur">
+                                <input type="radio" class="custom-control-input" name="role" value="2" id="vendeur">
                                 <label class="custom-control-label" for="vendeur">Vendeur</label>
                             </div>
                         </div>

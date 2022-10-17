@@ -11,6 +11,11 @@ class Order extends Model
 
     protected $guarded = [];
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
     public function products()
     {
         return $this->belongsToMany(Product::class)->withPivot('qty', 'total');

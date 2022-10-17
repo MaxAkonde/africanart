@@ -84,11 +84,10 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label>Pays</label>
-                                <select class="custom-select">
-                                    <option selected>Bénin</option>
-                                    <option>France</option>
-                                    <option>Allemagne</option>
-                                    <option>Etat-Unis</option>
+                                <select class="custom-select" name="country">
+                                    @foreach ($countries as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-6 form-group">

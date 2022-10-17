@@ -39,7 +39,7 @@
 
                         <div class="form-group">
                             <label for="name" class=" form-control-label">Nom de la catégorie</label>
-                            <input type="text" id="name" placeholder="Entrer le nom du role" name="name"
+                            <input type="text" id="name" placeholder="Entrer le nom de la catégorie" name="name"
                                 value="{{ $category->name }}" class="form-control @error('name') is-invalid @enderror"
                                 autocomplete="name" required autofocus>
 

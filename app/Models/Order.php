@@ -16,6 +16,11 @@ class Order extends Model
         return $this->belongsTo(Country::class);
     }
 
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
+
     public function products()
     {
         return $this->belongsToMany(Product::class)->withPivot('qty', 'total');

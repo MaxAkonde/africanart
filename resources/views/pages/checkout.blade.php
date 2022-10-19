@@ -86,7 +86,8 @@
                                 <label>Pays</label>
                                 <select class="custom-select" name="country">
                                     @foreach ($countries as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        <option {{ old('country') == $item->id ? 'selected' : null }}
+                                            value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -111,7 +112,7 @@
                                     </span>
                                 @enderror
                             </div>
-
+                            <input type="hidden" name="payment" value="" id="inputPayment">
                             <div class="col-md-12 form-group">
                                 <label>Message</label>
                                 <textarea name="message" id="message" rows="8" class="form-control"></textarea>
@@ -156,24 +157,17 @@
                         <h4 class="font-weight-semi-bold m-0">Payement</h4>
                     </div>
                     <div class="card-body">
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
+                        @foreach ($payments as $item)
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio"
+                                        class="paymentradio custom-control-input @error('payment') is-invalid @enderror"
+                                        value="{{ $item->id }}" name="payment" id="{{ $item->slug }}">
+                                    <label class="custom-control-label"
+                                        for="{{ $item->slug }}">{{ $item->name }}</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">En Cash</label>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Transfert Bancaire</label>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <button id="form_button"
@@ -190,6 +184,13 @@
 @section('extra-js')
     <script>
         jQuery(document).ready(function($) {
+
+            $('input.paymentradio').change(function(e) {
+                e.preventDefault();
+                let payementRadio = $(this).val();
+                $('#inputPayment').val(payementRadio);
+            })
+
             $('#form_button').click(function() {
                 $('#form_checkout').submit();
             });

@@ -47,5 +47,6 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'namespace' => 'App\Http\Cont
     Route::resource('users', 'UserController');
     Route::resource('products', 'ProductController');
     Route::resource('countries', 'CountryController');
+    Route::resource('payments', 'PaymentController');
 
 });

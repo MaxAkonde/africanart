@@ -27,7 +27,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>Liste des produits</h1>
+                            <h1>Liste des moyens de paiement</h1>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">Produits</a></li>
+                                <li><a href="#">Méthode de paiement</a></li>
                                 <li class="active">Liste</li>
                             </ol>
                         </div>
@@ -64,34 +64,29 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Produits</strong>
+                    <strong class="card-title">Méthode de paiement</strong>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#ID</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Titre</th>
-                                <th scope="col">Prix</th>
-                                <th scope="col">Catégories</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Slug</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($products as $product)
+
+                            @forelse ($payments as $payment)
                                 <tr>
-                                    <th scope="row">{{ $product->id }}</th>
+                                    <th scope="row">{{ $payment->id }}</th>
+                                    <td>{{ $payment->name }}</td>
+                                    <td><small class="text-muted">{{ $payment->slug }}</small></td>
                                     <td>
-                                        <img src="{{ asset('assets/products/'. $product->image) }}" class="" style="width: 45px" alt="Image a la une products {{ $product->id }}">
-                                    </td>
-                                    <td>{{ $product->title }}</td>
-                                    <td>{{ $product->getPrice() }}</td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td>
-                                        <a href="{{ route('admin.products.edit', $product->id) }}"
+                                        <a href="{{ route('admin.payments.edit', $payment->id) }}"
                                             class="fa fa-pencil edit-button" title="Modifier"></a>
-                                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
+                                        <form action="{{ route('admin.payments.destroy', $payment->id) }}" method="POST"
                                             onsubmit="" style="display: inline" id="delete_form">
                                             @csrf
                                             @method('DELETE')
@@ -103,9 +98,9 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5">
+                                    <td colspan="4">
                                         <div class="">
-                                            <p class="d-flex justify-content-center">Pas de produits disponible</p>
+                                            <p class="d-flex justify-content-center">Pas de méthode disponible</p>
                                         </div>
                                     </td>
                                 </tr>

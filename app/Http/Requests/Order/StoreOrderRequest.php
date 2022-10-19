@@ -33,6 +33,7 @@ class StoreOrderRequest extends FormRequest
             'state' => ['required', 'string', 'min:3', 'max:255'],
             'address1' => ['required', 'string', 'min:3', 'max:255'],
             //'address2' => ['string', 'min:3', 'max:255'],
+            'payment' => ['required', 'numeric'],
         ];
     }
 }

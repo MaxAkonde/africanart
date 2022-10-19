@@ -63,18 +63,25 @@
                     </div>
 
                     <div class="col-md-12 form-group">
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="role" value="1" id="client">
-                                <label class="custom-control-label" for="client">Client</label>
+                        @if ($user)
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="role" value="{{ $user->id }}"
+                                        id="{{ $user->slug }}">
+                                    <label class="custom-control-label" for="{{ $user->slug }}">{{ $user->name }}</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="role" value="2" id="vendeur">
-                                <label class="custom-control-label" for="vendeur">Vendeur</label>
+                        @endif
+
+                        @if ($vendeur)
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="role" value="{{ $vendeur->id }}"
+                                        id="{{ $vendeur->slug }}">
+                                    <label class="custom-control-label" for="{{ $vendeur->slug }}">{{ $vendeur->name }}</label>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
 
                     <div class="col-md-12 form-group">

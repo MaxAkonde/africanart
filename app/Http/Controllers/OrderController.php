@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Requests\Order\StoreOrderRequest;
+use App\Models\Payment;
 
 class OrderController extends Controller
 {
@@ -32,9 +33,11 @@ class OrderController extends Controller
      */
     public function create()
     {
+        $payments = Payment::all();
         $countries = Country::all();
         return view('pages.checkout', [
             'countries' => $countries,
+            'payments' => $payments,
         ]);
     }
 
@@ -82,6 +85,8 @@ class OrderController extends Controller
         $order->subtotal = $subtotal;
         $order->tax = $tax;
         $order->shipping = $shipping;
+
+        $order->payment_id = $request->payment;
 
         $order->save();
 

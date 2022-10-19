@@ -53,7 +53,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Méthod de paiement</h6>
-                            <h6 class="font-weight-medium">Mobile Money</h6>
+                            <h6 class="font-weight-medium">{{ $order->payment->name }}</h6>
                         </div>
                     </div>
                 </div>

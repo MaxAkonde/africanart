@@ -30,7 +30,7 @@
                             <div class="col-md-6 form-group">
                                 <label>Nom</label>
                                 <input class="form-control @error('fname') is-invalid @enderror" id="first"
-                                    placeholder="Nom" name="fname" value="{{ old('fname') }}" type="text">
+                                    placeholder="Nom" name="fname" value="{{ (Auth::check()) ? Auth::user()->name : old('fname')}}" type="text">
                                 @error('fname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -50,7 +50,7 @@
                             <div class="col-md-6 form-group">
                                 <label>E-mail</label>
                                 <input class="form-control @error('email') is-invalid @enderror" type="email"
-                                    id="email" name="email" placeholder="Email *" value="{{ old('email') }}">
+                                    id="email" name="email" placeholder="Email *" value="{{ (Auth::check()) ? Auth::user()->email : old('email')}}">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

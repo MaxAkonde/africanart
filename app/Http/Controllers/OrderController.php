@@ -88,6 +88,10 @@ class OrderController extends Controller
 
         $order->payment_id = $request->payment;
 
+        if(Auth::check()) {
+            $order->user_id = Auth::user()->id;
+        }
+
         $order->save();
 
         $order->products()->attach($array);

@@ -55,7 +55,7 @@
                             class="fas fa-user text-primary"></i> {{ Auth::user()->name }}</a>
                     <div class="dropdown-menu rounded-0 m-0">
                         <a href="#" class="dropdown-item">Tableau de bord</a>
-                        <a href="#" class="dropdown-item">Commande</a>
+                        <a href="{{ route('commandes') }}" class="dropdown-item">Commande</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

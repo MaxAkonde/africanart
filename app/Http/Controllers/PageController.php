@@ -71,4 +71,9 @@ class PageController extends Controller
 
         return redirect()->route('tracking')->with('status', 'Veuillez entrer des informations');
     }
+
+    public function commande()
+    {
+        return view('pages.commande');
+    }
 }

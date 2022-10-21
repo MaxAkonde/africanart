@@ -158,7 +158,7 @@
                             "X-Requested-With": "XMLHttpRequest",
                             "X-CSRF-TOKEN": token
                         },
-                        method: 'patch',
+                        method: 'post',
                         body: JSON.stringify({
                             qty: value
                         })

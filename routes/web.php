@@ -33,7 +33,7 @@ Route::resource('orders', 'App\Http\Controllers\OrderController')->except('creat
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
-Route::patch('/cart/{rowId}', [CartController::class, 'update'])->name('cart.update');
+Route::post('/cart/{rowId}', [CartController::class, 'update'])->name('cart.update');
 Route::get('/empty', [CartController::class, 'empty'])->name('cart.empty');
 Route::delete('/cart/{rowId}', [CartController::class, 'destroy'])->name('cart.destroy');
 

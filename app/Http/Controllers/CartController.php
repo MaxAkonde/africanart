@@ -87,13 +87,14 @@ class CartController extends Controller
      */
     public function update(Request $request, $rowId)
     {
-        $data = $request->json()->all();
+        return "update card";
+        // $data = $request->json()->all();
 
-        Cart::update($rowId, $data['qty']);
+        // Cart::update($rowId, $data['qty']);
 
-        Session::flash('success', 'Quantité du produit mise à jour');
+        // Session::flash('success', 'Quantité du produit mise à jour');
 
-        return response()->json(['success' => 'Quantité du panier mise à jour']);
+        // return response()->json(['success' => 'Quantité du panier mise à jour']);
     }
 
     public function empty()

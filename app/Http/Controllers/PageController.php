@@ -38,10 +38,10 @@ class PageController extends Controller
     public function single(Product $product)
     {
         $latest = Product::latest()->paginate(4);
-        
+
         return view('pages.single', [
             'product' => $product,
-            'latest'=> $latest,
+            'latest' => $latest,
         ]);
     }
 
@@ -75,5 +75,20 @@ class PageController extends Controller
     public function commande()
     {
         return view('pages.commande');
+    }
+
+    public function search(Request $request)
+    {
+
+        $validated = $request->validate([
+            'title' => 'required',
+        ]);
+
+        $latest = Product::where('title', 'like', '%' . $request->title . '%')->paginate(9);
+
+        return view('pages.shop', [
+            'query' => $request->title,
+            'latest' => $latest,
+        ]);
     }
 }

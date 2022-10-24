@@ -37,10 +37,12 @@
             </a>
         </div>
         <div class="col-lg-6 col-6 text-left">
-            <form action="">
+            <form action="{{ route('search') }}" id="search_form" method="POST">
+                @csrf
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Rechercher un produit">
-                    <div class="input-group-append">
+                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
+                        placeholder="Rechercher un produit" value="{{ old('title') }}">
+                    <div class="input-group-append search_button">
                         <span class="input-group-text bg-transparent text-primary">
                             <i class="fa fa-search"></i>
                         </span>

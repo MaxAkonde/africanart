@@ -25,6 +25,7 @@ Route::get('/tracking', [PageController::class, 'tracking'])->name('tracking');
 Route::post('/tracking', [PageController::class, 'findOrder'])->name('findOrder');
 Route::get('/confirmation/{codepin}', [PageController::class, 'confirmation'])->name('confirmation');
 Route::get('/commandes', [PageController::class, 'commande'])->name('commandes');
+Route::post('/search', [PageController::class, 'search'])->name('search');
 
 Route::get('/checkout', [OrderController::class, 'create'])->name('order.create');
 Route::post('/checkout', [OrderController::class, 'store'])->name('order.store');

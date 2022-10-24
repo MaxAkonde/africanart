@@ -4,17 +4,32 @@
 @endsection
 
 @section('content')
-    <!-- Page Header Start -->
-    <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Boutique</h1>
-            <div class="d-inline-flex">
-                <p class="m-0"><a href="{{ route('index') }}">Accueil</a></p>
-                <p class="m-0 px-2">-</p>
-                <p class="m-0">Boutique</p>
+    @if (isset($query))
+        <!-- Page Header Start -->
+        <div class="container-fluid bg-secondary mb-5">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+                <h1 class="font-weight-semi-bold text-uppercase mb-3">Recherche</h1>
+                <div class="d-inline-flex">
+                    <p class="m-0">Resulat de la recherche</p>
+                    <p class="m-0 px-2">-</p>
+                    <p class="m-0">"{{ $query }}"</p>
+                </div>
             </div>
         </div>
-    </div>
+    @else
+        <!-- Page Header Start -->
+        <div class="container-fluid bg-secondary mb-5">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+                <h1 class="font-weight-semi-bold text-uppercase mb-3">Boutique</h1>
+                <div class="d-inline-flex">
+                    <p class="m-0"><a href="{{ route('index') }}">Accueil</a></p>
+                    <p class="m-0 px-2">-</p>
+                    <p class="m-0">Boutique</p>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <!-- Page Header End -->
 
     <!-- Shop Start -->
@@ -31,66 +46,38 @@
                 </div>
             </div>
         @endif
-        <div class="row px-xl-5">
-            <!-- Shop Sidebar Start -->
-            <div class="col-lg-3 col-md-12">
-                <!-- Price Start -->
-                <div class="border-bottom mb-4 pb-4">
-                    <h5 class="font-weight-semi-bold mb-4">Filtrer par prix</h5>
-                    <form>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="price-all">
-                            <label class="custom-control-label" for="price-all">All Price</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-1">
-                            <label class="custom-control-label" for="price-1">$0 - $100</label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-2">
-                            <label class="custom-control-label" for="price-2">$100 - $200</label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-3">
-                            <label class="custom-control-label" for="price-3">$200 - $300</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-4">
-                            <label class="custom-control-label" for="price-4">$300 - $400</label>
-                            <span class="badge border font-weight-normal">145</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="price-5">
-                            <label class="custom-control-label" for="price-5">$400 - $500</label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                    </form>
+
+        {{-- @if (isset($query))
+        <div class="row px-xl-5 mb-3">
+            <div class="col-lg-12">
+                <div class="d-inline-flex">
+                    <h6 class="m-0">Resultat de la recherche : </h6>
+                    <h6 class="m-0">"{{ $query }}"</h6>
                 </div>
-                <!-- Price End -->
             </div>
-            <!-- Shop Sidebar End -->
+        </div>
+        @endif --}}
 
-
+        <div class="row px-xl-5">
             <!-- Shop Product Start -->
-            <div class="col-lg-9 col-md-12">
+            <div class="col-lg-12 col-md-12">
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="">
+                            {{-- <form action="{{ route('search') }}" id="search_form" method="POST">
+                                @csrf
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Rechercher pas nom">
-                                    <div class="input-group-append">
+                                    <input type="text" name="title"
+                                        class="form-control @error('title') is-invalid @enderror"
+                                        placeholder="Rechercher par nom">
+                                    <div class="input-group-append search_button">
                                         <span class="input-group-text bg-transparent text-primary">
                                             <i class="fa fa-search"></i>
                                         </span>
                                     </div>
                                 </div>
-                            </form>
-                            <div class="dropdown ml-4">
+                            </form> --}}
+                            {{-- <div class="dropdown ">
                                 <button class="btn border dropdown-toggle" type="button" id="triggerId"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Trier par
@@ -100,11 +87,11 @@
                                     <a class="dropdown-item" href="#">Populaires</a>
                                     <a class="dropdown-item" href="#">Mieux notés</a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     @foreach ($latest as $item)
-                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                             <div class="card product-item border-0 mb-4">
                                 <div
                                     class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
@@ -136,7 +123,8 @@
                     @endforeach
 
                     <div class="col-12 pb-1">
-                        <nav aria-label="Page navigation">
+                        {{ $latest->links('vendor.pagination.default') }}
+                        {{-- <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center mb-3">
                                 <li class="page-item disabled">
                                     <a class="page-link" href="#" aria-label="Previous">
@@ -154,7 +142,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </nav>
+                        </nav> --}}
                     </div>
                 </div>
             </div>
@@ -166,4 +154,12 @@
 
 
 @section('extra-js')
+    <script>
+        jQuery(document).ready(function($) {
+            $('.search_button').click(function(e) {
+                e.preventDefault();
+                $('#search_form').submit();
+            });
+        });
+    </script>
 @endsection

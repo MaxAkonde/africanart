@@ -229,4 +229,12 @@
 @endsection
 
 @section('extra-js')
+<script>
+    jQuery(document).ready(function($) {
+        $('.search_button').click(function(e) {
+            e.preventDefault();
+            $('#search_form').submit();
+        });
+    });
+</script>
 @endsection

@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('extra-css')
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/lib/datatable/dataTables.bootstrap.min.css') }}">
+    
     <style>
         .edit-button {
             color: #007bff;
@@ -67,7 +69,7 @@
                     <strong class="card-title">Roles</strong>
                 </div>
                 <div class="card-body">
-                    <table class="table">
+                    <table id="bootstrap-data-table" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#ID</th>
@@ -113,5 +115,13 @@
 @endsection
 
 @section('extra-js')
-    <script></script>
+    <script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.buttons.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#bootstrap-data-table').DataTable();
+        });
+    </script>
 @endsection

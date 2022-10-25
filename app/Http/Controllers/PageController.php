@@ -13,8 +13,16 @@ class PageController extends Controller
     public function home()
     {
         $latest = Product::latest()->paginate(8);
-        $categories = Category::all();
         $active = "home";
+
+        $categories = DB::table('categories')
+            ->select(["categories.name", "categories.slug", "categories.image",DB::raw("COUNT(products.category_id) as product_count")])
+            ->join('products', 'products.category_id', '=', 'categories.id')
+            ->groupBy('categories.name')
+            ->groupBy('categories.slug')
+            ->groupBy('categories.image')
+            ->get();
+
         return view('pages.home', [
             'latest' => $latest,
             'categories' => $categories,

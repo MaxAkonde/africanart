@@ -91,4 +91,17 @@ class PageController extends Controller
             'latest' => $latest,
         ]);
     }
+
+    public function category($slug)
+    {
+        $latest = Product::join('categories', 'categories.id', '=', 'products.category_id')
+            ->where('categories.name', $slug)
+            ->select(['products.*'])
+            ->paginate(9);
+
+        return view('pages.shop', [
+            'query' => $slug,
+            'latest' => $latest,
+        ]);
+    }
 }

@@ -43,7 +43,7 @@
                 <div class="col-lg-4 col-md-6 pb-1">
                     <div class="cat-item d-flex flex-column border mb-4" style="box-shadow: 1px 1px 5px #ddd;padding:30px;">
                         <p class="text-right">15 Products</p>
-                        <a href="#" class="cat-img position-relative overflow-hidden mb-3">
+                        <a href="{{ route('category', $item->slug) }}" class="cat-img position-relative overflow-hidden mb-3">
                             <img class="img-fluid" style="" src="{{ asset('assets/categories/' . $item->image) }}"
                                 alt="">
                         </a>

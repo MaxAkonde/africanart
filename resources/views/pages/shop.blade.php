@@ -123,7 +123,7 @@
                     @endforeach
 
                     <div class="col-12 pb-1">
-                        {{ $latest->links('vendor.pagination.default') }}
+                        {{-- {{ $latest->links('vendor.pagination.default') }} --}}
                         {{-- <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center mb-3">
                                 <li class="page-item disabled">

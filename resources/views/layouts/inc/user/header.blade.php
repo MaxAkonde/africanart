@@ -89,7 +89,7 @@
                     id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         @foreach (\App\Models\Category::all() as $item)
-                            <a href="" class="nav-item nav-link">{{ $item->name }}</a>
+                            <a href="{{ route('category', $item->slug) }}" class="nav-item nav-link">{{ $item->name }}</a>
                         @endforeach
                     </div>
                 </nav>
@@ -174,7 +174,7 @@
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         <div class="nav-item dropdown">
                             @foreach (\App\Models\Category::all() as $item)
-                                <a href="" class="nav-item nav-link">{{ $item->name }}</a>
+                                <a href="{{ route('category', $item->slug) }}" class="nav-item nav-link">{{ $item->name }}</a>
                             @endforeach
                         </div>
                 </nav>

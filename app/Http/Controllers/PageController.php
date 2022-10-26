@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -16,7 +17,7 @@ class PageController extends Controller
         $active = "home";
 
         $categories = DB::table('categories')
-            ->select(["categories.name", "categories.slug", "categories.image",DB::raw("COUNT(products.category_id) as product_count")])
+            ->select(["categories.name", "categories.slug", "categories.image", DB::raw("COUNT(products.category_id) as product_count")])
             ->join('products', 'products.category_id', '=', 'categories.id')
             ->groupBy('categories.name')
             ->groupBy('categories.slug')
@@ -82,7 +83,15 @@ class PageController extends Controller
 
     public function commande()
     {
-        return view('pages.commande');
+        if (Auth::check()) {
+            $orders = Order::where('user_id', '=', Auth::user()->id)->get();
+
+            return view('pages.commande', [
+                'orders' => $orders
+            ]);
+        }
+
+        return view('auth.login');
     }
 
     public function search(Request $request)

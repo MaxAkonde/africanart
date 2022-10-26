@@ -20,9 +20,21 @@
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <div class="col-lg-12">
-                <div class="alert alert-info" role="alert">
-                    Votre commande est en cours de traitement. Merci!
-                </div>
+                @if ($order->status == 0)
+                    <div class="alert alert-info" role="alert">
+                        Votre commande est en cours de traitement. Merci!
+                    </div>
+                @endif
+                @if ($order->status == 1)
+                    <div class="alert alert-success" role="alert">
+                        Votre commande à été valider. Merci!
+                    </div>
+                @endif
+                @if ($order->status == 2)
+                    <div class="alert alert-danger" role="alert">
+                        Votre commande à été annuler!
+                    </div>
+                @endif
             </div>
         </div>
     </div>

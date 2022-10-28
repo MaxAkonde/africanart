@@ -43,7 +43,8 @@
                 <div class="col-lg-4 col-md-6 pb-1">
                     <div class="cat-item d-flex flex-column border mb-4" style="box-shadow: 1px 1px 5px #ddd;padding:30px;">
                         <p class="text-right">{{ $item->product_count }} Product(s)</p>
-                        <a href="{{ route('category', $item->slug) }}" class="cat-img position-relative overflow-hidden mb-3">
+                        <a href="{{ route('category', $item->slug) }}"
+                            class="cat-img position-relative overflow-hidden mb-3">
                             <img class="img-fluid" style="" src="{{ asset('assets/categories/' . $item->image) }}"
                                 alt="">
                         </a>
@@ -95,21 +96,22 @@
                     <div class="card product-item mb-4" style="border:1px solid #f3f3f3;">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0"
                             style="box-shadow: 1px 1px 5px #ddd">
-                            <img class="img-fluid w-100 products_image"
-                                src="{{ asset('assets/products/' . $item->image) }}" alt="">
+                            <a href="{{ route('single', $item) }}"><img class="img-fluid w-100 products_image"
+                                    src="{{ asset('assets/products/' . $item->image) }}" alt=""></a>
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3"
                             style="box-shadow: 1px 1px 5px #ddd">
-                            <h6 class="text-truncate mb-3">{{ $item->title }}</h6>
+                            <h6 class="text-truncate mb-3"><a href="{{ route('single', $item) }}"
+                                    style="text-decoration: none">{{ $item->title }}</a></h6>
                             <div class="d-flex justify-content-center">
                                 <h6>{{ $item->getPrice() }}</h6>
                                 {{-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> --}}
                             </div>
                         </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border"
+                        <div class="card-footer d-flex justify-content-center bg-light border"
                             style="box-shadow: 1px 1px 5px #ddd">
-                            <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
-                                    class="fas fa-eye text-primary mr-1"></i>Voir les détails</a>
+                            {{-- <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
+                                    class="fas fa-eye text-primary mr-1"></i>Voir les détails</a> --}}
                             <form action="{{ route('cart.store') }}" class="addCartForm" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $item->id }}">
@@ -161,26 +163,27 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-6 pb-1">
                     <div class="card product-item border-0 mb-4">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100 products_image"
-                                src="{{ asset('assets/products/' . $item->image) }}" alt="">
+                            <a href="{{ route('single', $item) }}"><img class="img-fluid w-100 products_image"
+                                    src="{{ asset('assets/products/' . $item->image) }}" alt=""></a>
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">{{ $item->title }}</h6>
+                            <h6 class="text-truncate mb-3"><a href="{{ route('single', $item) }}"
+                                    style="text-decoration: none">{{ $item->title }}</a></h6>
                             <div class="d-flex justify-content-center">
                                 <h6>{{ $item->getPrice() }}</h6>
                                 {{-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> --}}
                             </div>
                         </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
-                                    class="fas fa-eye text-primary mr-1"></i>Voir les détails</a>
+                        <div class="card-footer d-flex justify-content-center bg-light border">
+                            {{-- <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
+                                    class="fas fa-eye text-primary mr-1"></i>Voir les détails</a> --}}
                             <form action="{{ route('cart.store') }}" class="addCartForm" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $item->id }}">
                                 <input type="hidden" name="title" value="{{ $item->title }}">
                                 <input type="hidden" name="price" value="{{ $item->price }}">
                                 <button type="submit" class="btn btn-sm text-dark p-0"><i
-                                    class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au panier</button>
+                                        class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au panier</button>
                             </form>
                         </div>
                     </div>
@@ -229,12 +232,12 @@
 @endsection
 
 @section('extra-js')
-<script>
-    jQuery(document).ready(function($) {
-        $('.search_button').click(function(e) {
-            e.preventDefault();
-            $('#search_form').submit();
+    <script>
+        jQuery(document).ready(function($) {
+            $('.search_button').click(function(e) {
+                e.preventDefault();
+                $('#search_form').submit();
+            });
         });
-    });
-</script>
+    </script>
 @endsection

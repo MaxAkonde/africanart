@@ -27,6 +27,9 @@ Route::get('/confirmation/{codepin}', [PageController::class, 'confirmation'])->
 Route::get('/commandes', [PageController::class, 'commande'])->name('commandes');
 Route::post('/search', [PageController::class, 'search'])->name('search');
 Route::get('/category/{name}', [PageController::class, 'category'])->name('category');
+Route::get('/addproduct', [PageController::class, 'addproduct'])->name('addproduct');
+Route::post('/addproduct', [PageController::class, 'storeproduct'])->name('storeproduct');
+Route::get('/myshop', [PageController::class, 'myshop'])->name('myshop');
 
 Route::get('/checkout', [OrderController::class, 'create'])->name('order.create');
 Route::post('/checkout', [OrderController::class, 'store'])->name('order.store');

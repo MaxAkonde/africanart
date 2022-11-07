@@ -56,7 +56,12 @@
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i
                             class="fas fa-user text-primary"></i> {{ Auth::user()->name }}</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="#" class="dropdown-item">Tableau de bord</a>
+                        @foreach (Auth::user()->roles as $item)
+                            @if ($item->slug === 'vendeur')
+                                <a href="{{ route('myshop') }}" class="dropdown-item">Ma boutique</a>
+                                <a href="{{ route('addproduct') }}" class="dropdown-item">Ajouter un produit</a>
+                            @endif
+                        @endforeach
                         <a href="{{ route('commandes') }}" class="dropdown-item">Commande</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a>
@@ -89,7 +94,8 @@
                     id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         @foreach (\App\Models\Category::all() as $item)
-                            <a href="{{ route('category', $item->slug) }}" class="nav-item nav-link">{{ $item->name }}</a>
+                            <a href="{{ route('category', $item->slug) }}"
+                                class="nav-item nav-link">{{ $item->name }}</a>
                         @endforeach
                     </div>
                 </nav>
@@ -174,7 +180,8 @@
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         <div class="nav-item dropdown">
                             @foreach (\App\Models\Category::all() as $item)
-                                <a href="{{ route('category', $item->slug) }}" class="nav-item nav-link">{{ $item->name }}</a>
+                                <a href="{{ route('category', $item->slug) }}"
+                                    class="nav-item nav-link">{{ $item->name }}</a>
                             @endforeach
                         </div>
                 </nav>

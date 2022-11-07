@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Product\StoreProductRequest;
 
 class PageController extends Controller
 {
@@ -118,6 +119,53 @@ class PageController extends Controller
 
         return view('pages.shop', [
             'query' => $slug,
+            'latest' => $latest,
+        ]);
+    }
+
+    public function addproduct()
+    {
+        $categories = Category::all();
+        return view('pages.addproduct', [
+            'categories' => $categories,
+        ]);
+    }
+
+    public function storeproduct(StoreProductRequest $request)
+    {
+        $product = new Product();
+        $product->title = $request->title;
+        $product->price = $request->price;
+        $product->category_id = $request->category_id;
+        $product->short_description = $request->short_description;
+        $product->long_description = $request->long_description;
+
+        if (Auth::check()) {
+            $product->user_id = Auth::user()->id;
+        }
+
+        $product->image = $this->uploadImage($request->file('image'));
+
+        $product->save();
+
+        return redirect()->route('myshop');
+    }
+
+    private function uploadImage($requestImage)
+    {
+        if ($requestImage) {
+            $file = $requestImage;
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('assets/products'), $filename);
+            return $filename;
+        }
+    }
+
+    public function myshop()
+    {
+        $latest = Product::where('user_id', '=', Auth::user()->id)->paginate(9);
+        
+        return view('pages.myownshop', [
             'latest' => $latest,
         ]);
     }

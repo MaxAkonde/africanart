@@ -62,6 +62,8 @@ class ProductController extends Controller
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
 
+        dd($request->file('image'));
+
         $product->image = $this->uploadImage($request->file('image'));
 
         $product->save();

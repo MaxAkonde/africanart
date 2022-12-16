@@ -51,7 +51,18 @@
 
             <div class="col-lg-7 pb-5">
                 <h3 class="font-weight-semi-bold">{{ $product->title }}</h3>
-                <h3 class="font-weight-semi-bold mb-4">{{ $product->getPrice() }}</h3>
+                <h6 class="font-weight-semi-bold">{{ $product->category->name }}</h6>
+                <span class="mb-4">
+                    <small>
+                        <i class="fa fa-check"></i> Vendu par 
+                        @if (isset($product->user_id))
+                            
+                        @else
+                            African Art
+                        @endif
+                    </small>
+                </span>
+                <h4 class="font-weight-semi-bold mb-4">{{ $product->getPrice() }}</h4>
                 <p class="mb-4">{{ $product->short_description }}
                 </p>
                 <div class="d-flex align-items-center mb-4 pt-2">

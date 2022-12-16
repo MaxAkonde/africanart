@@ -62,8 +62,6 @@ class ProductController extends Controller
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
 
-        dd($request->file('image'));
-
         $product->image = $this->uploadImage($request->file('image'));
 
         $product->save();
@@ -76,6 +74,7 @@ class ProductController extends Controller
         if ($requestImage) {
             $file = $requestImage;
             $filename = date('YmdHi') . $file->getClientOriginalName();
+            dd($filename);
             $file->move(public_path('assets/products'), $filename);
             return $filename;
         }

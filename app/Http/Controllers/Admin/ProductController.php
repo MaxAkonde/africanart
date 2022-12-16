@@ -74,8 +74,8 @@ class ProductController extends Controller
         if ($requestImage) {
             $file = $requestImage;
             $filename = date('YmdHi') . $file->getClientOriginalName();
-            dd($filename);
-            $file->move(public_path('assets/products'), $filename);
+            $moov = $file->move(public_path('assets/products'), $filename);
+            dd($moov);
             return $filename;
         }
     }

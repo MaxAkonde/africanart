@@ -39,7 +39,7 @@ class PageController extends Controller
 
     public function shop()
     {
-        $latest = Product::latest()->paginate(9);
+        $latest = Product::latest()->paginate(12);
         return view('pages.shop', [
             'latest' => $latest,
         ]);

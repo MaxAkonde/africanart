@@ -1,80 +1,76 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="">
-<!--<![endif]-->
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Ela Admin - African Art Admin Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="{{ asset('admin/assets/img/favicon.ico') }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
-    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
+    <title>Light Bootstrap Dashboard by Creative Tim</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href={{ asset("admin/assets/css/cs-skin-elastic.css") }}>
-    <link rel="stylesheet" href={{ asset("admin/assets/css/style.css") }}>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <!-- Bootstrap core CSS     -->
+    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
 
-    @yield('extra-css')
+    <!-- Animation library for notifications   -->
+    <link href="{{ asset('admin/assets/css/animate.min.css') }}" rel="stylesheet" />
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="{{ asset('admin/assets/css/light-bootstrap-dashboard.css?v=1.4.0') }}" rel="stylesheet" />
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="{{ asset('admin/assets/css/demo.css') }}" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="{{ asset('admin/assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
 
 </head>
 
 <body>
-    <!-- Left Panel -->
 
-    @include('layouts.inc.admin.navbar')
-
-    <!-- Left Panel -->
-
-    <!-- Right Panel -->
-
-    <div id="right-panel" class="right-panel">
-
-        <!-- Header-->
+    <div class="wrapper">
         @include('layouts.inc.admin.header')
-        <!-- Header-->
 
-        @yield('breadcrumbs')
+        <div class="main-panel">
+            @include('layouts.inc.admin.navbar')
 
-        <div class="content">
-            <div class="animated fadeIn">
 
-                @yield('content')
+            <div class="content">
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </div>
 
-            </div><!-- .animated -->
-        </div><!-- .content -->
 
-        <div class="clearfix"></div>
+            @include('layouts.inc.admin.footer')
 
-        @include('layouts.inc.admin.footer')
+        </div>
+    </div>
 
-    </div><!-- /#right-panel -->
 
-    <!-- Right Panel -->
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-    <script src={{ asset("admin/assets/js/main.js") }}></script>
-
-    @yield('extra-js')
 </body>
+
+<!--   Core JS Files   -->
+<script src="{{ asset('admin/assets/js/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+<!--  Charts Plugin -->
+<script src="{{ asset('admin/assets/js/chartist.min.js') }}"></script>
+
+<!--  Notifications Plugin    -->
+<script src="{{ asset('admin/assets/js/bootstrap-notify.js') }}"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="{{ asset('admin/assets/js/light-bootstrap-dashboard.js?v=1.4.0') }}"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="{{ asset('admin/assets/js/demo.js') }}"></script>
 
 </html>

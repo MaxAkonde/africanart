@@ -1,14 +1,35 @@
-<!-- Footer -->
-<footer class="site-footer">
-    <div class="footer-inner bg-white">
-        <div class="row">
-            <div class="col-sm-6">
-                Copyright &copy; {{ date('Y') }} African Art Admin
-            </div>
-            <div class="col-sm-6 text-right">
-                Designed by <a href="#">DIVO HOME</a>
-            </div>
-        </div>
+<footer class="footer">
+    <div class="container-fluid">
+        <nav class="pull-left">
+            <ul>
+                <li>
+                    <a href="#">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Company
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Portfolio
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Blog
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <p class="copyright pull-right">
+            &copy;
+            <script>
+                document.write(new Date().getFullYear())
+            </script> <a href="#">Creative Tim</a>, made with
+            love for a better web
+        </p>
     </div>
 </footer>
-<!-- /.site-footer -->

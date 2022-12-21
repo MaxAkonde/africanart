@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 
 @section('extra-css')
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/lib/datatable/dataTables.bootstrap.min.css') }}">
-
     <style>
         .edit-button {
             color: #007bff;
@@ -23,69 +21,40 @@
 @endsection
 
 @section('breadcrumbs')
-    <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h1>Liste des commandes</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">commandes</a></li>
-                                <li class="active">Liste</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <a class="navbar-brand" href="#">Commande</a>
 @endsection
+
 
 @section('content')
     <div class="row">
-        @if (session('status'))
-            <div class="col-lg-12">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('status') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-        @endif
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <strong class="card-title">Commandes</strong>
+                <div class="header">
+                    <div class="row">
+                        <div class="col-md-10 col">
+                            <h4 class="title">Liste des commande</h4>
+                        </div>
+                        <div class="col-md-2 col">
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <table id="bootstrap-data-table" class="table">
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-hover table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">#ID</th>
-                                <th scope="col">N° Commande</th>
-                                <th scope="col">Nom & Prénom</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Montant</th>
-                                <th scope="col">Actions</th>
+                                <th>ID</th>
+                                <th>N° Commande</th>
+                                <th>Nom & Prénom</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Montant</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
                             @forelse ($orders as $order)
                                 <tr>
-                                    <th scope="row">{{ $order->id }}</th>
+                                    <td>{{ $order->id }}</td>
                                     <td>{{ $order->pincode }}</td>
                                     <td>{{ $order->fname }} {{ $order->lname }}</td>
                                     <td>{{ $order->created_at->format('j F, Y') }}</td>
@@ -112,7 +81,15 @@
                                 </tr>
                             @endforelse
                         </tbody>
+
                     </table>
+
+                </div>
+                <div>
+                    <hr>
+                    <div class="justify-content-center">
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,13 +97,4 @@
 @endsection
 
 @section('extra-js')
-    <script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.buttons.min.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#bootstrap-data-table').DataTable();
-        });
-    </script>
 @endsection

@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('orders.index') }}">
                     <i class="pe-7s-note2"></i>
                     <p>Commande</p>
                 </a>

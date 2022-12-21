@@ -45,9 +45,9 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('admin.countries.index') }}">
                     <i class="pe-7s-news-paper"></i>
-                    <p>Villes</p>
+                    <p>Pays</p>
                 </a>
             </li>
         </ul>

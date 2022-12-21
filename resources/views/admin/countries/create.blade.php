@@ -1,38 +1,17 @@
 @extends('layouts.admin')
 
 @section('breadcrumbs')
-    <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h1>Nouvelle ville</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">ville</a></li>
-                                <li class="active">Ajouter</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <a class="navbar-brand" href="{{ route('admin.countries.index') }}">Pays</a>
 @endsection
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Ajouter une ville</div>
-                <div class="card-body card-block">
+                <div class="header">
+                    <h4 class="title">Ajouter un pays</h4>
+                </div>
+                <div class="content">
                     <form action="{{ route('admin.countries.store') }}" method="post" class="">
                         @csrf
 
@@ -56,7 +35,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('extra-js')
 @endsection

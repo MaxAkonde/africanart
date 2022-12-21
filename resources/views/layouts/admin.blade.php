@@ -31,6 +31,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="{{ asset('admin/assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
 
+    @yield('extra-css')
 </head>
 
 <body>
@@ -72,5 +73,7 @@
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="{{ asset('admin/assets/js/demo.js') }}"></script>
+
+@yield('extra-js')
 
 </html>

@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('breadcrumbs')
+    <a class="navbar-brand" href="{{ route('dashboard') }}">Dashboard</a>
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-4">

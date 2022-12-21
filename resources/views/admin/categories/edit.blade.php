@@ -1,5 +1,13 @@
 @extends('layouts.admin')
 
+@section('extra-css')
+    <style>
+        img.img-thumbnail {
+            cursor: pointer;
+        }
+    </style>
+@endsection
+
 @section('breadcrumbs')
     <a class="navbar-brand" href="{{ route('admin.categories.index') }}">Catégories</a>
 @endsection

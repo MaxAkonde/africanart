@@ -9,39 +9,19 @@
 @endsection
 
 @section('breadcrumbs')
-    <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h1><small>{{ $product->name }}</small></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">Produits</a></li>
-                                <li class="active">Modifier</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <a class="navbar-brand" href="{{ route('admin.products.index') }}">Produits</a>
 @endsection
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Modifier</div>
-                <div class="card-body card-block">
-                    <form action="{{ route('admin.products.update', $product) }}" method="post" class="" enctype="multipart/form-data">
+                <div class="header">
+                    <h4 class="title">Modifier {{ $product->name }}</h4>
+                </div>
+                <div class="content">
+                    <form action="{{ route('admin.products.update', $product) }}" method="post" class=""
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -64,7 +44,8 @@
                                 class="form-control @error('category_id') is-invalid @enderror">
                                 <option value="">--- Choisissez une catégorie ---</option>
                                 @foreach ($categories as $categorie)
-                                    <option value="{{ $categorie->id }}" @if ($categorie->id === $product->category_id) selected @endif>{{ $categorie->name }}</option>
+                                    <option value="{{ $categorie->id }}" @if ($categorie->id === $product->category_id) selected @endif>
+                                        {{ $categorie->name }}</option>
                                 @endforeach
                             </select>
 
@@ -112,10 +93,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="image" class="d-block">Image à la une</label>
-                            <img src="@if($product->image) {{ asset('assets/products/'. $product->image) }} @else https://via.placeholder.com/200 @endif" class="img-thumbnail mb-2" alt="Image à la une"
-                                style="height: 200px;width: 200px">
-                                <input type="file" id="image" name="image" class="form-control-file @error('image') is-invalid @enderror">
+                            <label for="image" class="d-block form-control-label">Image à la une</label><br>
+                            <img src="@if ($product->image) {{ asset('assets/products/' . $product->image) }} @else https://via.placeholder.com/200 @endif"
+                                class="img-thumbnail mb-2" alt="Image à la une" style="height: 200px;width: 200px">
+                            <input type="file" id="image" name="image" style="display: none"
+                                class="form-control-file @error('image') is-invalid @enderror">
 
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -142,7 +124,8 @@
                 var input = this;
                 var url = $(this).val();
                 var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-                if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" ||
+                        ext == "jpg")) {
                     var reader = new FileReader();
 
                     reader.onload = function(e) {

@@ -2,14 +2,14 @@
 
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="#" class="simple-text">
+            <a href="{{ route('dashboard') }}" class="simple-text">
                 African Dashboard
             </a>
         </div>
 
         <ul class="nav">
             <li class="active">
-                <a href="#">
+                <a href="{{ route('dashboard') }}">
                     <i class="pe-7s-graph"></i>
                     <p>Dashboard</p>
                 </a>
@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('admin.products.index') }}">
                     <i class="pe-7s-note2"></i>
                     <p>Produits</p>
                 </a>

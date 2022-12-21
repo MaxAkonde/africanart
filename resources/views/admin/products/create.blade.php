@@ -9,39 +9,19 @@
 @endsection
 
 @section('breadcrumbs')
-    <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h1>Nouveau Produit</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">Produits</a></li>
-                                <li class="active">Ajouter</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <a class="navbar-brand" href="{{ route('admin.products.index') }}">Produits</a>
 @endsection
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Ajouter un produit</div>
-                <div class="card-body card-block">
-                    <form action="{{ route('admin.products.store') }}" method="post" class="" enctype="multipart/form-data">
+                <div class="header">
+                    <h4 class="title">Ajouter un produit</h4>
+                </div>
+                <div class="content">
+                    <form action="{{ route('admin.products.store') }}" method="post" class=""
+                        enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
@@ -111,10 +91,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="image" class="d-block">Image à la une</label>
+                            <label for="image" class="d-block form-control-label">Image à la une</label><br>
                             <img src="https://via.placeholder.com/200" class="img-thumbnail mb-2" alt="Image à la une"
                                 style="height: 200px;width: 200px">
-                            <input type="file" id="image" name="image" class="form-control-file @error('image') is-invalid @enderror">
+                            <input type="file" id="image" name="image" style="display: none"
+                                class="form-control-file @error('image') is-invalid @enderror">
 
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -142,7 +123,8 @@
                 var input = this;
                 var url = $(this).val();
                 var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-                if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" ||
+                        ext == "jpg")) {
                     var reader = new FileReader();
 
                     reader.onload = function(e) {

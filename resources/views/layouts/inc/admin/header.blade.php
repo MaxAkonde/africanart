@@ -33,13 +33,13 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('admin.users.index') }}">
                     <i class="pe-7s-users"></i>
                     <p>Utilisateurs</p>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('admin.roles.index') }}">
                     <i class="pe-7s-news-paper"></i>
                     <p>Roles</p>
                 </a>

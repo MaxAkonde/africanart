@@ -1,38 +1,17 @@
 @extends('layouts.admin')
 
 @section('breadcrumbs')
-    <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h1><small>{{ $user->name }}</small></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">Utilisateur</a></li>
-                                <li class="active">Modifier</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <a class="navbar-brand" href="{{ route('admin.users.index') }}">Utilisateur</a>
 @endsection
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Modifier</div>
-                <div class="card-body card-block">
+                <div class="header">
+                    <h4 class="title">Modifier {{ $user->name }}</h4>
+                </div>
+                <div class="content">
                     <form action="{{ route('admin.users.update', $user->id) }}" method="post" class="">
                         @csrf
                         @method('PUT')
@@ -73,13 +52,13 @@
                                 <div class="col col-md-9">
                                     <div class="form-check">
                                         @foreach ($roles as $role)
-                                            <div class="checkbox">
-                                                <label for="{{ $role->slug }}" class="form-check-label ">
-                                                    <input type="checkbox" id="{{ $role->slug }}" name="roles[]"
-                                                        value="{{ $role->id }}" @foreach($user->roles as $userRole) @if ($userRole->id === $role->id) checked @endif @endforeach
-                                                        class="form-check-input">{{ $role->name }}
-                                                </label>
-                                            </div>
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="{{ $role->slug }}"
+                                                name="roles[]" value="{{ $role->id }}"
+                                                @foreach ($user->roles as $userRole) @if ($userRole->id === $role->id) checked @endif @endforeach>
+                                            <label class="form-check-label"
+                                                for="{{ $role->slug }}">{{ $role->name }}</label>
+                                        </div>
                                         @endforeach
                                     </div>
                                     @error('roles')

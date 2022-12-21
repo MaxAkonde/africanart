@@ -8,19 +8,19 @@
         </div>
 
         <ul class="nav">
-            <li class="active">
+            <li class="{{ $active == 'dashboard' ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}">
                     <i class="pe-7s-graph"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li>
+            <li class="{{ $active == 'categories' ? 'active' : '' }}">
                 <a href="{{ route('admin.categories.index') }}">
                     <i class="pe-7s-folder"></i>
                     <p>Catégories</p>
                 </a>
             </li>
-            <li>
+            <li class="{{ $active == 'products' ? 'active' : '' }}">
                 <a href="{{ route('admin.products.index') }}">
                     <i class="pe-7s-note2"></i>
                     <p>Produits</p>
@@ -32,19 +32,19 @@
                     <p>Commande</p>
                 </a>
             </li>
-            <li>
+            <li class="{{ $active == 'users' ? 'active' : '' }}">
                 <a href="{{ route('admin.users.index') }}">
                     <i class="pe-7s-users"></i>
                     <p>Utilisateurs</p>
                 </a>
             </li>
-            <li>
+            <li class="{{ $active == 'roles' ? 'active' : '' }}">
                 <a href="{{ route('admin.roles.index') }}">
                     <i class="pe-7s-news-paper"></i>
                     <p>Roles</p>
                 </a>
             </li>
-            <li>
+            <li class="{{ $active == 'countries' ? 'active' : '' }}">
                 <a href="{{ route('admin.countries.index') }}">
                     <i class="pe-7s-news-paper"></i>
                     <p>Pays</p>

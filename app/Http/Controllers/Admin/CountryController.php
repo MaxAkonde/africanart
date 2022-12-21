@@ -26,7 +26,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = Country::latest()->get();
+        $countries = Country::latest()->paginate(10);
         return view('admin.countries.index', [
             'countries' => $countries,
             'active' => $this->active,

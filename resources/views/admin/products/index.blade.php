@@ -88,6 +88,12 @@
                     </table>
 
                 </div>
+                <div>
+                    <hr>
+                    <div class="justify-content-center">
+                        {{ $products->links('vendor.pagination.admin') }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

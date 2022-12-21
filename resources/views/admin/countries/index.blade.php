@@ -78,8 +78,15 @@
                                 </tr>
                             @endforelse
                         </tbody>
+
                     </table>
 
+                </div>
+                <div>
+                    <hr>
+                    <div class="justify-content-center">
+                        {{ $countries->links('vendor.pagination.admin') }}
+                    </div>
                 </div>
             </div>
         </div>

@@ -62,6 +62,7 @@
                                 <a href="{{ route('addproduct') }}" class="dropdown-item">Ajouter un produit</a>
                             @endif
                         @endforeach
+                        <a href="#" class="dropdown-item">Mon profil</a>
                         <a href="{{ route('commandes') }}" class="dropdown-item">Commande</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a>

@@ -101,8 +101,9 @@
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3"
                             style="box-shadow: 1px 1px 5px #ddd">
-                            <h6 class="text-truncate mb-3"><a href="{{ route('single', $item) }}"
+                            <h6 class="text-truncate"><a href="{{ route('single', $item) }}"
                                     style="text-decoration: none">{{ $item->title }}</a></h6>
+                            <small>{{ $item->category->name }}</small>
                             <div class="d-flex justify-content-center">
                                 <h6>{{ $item->getPrice() }}</h6>
                                 {{-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> --}}
@@ -167,8 +168,9 @@
                                     src="{{ asset('assets/products/' . $item->image) }}" alt=""></a>
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3"><a href="{{ route('single', $item) }}"
+                            <h6 class="text-truncate"><a href="{{ route('single', $item) }}"
                                     style="text-decoration: none">{{ $item->title }}</a></h6>
+                            <small>{{ $item->category->name }}</small>
                             <div class="d-flex justify-content-center">
                                 <h6>{{ $item->getPrice() }}</h6>
                                 {{-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> --}}

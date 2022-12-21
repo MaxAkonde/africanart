@@ -102,7 +102,7 @@ class PageController extends Controller
             'title' => 'required',
         ]);
 
-        $latest = Product::where('title', 'like', '%' . $request->title . '%')->paginate(9);
+        $latest = Product::where('title', 'like', '%' . $request->title . '%')->paginate(12);
 
         return view('pages.shop', [
             'query' => $request->title,

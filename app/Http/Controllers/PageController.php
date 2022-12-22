@@ -15,6 +15,7 @@ class PageController extends Controller
     public function home()
     {
         $latest = Product::latest()->paginate(8);
+        $ramdom = Product::inRandomOrder()->limit(8)->get();
         $active = "home";
 
         $categories = DB::table('categories')
@@ -27,6 +28,7 @@ class PageController extends Controller
 
         return view('pages.home', [
             'latest' => $latest,
+            'ramdom' => $ramdom,
             'categories' => $categories,
             'active' => $active,
         ]);

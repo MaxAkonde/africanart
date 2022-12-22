@@ -91,7 +91,7 @@
             <h2 class="section-title px-5"><span class="px-2">Produits tendance</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
-            @foreach ($latest as $item)
+            @foreach ($ramdom as $item)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-6 pb-1">
                     <div class="card product-item mb-4" style="border:1px solid #f3f3f3;">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0"

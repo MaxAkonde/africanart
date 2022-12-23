@@ -117,7 +117,7 @@ class PageController extends Controller
         $latest = Product::join('categories', 'categories.id', '=', 'products.category_id')
             ->where('categories.name', $slug)
             ->select(['products.*'])
-            ->paginate(9);
+            ->paginate(12);
 
         return view('pages.shop', [
             'query' => $slug,
@@ -165,7 +165,7 @@ class PageController extends Controller
 
     public function myshop()
     {
-        $latest = Product::where('user_id', '=', Auth::user()->id)->paginate(9);
+        $latest = Product::where('user_id', '=', Auth::user()->id)->paginate(12);
         
         return view('pages.myownshop', [
             'latest' => $latest,

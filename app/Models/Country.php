@@ -15,4 +15,9 @@ class Country extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function shippings()
+    {
+        return $this->hasMany(Shipping::class);
+    }
 }

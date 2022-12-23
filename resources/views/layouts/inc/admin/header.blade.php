@@ -50,6 +50,12 @@
                     <p>Pays</p>
                 </a>
             </li>
+            <li class="{{ $active == 'shippings' ? 'active' : '' }}">
+                <a href="{{ route('admin.shippings.index') }}">
+                    <i class="pe-7s-news-paper"></i>
+                    <p>Livraison</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

@@ -93,7 +93,7 @@
                 </a>
                 <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
                     id="navbar-vertical">
-                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                    <div class="navbar-nav w-100 overflow-hidden" style="">
                         @foreach (\App\Models\Category::all() as $item)
                             <a href="{{ route('category', $item->slug) }}"
                                 class="nav-item nav-link">{{ $item->name }}</a>
@@ -127,7 +127,7 @@
                 </nav>
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active" style="height: 410px;">
+                        <div class="carousel-item active" style="">
                             <img class="img-fluid" src="{{ asset('user/img/aka.webp') }}" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 {{-- <div class="p-3" style="max-width: 700px;">

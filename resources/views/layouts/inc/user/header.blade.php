@@ -128,7 +128,7 @@
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" style="">
-                            <img class="img-fluid" src="{{ asset('user/img/aka.webp') }}" alt="Image">
+                            <img class="img-fluid" src="{{ asset('user/img/aka.jpg') }}" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 {{-- <div class="p-3" style="max-width: 700px;">
                                     <h4 class="text-dark text-uppercase font-weight-medium mb-3">10% Off Your First

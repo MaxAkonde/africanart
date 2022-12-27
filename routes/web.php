@@ -30,6 +30,8 @@ Route::get('/category/{name}', [PageController::class, 'category'])->name('categ
 Route::get('/addproduct', [PageController::class, 'addproduct'])->name('addproduct');
 Route::post('/addproduct', [PageController::class, 'storeproduct'])->name('storeproduct');
 Route::get('/myshop', [PageController::class, 'myshop'])->name('myshop');
+Route::get('/profil/{user}/edit', [PageController::class, 'editprofil'])->name('edit.user.profil');
+Route::put('/profil/{user}', [PageController::class, 'updateprofil'])->name('update.user.profil');
 
 Route::get('/checkout', [OrderController::class, 'create'])->name('order.create');
 Route::post('/checkout', [OrderController::class, 'store'])->name('order.store');

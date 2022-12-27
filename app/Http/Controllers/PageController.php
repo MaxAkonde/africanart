@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Product\StoreProductRequest;
+use App\Http\Requests\User\ProfileUserRequest;
+use App\Models\Country;
+use App\Models\User;
 
 class PageController extends Controller
 {
@@ -170,5 +173,32 @@ class PageController extends Controller
         return view('pages.myownshop', [
             'latest' => $latest,
         ]);
+    }
+
+    public function editprofil(User $user)
+    {
+        //dd($user);
+        $countries = Country::all();
+        return view('pages.profil', [
+            'user' => $user,
+            'countries' => $countries,
+        ]);
+    }
+
+    public function updateprofil(ProfileUserRequest $request, User $user)
+    {
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
+        $user->company = $request->company;
+        $user->phone = $request->phone;
+        $user->address1 = $request->address1;
+        $user->address2 = $request->address2;
+        $user->city = $request->city;
+        $user->state = $request->state;
+        $user->country_id = $request->country_id;
+
+        $user->update();
+
+        return redirect()->route('edit.user.profil', $user)->with('status', 'Votre profile a été modifier avec success !');
     }
 }

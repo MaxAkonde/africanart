@@ -30,7 +30,8 @@
                             <div class="col-md-6 form-group">
                                 <label>Nom</label>
                                 <input class="form-control @error('fname') is-invalid @enderror" id="first"
-                                    placeholder="Nom" name="fname" value="{{ (Auth::check()) ? Auth::user()->name : old('fname')}}" type="text">
+                                    placeholder="Nom" name="fname"
+                                    value="{{ Auth::check() ? Auth::user()->fname : old('fname') }}" type="text">
                                 @error('fname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -40,7 +41,8 @@
                             <div class="col-md-6 form-group">
                                 <label>Prénom</label>
                                 <input class="form-control form-control @error('lname') is-invalid @enderror" type="text"
-                                    id="last" name="lname" placeholder="Prénom" value="{{ old('lname') }}">
+                                    id="last" name="lname" placeholder="Prénom"
+                                    value="{{ Auth::check() ? Auth::user()->lname : old('lname') }}">
                                 @error('lname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -50,7 +52,8 @@
                             <div class="col-md-6 form-group">
                                 <label>E-mail</label>
                                 <input class="form-control @error('email') is-invalid @enderror" type="email"
-                                    id="email" name="email" placeholder="Email *" value="{{ (Auth::check()) ? Auth::user()->email : old('email')}}">
+                                    id="email" name="email" placeholder="Email *"
+                                    value="{{ Auth::check() ? Auth::user()->email : old('email') }}">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -60,7 +63,8 @@
                             <div class="col-md-6 form-group">
                                 <label>Téléphone</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" type="text"
-                                    id="number" placeholder="Numéro *" name="phone" value="{{ old('phone') }}">
+                                    id="number" placeholder="Numéro *" name="phone"
+                                    value="{{ Auth::check() ? Auth::user()->phone : old('phone') }}">
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -71,7 +75,7 @@
                                 <label>Adresse 01</label>
                                 <input class="form-control @error('address1') is-invalid @enderror" type="text"
                                     id="add1" name="address1" placeholder="Adresse 01 *"
-                                    value="{{ old('address1') }}">
+                                    value="{{ Auth::check() ? Auth::user()->address1 : old('address1') }}">
                                 @error('address1')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -80,13 +84,17 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Adresse 02</label>
-                                <input class="form-control" type="text" placeholder="123 Street">
+                                <input class="form-control" type="text" placeholder="123 Street" name="address2"
+                                    value="{{ Auth::check() ? Auth::user()->address2 : old('address2') }}">
                             </div>
                             <div class="col-md-12 form-group">
                                 <label>Pays</label>
                                 <select class="custom-select" name="country">
                                     @foreach ($countries as $item)
-                                        <option {{ old('country') == $item->id ? 'selected' : null }}
+                                        <option
+                                            @if (Auth::check()) {{ Auth::user()->country_id == $item->id ? 'selected' : null }}
+                                            @else
+                                                {{ old('country') == $item->id ? 'selected' : null }} @endif
                                             value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
@@ -94,7 +102,8 @@
                             <div class="col-md-6 form-group">
                                 <label>Ville/Commune</label>
                                 <input class="form-control @error('city') is-invalid @enderror" type="text"
-                                    id="city" name="city" placeholder="Ville/Commune" value="{{ old('city') }}">
+                                    id="city" name="city" placeholder="Ville/Commune"
+                                    value="{{ Auth::check() ? Auth::user()->city : old('city') }}">
                                 @error('city')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -105,7 +114,7 @@
                                 <label>Etat/Départment</label>
                                 <input class="form-control @error('state') is-invalid @enderror" type="text"
                                     id="state" name="state" placeholder="Etat/Département"
-                                    value="{{ old('state') }}">
+                                    value="{{ Auth::check() ? Auth::user()->state : old('state') }}">
                                 @error('state')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

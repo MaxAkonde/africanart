@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Mail\SendMail;
 use App\Models\Country;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Requests\Order\StoreOrderRequest;
-use App\Models\Payment;
 
 class OrderController extends Controller
 {
@@ -19,7 +21,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::latest()->get();
+        $orders = Order::latest()->paginate(15);
         return view('admin.orders.index', [
             'orders' => $orders,
             'active' => 'orders',
@@ -58,6 +60,10 @@ class OrderController extends Controller
 
         $amout = str_replace(' ', '', Cart::total());
 
+        $data = [];
+
+        $data['products'] = Cart::content();
+
         $subtotal = Cart::subtotal();
         $tax = Cart::tax();
         $shipping = 0;
@@ -68,6 +74,7 @@ class OrderController extends Controller
         $order = new Order;
 
         $order->pincode = uniqid();
+        $data['pincode'] = $order->pincode;
         $order->fname = $request->fname;
         $order->lname = $request->lname;
         $order->company = $request->company;
@@ -96,6 +103,10 @@ class OrderController extends Controller
 
         $order->products()->attach($array);
 
+        $data['order'] = $order;
+
+        Mail::to('support@africanart.fr')->send(new SendMail($data));
+
         return redirect()->route('confirmation', $order->pincode);
     }
 
@@ -110,6 +121,7 @@ class OrderController extends Controller
         return view('admin.orders.show', [
             'order' => $order,
             'active' => 'orders',
+            'active' => 'orders'
         ]);
     }
 

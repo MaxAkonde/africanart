@@ -1,79 +1,53 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="{{ asset('admin/assets/img/favicon.ico') }}">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+    <meta name="author" content="AdminKit">
+    <meta name="keywords"
+        content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-    <title>Light Bootstrap Dashboard by Creative Tim</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="{{ asset('admin/img/icons/icon-48x48.png') }}" />
 
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+    <link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
+    <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 
-    <!-- Bootstrap core CSS     -->
-    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
-
-    <!-- Animation library for notifications   -->
-    <link href="{{ asset('admin/assets/css/animate.min.css') }}" rel="stylesheet" />
-
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="{{ asset('admin/assets/css/light-bootstrap-dashboard.css?v=1.4.0') }}" rel="stylesheet" />
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="{{ asset('admin/assets/css/demo.css') }}" rel="stylesheet" />
-
-
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="{{ asset('admin/assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     @yield('extra-css')
 </head>
 
 <body>
-
     <div class="wrapper">
-        @include('layouts.inc.admin.header')
+        @include('layouts.inc.admin.navbar')
 
-        <div class="main-panel">
-            @include('layouts.inc.admin.navbar')
+        <div class="main">
+            @include('layouts.inc.admin.header')
 
+            <main class="content">
+                <div class="container-fluid p-0">
 
-            <div class="content">
-                <div class="container-fluid">
                     @yield('content')
-                </div>
-            </div>
 
+                </div>
+            </main>
 
             @include('layouts.inc.admin.footer')
-
         </div>
     </div>
 
+    <script src="{{ asset('admin/js/jquery.js') }}"></script>
+    <script src="{{ asset('admin/js/app.js') }}"></script>
+
+    @yield('extra-js')
 
 </body>
-
-<!--   Core JS Files   -->
-<script src="{{ asset('admin/assets/js/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
-
-<!--  Charts Plugin -->
-<script src="{{ asset('admin/assets/js/chartist.min.js') }}"></script>
-
-<!--  Notifications Plugin    -->
-<script src="{{ asset('admin/assets/js/bootstrap-notify.js') }}"></script>
-
-<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-<script src="{{ asset('admin/assets/js/light-bootstrap-dashboard.js?v=1.4.0') }}"></script>
-
-<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="{{ asset('admin/assets/js/demo.js') }}"></script>
-
-@yield('extra-js')
 
 </html>

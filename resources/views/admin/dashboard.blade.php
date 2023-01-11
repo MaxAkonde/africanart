@@ -1,53 +1,172 @@
 @extends('layouts.admin')
 
-@section('breadcrumbs')
-    <a class="navbar-brand" href="{{ route('dashboard') }}">Dashboard</a>
-@endsection
 
 @section('content')
+    <h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+
     <div class="row">
-        <div class="col-md-4">
-            <div class="card">
+        <div class="col-xl-6 col-xxl-5 d-flex">
+            <div class="w-100">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Sales</h5>
+                                    </div>
 
-                <div class="header">
-                    <h4 class="title">Email Statistics</h4>
-                    <p class="category">Last Campaign Performance</p>
-                </div>
-                <div class="content">
-                    <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-
-                    <div class="footer">
-                        <div class="legend">
-                            <i class="fa fa-circle text-info"></i> Open
-                            <i class="fa fa-circle text-danger"></i> Bounce
-                            <i class="fa fa-circle text-warning"></i> Unsubscribe
+                                    <div class="col-auto">
+                                        <div class="stat text-primary">
+                                            <i class="align-middle" data-feather="truck"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3">2.382</h1>
+                                <div class="mb-0">
+                                    <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
+                                    <span class="text-muted">Since last week</span>
+                                </div>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Visitors</h5>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <div class="stat text-primary">
+                                            <i class="align-middle" data-feather="users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3">14.212</h1>
+                                <div class="mb-0">
+                                    <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 5.25% </span>
+                                    <span class="text-muted">Since last week</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Earnings</h5>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <div class="stat text-primary">
+                                            <i class="align-middle" data-feather="dollar-sign"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3">$21.300</h1>
+                                <div class="mb-0">
+                                    <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span>
+                                    <span class="text-muted">Since last week</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Orders</h5>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <div class="stat text-primary">
+                                            <i class="align-middle" data-feather="shopping-cart"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3">64</h1>
+                                <div class="mb-0">
+                                    <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2.25% </span>
+                                    <span class="text-muted">Since last week</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-8">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">Users Behavior</h4>
-                    <p class="category">24 Hours performance</p>
+        <div class="col-xl-6 col-xxl-7">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+
+                    <h5 class="card-title mb-0">Recent Movement</h5>
                 </div>
-                <div class="content">
-                    <div id="chartHours" class="ct-chart"></div>
-                    <div class="footer">
-                        <div class="legend">
-                            <i class="fa fa-circle text-info"></i> Open
-                            <i class="fa fa-circle text-danger"></i> Click
-                            <i class="fa fa-circle text-warning"></i> Click Second Time
+                <div class="card-body py-3">
+                    <div class="chart chart-sm">
+                        <canvas id="chartjs-dashboard-line"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+
+                    <h5 class="card-title mb-0">Browser Usage</h5>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                        <div class="py-3">
+                            <div class="chart chart-xs">
+                                <canvas id="chartjs-dashboard-pie"></canvas>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-history"></i> Updated 3 minutes ago
+
+                        <table class="table mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>Chrome</td>
+                                    <td class="text-end">4306</td>
+                                </tr>
+                                <tr>
+                                    <td>Firefox</td>
+                                    <td class="text-end">3801</td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td class="text-end">1689</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+
+                    <h5 class="card-title mb-0">Real-Time</h5>
+                </div>
+                <div class="card-body px-4">
+                    <div id="world_map" style="height:350px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
+            <div class="card flex-fill">
+                <div class="card-header">
+
+                    <h5 class="card-title mb-0">Calendar</h5>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                        <div class="chart">
+                            <div id="datetimepicker-dashboard"></div>
                         </div>
                     </div>
                 </div>
@@ -55,169 +174,93 @@
         </div>
     </div>
 
-
-
     <div class="row">
-        <div class="col-md-6">
-            <div class="card ">
-                <div class="header">
-                    <h4 class="title">2014 Sales</h4>
-                    <p class="category">All products including Taxes</p>
-                </div>
-                <div class="content">
-                    <div id="chartActivity" class="ct-chart"></div>
+        <div class="col-12 col-lg-8 col-xxl-9 d-flex">
+            <div class="card flex-fill">
+                <div class="card-header">
 
-                    <div class="footer">
-                        <div class="legend">
-                            <i class="fa fa-circle text-info"></i> Tesla Model S
-                            <i class="fa fa-circle text-danger"></i> BMW 5 Series
-                        </div>
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-check"></i> Data information certified
-                        </div>
-                    </div>
+                    <h5 class="card-title mb-0">Latest Projects</h5>
                 </div>
+                <table class="table table-hover my-0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th class="d-none d-xl-table-cell">Start Date</th>
+                            <th class="d-none d-xl-table-cell">End Date</th>
+                            <th>Status</th>
+                            <th class="d-none d-md-table-cell">Assignee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Project Apollo</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-success">Done</span></td>
+                            <td class="d-none d-md-table-cell">Vanessa Tucker</td>
+                        </tr>
+                        <tr>
+                            <td>Project Fireball</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-danger">Cancelled</span></td>
+                            <td class="d-none d-md-table-cell">William Harris</td>
+                        </tr>
+                        <tr>
+                            <td>Project Hades</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-success">Done</span></td>
+                            <td class="d-none d-md-table-cell">Sharon Lessman</td>
+                        </tr>
+                        <tr>
+                            <td>Project Nitro</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-warning">In progress</span></td>
+                            <td class="d-none d-md-table-cell">Vanessa Tucker</td>
+                        </tr>
+                        <tr>
+                            <td>Project Phoenix</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-success">Done</span></td>
+                            <td class="d-none d-md-table-cell">William Harris</td>
+                        </tr>
+                        <tr>
+                            <td>Project X</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-success">Done</span></td>
+                            <td class="d-none d-md-table-cell">Sharon Lessman</td>
+                        </tr>
+                        <tr>
+                            <td>Project Romeo</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-success">Done</span></td>
+                            <td class="d-none d-md-table-cell">Christina Mason</td>
+                        </tr>
+                        <tr>
+                            <td>Project Wombat</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-warning">In progress</span></td>
+                            <td class="d-none d-md-table-cell">William Harris</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+        <div class="col-12 col-lg-4 col-xxl-3 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
 
-        <div class="col-md-6">
-            <div class="card ">
-                <div class="header">
-                    <h4 class="title">Tasks</h4>
-                    <p class="category">Backend development</p>
+                    <h5 class="card-title mb-0">Monthly Sales</h5>
                 </div>
-                <div class="content">
-                    <div class="table-full-width">
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <input id="checkbox1" type="checkbox">
-                                            <label for="checkbox1"></label>
-                                        </div>
-                                    </td>
-                                    <td>Sign contract for "What are conference organizers afraid of?"
-                                    </td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Edit Task"
-                                            class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Remove"
-                                            class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <input id="checkbox2" type="checkbox" checked>
-                                            <label for="checkbox2"></label>
-                                        </div>
-                                    </td>
-                                    <td>Lines From Great Russian Literature? Or E-mails From My Boss?
-                                    </td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Edit Task"
-                                            class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Remove"
-                                            class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <input id="checkbox3" type="checkbox">
-                                            <label for="checkbox3"></label>
-                                        </div>
-                                    </td>
-                                    <td>Flooded: One year later, assessing what was lost and what was
-                                        found when a ravaging rain swept through metro Detroit
-                                    </td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Edit Task"
-                                            class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Remove"
-                                            class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <input id="checkbox4" type="checkbox" checked>
-                                            <label for="checkbox4"></label>
-                                        </div>
-                                    </td>
-                                    <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Edit Task"
-                                            class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Remove"
-                                            class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <input id="checkbox5" type="checkbox">
-                                            <label for="checkbox5"></label>
-                                        </div>
-                                    </td>
-                                    <td>Read "Following makes Medium better"</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Edit Task"
-                                            class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Remove"
-                                            class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <input id="checkbox6" type="checkbox" checked>
-                                            <label for="checkbox6"></label>
-                                        </div>
-                                    </td>
-                                    <td>Unfollow 5 enemies from twitter</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Edit Task"
-                                            class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Remove"
-                                            class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="footer">
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-history"></i> Updated 3 minutes ago
-                        </div>
+                <div class="card-body d-flex w-100">
+                    <div class="align-self-center chart chart-lg">
+                        <canvas id="chartjs-dashboard-bar"></canvas>
                     </div>
                 </div>
             </div>

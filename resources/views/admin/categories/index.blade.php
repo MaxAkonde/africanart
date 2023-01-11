@@ -1,46 +1,17 @@
 @extends('layouts.admin')
 
-@section('extra-css')
-    <style>
-        .edit-button {
-            color: #007bff;
-        }
-
-        .edit-button:hover {
-            color: #0069d9;
-        }
-
-        .delete-button {
-            color: #dc3545;
-        }
-
-        .delete-button:hover {
-            color: #c82333;
-        }
-    </style>
-@endsection
-
-@section('breadcrumbs')
-    <a class="navbar-brand" href="{{ route('admin.categories.index') }}">Catégories</a>
-@endsection
-
-
 @section('content')
     <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="header">
-                    <div class="row">
-                        <div class="col-md-10 col">
-                            <h4 class="title">Liste des catégories</h4>
-                        </div>
-                        <div class="col-md-2 col">
-                            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Ajouter</a>
-                        </div>
+        <div class="col-12 col-lg-12 col-xxl-12 d-flex">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="card-title mb-0">Liste des catégories</h5>
+                        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Ajouter</a>
                     </div>
                 </div>
-                <div class="content table-responsive table-full-width">
-                    <table class="table table-hover table-striped">
+                <div class="table-responsive">
+                    <table class="table table-hover my-0">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -61,21 +32,22 @@
                                     <td>{{ $category->name }}</td>
                                     <td><small class="text-muted">{{ $category->slug }}</small></td>
                                     <td>
-                                        <a href="{{ route('admin.categories.edit', $category->id) }}"
-                                            class="fa fa-pencil edit-button" title="Modifier"></a>
+                                        <a href="{{ route('admin.categories.edit', $category->id) }}" title="Modifier">
+                                            <i class="align-middle me-1" data-feather="edit"></i></a>
                                         <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST"
                                             onsubmit="" style="display: inline" id="delete_form">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="#"
-                                                onclick="return confirm('Etes-vous sur ?') ? document.getElementById('delete_form').submit() : null"
-                                                class="fa fa-times delete-button"></a>
+                                            <a href="#" style="color: red"
+                                                onclick="return confirm('Etes-vous sur ?') ? document.getElementById('delete_form').submit() : null">
+                                                <i class="align-middle me-1" data-feather="trash"></i>
+                                            </a>
                                         </form>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">
+                                    <td colspan="5">
                                         <div class="">
                                             <p class="d-flex justify-content-center">Pas de catégories disponible</p>
                                         </div>
@@ -84,12 +56,10 @@
                             @endforelse
                         </tbody>
                     </table>
-
-                </div>
-                <div>
-                    <hr>
-                    <div class="justify-content-center">
-                        {{ $categories->links('vendor.pagination.admin') }}
+                    <div>
+                        <div class="mt-1 px-5">
+                            {{ $categories->links('vendor.pagination.bootstrap-5') }}
+                        </div>
                     </div>
                 </div>
             </div>

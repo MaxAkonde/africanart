@@ -1,61 +1,33 @@
-<div class="sidebar" data-color="purple" data-image="{{ asset('admin/assets/img/sidebar-5.jpg') }}">
+<nav class="navbar navbar-expand navbar-light navbar-bg">
+    <a class="sidebar-toggle js-sidebar-toggle">
+        <i class="hamburger align-self-center"></i>
+    </a>
 
-    <div class="sidebar-wrapper">
-        <div class="logo">
-            <a href="{{ route('dashboard') }}" class="simple-text">
-                African Dashboard
-            </a>
-        </div>
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-nav navbar-align">
 
-        <ul class="nav">
-            <li class="{{ $active == 'dashboard' ? 'active' : '' }}">
-                <a href="{{ route('dashboard') }}">
-                    <i class="pe-7s-graph"></i>
-                    <p>Dashboard</p>
+            <li class="nav-item dropdown">
+                <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                    <i class="align-middle" data-feather="settings"></i>
                 </a>
-            </li>
-            <li class="{{ $active == 'categories' ? 'active' : '' }}">
-                <a href="{{ route('admin.categories.index') }}">
-                    <i class="pe-7s-folder"></i>
-                    <p>Catégories</p>
+
+                <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                    <img src="{{ asset('admin/img/avatars/avatar.jpg') }}" class="avatar img-fluid rounded me-1"
+                        alt="{{ Auth::user()->name }}" /> <span class="text-dark">{{ Auth::user()->name }}</span>
                 </a>
-            </li>
-            <li class="{{ $active == 'products' ? 'active' : '' }}">
-                <a href="{{ route('admin.products.index') }}">
-                    <i class="pe-7s-note2"></i>
-                    <p>Produits</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('orders.index') }}">
-                    <i class="pe-7s-note2"></i>
-                    <p>Commande</p>
-                </a>
-            </li>
-            <li class="{{ $active == 'users' ? 'active' : '' }}">
-                <a href="{{ route('admin.users.index') }}">
-                    <i class="pe-7s-users"></i>
-                    <p>Utilisateurs</p>
-                </a>
-            </li>
-            <li class="{{ $active == 'roles' ? 'active' : '' }}">
-                <a href="{{ route('admin.roles.index') }}">
-                    <i class="pe-7s-news-paper"></i>
-                    <p>Roles</p>
-                </a>
-            </li>
-            <li class="{{ $active == 'countries' ? 'active' : '' }}">
-                <a href="{{ route('admin.countries.index') }}">
-                    <i class="pe-7s-news-paper"></i>
-                    <p>Pays</p>
-                </a>
-            </li>
-            <li class="{{ $active == 'shippings' ? 'active' : '' }}">
-                <a href="{{ route('admin.shippings.index') }}">
-                    <i class="pe-7s-news-paper"></i>
-                    <p>Livraison</p>
-                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
+                            data-feather="user"></i> Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                            class="align-middle me-1" data-feather="log-out"></i>Déconnexion</a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
             </li>
         </ul>
     </div>
-</div>
+</nav>

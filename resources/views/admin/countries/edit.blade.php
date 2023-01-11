@@ -6,20 +6,19 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12 col-lg-12">
             <div class="card">
-                <div class="header">
-                    <h4 class="title">Modifier {{ $country->name }}</h4>
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Ajouter une catégorie</h5>
                 </div>
-                <div class="content">
-                    <form action="{{ route('admin.countries.update', $country->id) }}" method="post" class="">
+                <div class="card-body">
+                    <form action="{{ route('admin.countries.update', $country->id) }}" method="post">
                         @csrf
                         @method('PUT')
-
-                        <div class="form-group">
-                            <label for="name" class=" form-control-label">Nom de la ville</label>
-                            <input type="text" id="name" placeholder="Entrer le nom de la ville" name="name"
-                                value="{{ $country->name }}" class="form-control @error('name') is-invalid @enderror"
+                        <div class="mb-3">
+                            <label class="form-label" for="name">Nom du pays</label>
+                            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"
+                                id="name" placeholder="Entrer le nom de la catégorie" value="{{ $country->name }}"
                                 autocomplete="name" required autofocus>
 
                             @error('name')
@@ -28,8 +27,8 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-actions form-group">
-                            <button type="submit" class="btn btn-secondary btn-sm">Modifier</button>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-lg btn-primary">Modifier</button>
                         </div>
                     </form>
                 </div>

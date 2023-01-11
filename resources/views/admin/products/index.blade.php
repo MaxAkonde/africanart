@@ -1,46 +1,17 @@
 @extends('layouts.admin')
 
-@section('extra-css')
-    <style>
-        .edit-button {
-            color: #007bff;
-        }
-
-        .edit-button:hover {
-            color: #0069d9;
-        }
-
-        .delete-button {
-            color: #dc3545;
-        }
-
-        .delete-button:hover {
-            color: #c82333;
-        }
-    </style>
-@endsection
-
-@section('breadcrumbs')
-    <a class="navbar-brand" href="{{ route('admin.products.index') }}">Produits</a>
-@endsection
-
-
 @section('content')
     <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="header">
-                    <div class="row">
-                        <div class="col-md-10 col">
-                            <h4 class="title">Liste des produits</h4>
-                        </div>
-                        <div class="col-md-2 col">
-                            <a href="{{ route('admin.products.create') }}" class="btn btn-primary">Ajouter</a>
-                        </div>
+        <div class="col-12 col-lg-12 col-xxl-12 d-flex">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="card-title mb-0">Liste des produits</h5>
+                        <a href="{{ route('admin.products.create') }}" class="btn btn-primary">Ajouter</a>
                     </div>
                 </div>
-                <div class="content table-responsive table-full-width">
-                    <table class="table table-hover table-striped">
+                <div class="table-responsive">
+                    <table class="table table-hover my-0">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -63,21 +34,22 @@
                                     <td>{{ $product->getPrice() }}</td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>
-                                        <a href="{{ route('admin.products.edit', $product->id) }}"
-                                            class="fa fa-pencil edit-button" title="Modifier"></a>
+                                        <a href="{{ route('admin.products.edit', $product->id) }}" title="Modifier">
+                                            <i class="align-middle me-1" data-feather="edit"></i></a>
                                         <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
                                             onsubmit="" style="display: inline" id="delete_form">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="#"
-                                                onclick="return confirm('Etes-vous sur ?') ? document.getElementById('delete_form').submit() : null"
-                                                class="fa fa-times delete-button"></a>
+                                            <a href="#" style="color: red"
+                                                onclick="return confirm('Etes-vous sur ?') ? document.getElementById('delete_form').submit() : null">
+                                                <i class="align-middle me-1" data-feather="trash"></i>
+                                            </a>
                                         </form>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5">
+                                    <td colspan="6">
                                         <div class="">
                                             <p class="d-flex justify-content-center">Pas de produits disponible</p>
                                         </div>
@@ -86,12 +58,10 @@
                             @endforelse
                         </tbody>
                     </table>
-
-                </div>
-                <div>
-                    <hr>
-                    <div class="justify-content-center">
-                        {{ $products->links('vendor.pagination.admin') }}
+                    <div>
+                        <div class="mt-1 px-5">
+                            {{ $products->links('vendor.pagination.bootstrap-5') }}
+                        </div>
                     </div>
                 </div>
             </div>

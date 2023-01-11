@@ -8,27 +8,21 @@
     </style>
 @endsection
 
-@section('breadcrumbs')
-    <a class="navbar-brand" href="{{ route('admin.categories.index') }}">Catégories</a>
-@endsection
-
 @section('content')
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12 col-lg-12">
             <div class="card">
-                <div class="header">
-                    <h4 class="title">Ajouter une catégorie</h4>
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Ajouter une catégorie</h5>
                 </div>
-                <div class="content">
-                    <form action="{{ route('admin.categories.store') }}" method="post" class=""
-                        enctype="multipart/form-data">
+                <div class="card-body">
+                    <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-
-                        <div class="form-group">
-                            <label for="name" class=" form-control-label">Nom de la catégorie</label>
-                            <input type="text" id="name" placeholder="Entrer le nom de la catégorie" name="name"
-                                value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror"
-                                autocomplete="name" required autofocus>
+                        <div class="mb-3">
+                            <label class="form-label" for="name">Nom de la catégorie</label>
+                            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"
+                                id="name" placeholder="Entrer le nom de la catégorie" value="{{ old('name') }}"
+                                placeholder="Entrer le nom de la catégorie" autocomplete="name" required autofocus>
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -36,9 +30,8 @@
                                 </span>
                             @enderror
                         </div>
-
-                        <div class="form-group">
-                            <label for="image" class="d-block form-control-label">Image à la une</label><br>
+                        <div class="mb-3">
+                            <label class="d-block form-label" for="image">Image à la une</label>
                             <img src="https://via.placeholder.com/200" class="img-thumbnail mb-2" alt="Image à la une"
                                 style="height: 200px;width: 200px">
                             <input type="file" id="image" name="image" style="display: none"
@@ -50,8 +43,8 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-actions form-group">
-                            <button type="submit" class="btn btn-secondary btn-sm">Enregistrer</button>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
                         </div>
                     </form>
                 </div>
@@ -69,7 +62,8 @@
                 var input = this;
                 var url = $(this).val();
                 var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-                if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" ||
+                        ext == "jpg")) {
                     var reader = new FileReader();
 
                     reader.onload = function(e) {

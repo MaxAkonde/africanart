@@ -8,27 +8,21 @@
     </style>
 @endsection
 
-@section('breadcrumbs')
-    <a class="navbar-brand" href="{{ route('admin.products.index') }}">Produits</a>
-@endsection
-
 @section('content')
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12 col-lg-12">
             <div class="card">
-                <div class="header">
-                    <h4 class="title">Ajouter un produit</h4>
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Ajouter un produit</h5>
                 </div>
-                <div class="content">
-                    <form action="{{ route('admin.products.store') }}" method="post" class=""
-                        enctype="multipart/form-data">
+                <div class="card-body">
+                    <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-
-                        <div class="form-group">
-                            <label for="title" class=" form-control-label">Titre</label>
-                            <input type="text" id="title" name="title" value="{{ old('title') }}"
-                                class="form-control @error('title') is-invalid @enderror" autocomplete="title" required
-                                autofocus>
+                        <div class="mb-3">
+                            <label class="form-label" for="title">Titre</label>
+                            <input class="form-control @error('title') is-invalid @enderror" type="text" name="title"
+                                id="title" placeholder="Entrer le titre du produit" value="{{ old('title') }}"
+                                autocomplete="title" required autofocus>
 
                             @error('title')
                                 <span class="invalid-feedback" role="alert">
@@ -37,8 +31,9 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="category_id" class=" form-control-label">Catégorie</label>
+                        <div class="mb-3">
+                            <label class="form-label" for="category_id">Catégorie</label>
+
                             <select name="category_id" id="category_id"
                                 class="form-control @error('category_id') is-invalid @enderror">
                                 <option value="">--- Choisissez une catégorie ---</option>
@@ -47,17 +42,18 @@
                                 @endforeach
                             </select>
 
-                            @error('category')
+                            @error('category_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="price" class=" form-control-label">Prix</label>
-                            <input type="text" id="price" name="price" value="{{ old('price') }}"
-                                class="form-control @error('price') is-invalid @enderror" autocomplete="price" required>
+                        <div class="mb-3">
+                            <label class="form-label" for="price">Price</label>
+                            <input class="form-control @error('price') is-invalid @enderror" type="text" name="price"
+                                id="price" placeholder="Entrer le prix du produit" value="{{ old('price') }}"
+                                autocomplete="price" required autofocus>
 
                             @error('price')
                                 <span class="invalid-feedback" role="alert">
@@ -66,8 +62,8 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="short_description" class=" form-control-label">Description courte</label>
+                        <div class="mb-3">
+                            <label class="form-label" for="short_description">Description courte</label>
                             <textarea name="short_description" id="short_description" name="short_description"
                                 class="form-control @error('short_description') is-invalid @enderror" cols="30" rows="4" required></textarea>
 
@@ -78,8 +74,8 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="long_description" class=" form-control-label">Description longue</label>
+                        <div class="mb-3">
+                            <label class="form-label" for="long_description">Description longue</label>
                             <textarea name="long_description" id="long_description" name="long_description"
                                 class="form-control @error('long_description') is-invalid @enderror" cols="30" rows="10" required></textarea>
 
@@ -90,8 +86,9 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="image" class="d-block form-control-label">Image à la une</label><br>
+
+                        <div class="mb-3">
+                            <label class="d-block form-label" for="image">Image à la une</label>
                             <img src="https://via.placeholder.com/200" class="img-thumbnail mb-2" alt="Image à la une"
                                 style="height: 200px;width: 200px">
                             <input type="file" id="image" name="image" style="display: none"
@@ -103,9 +100,8 @@
                                 </span>
                             @enderror
                         </div>
-
-                        <div class="form-actions form-group">
-                            <button type="submit" class="btn btn-secondary btn-sm">Enregistrer</button>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
                         </div>
                     </form>
                 </div>

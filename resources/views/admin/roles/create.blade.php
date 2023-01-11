@@ -1,24 +1,20 @@
 @extends('layouts.admin')
 
-@section('breadcrumbs')
-    <a class="navbar-brand" href="{{ route('admin.roles.index') }}">Roles</a>
-@endsection
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12 col-lg-12">
             <div class="card">
-                <div class="header">
-                    <h4 class="title">Ajouter un role</h4>
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Ajouter un role</h5>
                 </div>
-                <div class="content">
-                    <form action="{{ route('admin.roles.store') }}" method="post" class="">
+                <div class="card-body">
+                    <form action="{{ route('admin.roles.store') }}" method="post">
                         @csrf
-
-                        <div class="form-group">
-                            <label for="name" class=" form-control-label">Nom du role</label>
-                            <input type="text" id="name" placeholder="Entrer le nom du role" name="name"
-                                value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror"
+                        <div class="mb-3">
+                            <label class="form-label" for="name">Nom du role</label>
+                            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"
+                                id="name" placeholder="Entrer le nom du role" value="{{ old('name') }}"
                                 autocomplete="name" required autofocus>
 
                             @error('name')
@@ -27,8 +23,8 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-actions form-group">
-                            <button type="submit" class="btn btn-secondary btn-sm">Enregistrer</button>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
                         </div>
                     </form>
                 </div>

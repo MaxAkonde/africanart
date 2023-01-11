@@ -135,6 +135,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        unlink("assets/categories/" . $category->image);
+
         $name = $category->name;
 
         $category->delete();

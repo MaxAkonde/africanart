@@ -94,7 +94,12 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
-        $role->update($request->all());
+        //$role->update($request->all());
+
+        $role->name = $request->name;
+        $role->slug = Str::slug($role->name);
+
+        $role->update();
 
         return redirect()->route('admin.roles.index')->with('status', $request->name . ' a été modifier avec success !');
     }

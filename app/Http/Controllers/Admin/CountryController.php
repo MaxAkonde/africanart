@@ -96,7 +96,12 @@ class CountryController extends Controller
      */
     public function update(UpdateCountryRequest $request, Country $country)
     {
-        $country->update($request->all());
+        //$country->update($request->all());
+
+        $country->name = $request->name;
+        $country->slug = Str::slug($country->name);
+
+        $country->update();
 
         return redirect()->route('admin.countries.index')->with('status', $request->name . ' a été modifier avec success !');
     }

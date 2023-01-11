@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="{{ route('dashboard') }}">
-            <span class="align-middle">African Dashboard</span>
+            <span class="align-middle">AfricanArt Dashboard</span>
         </a>
 
         <ul class="sidebar-nav">

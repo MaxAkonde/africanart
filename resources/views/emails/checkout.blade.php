@@ -212,7 +212,7 @@
                                                                                                         style="text-align: left; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; word-wrap: break-word; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #4e4e4e; border-bottom: 1px solid #ebebeb;font-weight: bold;">
                                                                                                         <img width="64"
                                                                                                             height="64"
-                                                                                                            src="{{ asset('assets/products/' . $item->image) }}"
+                                                                                                            src="https://africanart.fr/assets/products/" . {{ $item->image . ".png" }}
                                                                                                             class="attachment-64x64 size-64x64 wp-post-image"
                                                                                                             alt=""
                                                                                                             style="border: 0; display: inline-block; font-size: 13px; font-weight: bold; height: auto !important; outline: none; text-decoration: none; text-transform: capitalize; vertical-align: middle; margin-right: 10px; -ms-interpolation-mode: bicubic;"
@@ -221,11 +221,14 @@
                                                                                                     </td>
                                                                                                     <td class="td"
                                                                                                         style="text-align: left; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #4e4e4e; border-bottom: 1px solid #ebebeb;">
-                                                                                                        {{ $item->qty }} </td>
+                                                                                                        {{ $item->qty }}
+                                                                                                    </td>
                                                                                                     <td class="td"
                                                                                                         style="text-align: left; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #4e4e4e; border-bottom: 1px solid #ebebeb;">
                                                                                                         <span
-                                                                                                            class="woocommerce-Price-amount amount">{{ $item->price }}</span><span class="woocommerce-Price-currencySymbol"> CFA</span>
+                                                                                                            class="woocommerce-Price-amount amount">{{ $item->price }}</span><span
+                                                                                                            class="woocommerce-Price-currencySymbol">
+                                                                                                            CFA</span>
                                                                                                     </td>
                                                                                                 </tr>
                                                                                             @endforeach
@@ -241,7 +244,9 @@
                                                                                                 <td class="td"
                                                                                                     style="text-align: left; border-top-width: 0px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #4e4e4e; vertical-align: middle; padding-top: 8px !important; padding-bottom: 8px !important;">
                                                                                                     <span
-                                                                                                        class="woocommerce-Price-amount amount">{{ $data['order']['subtotal'] }}</span><span class="woocommerce-Price-currencySymbol"> CFA</span>
+                                                                                                        class="woocommerce-Price-amount amount">{{ $data['order']['subtotal'] }}</span><span
+                                                                                                        class="woocommerce-Price-currencySymbol">
+                                                                                                        CFA</span>
                                                                                                 </td>
                                                                                             </tr>
                                                                                             <tr>
@@ -259,7 +264,8 @@
                                                                                                     scope="row"
                                                                                                     colspan="2"
                                                                                                     style="text-align: right; color: #4e4e4e; vertical-align: middle; padding-top: 8px !important; padding-bottom: 8px !important;">
-                                                                                                    Methode de paiement:</th>
+                                                                                                    Methode de paiement:
+                                                                                                </th>
                                                                                                 <td class="td"
                                                                                                     style="text-align: left; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #4e4e4e; vertical-align: middle; padding-top: 8px !important; padding-bottom: 8px !important;">
                                                                                                     PayDunya
@@ -274,7 +280,9 @@
                                                                                                 <td class="td"
                                                                                                     style="text-align: left; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #4e4e4e; vertical-align: middle; padding-top: 8px !important; padding-bottom: 8px !important;">
                                                                                                     <span
-                                                                                                        class="woocommerce-Price-amount amount">{{ $data['order']['amount'] }}</span><span class="woocommerce-Price-currencySymbol"> CFA</span>
+                                                                                                        class="woocommerce-Price-amount amount">{{ $data['order']['amount'] }}</span><span
+                                                                                                        class="woocommerce-Price-currencySymbol">
+                                                                                                        CFA</span>
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </tfoot>
@@ -291,11 +299,15 @@
                                                                                             width="50%">
                                                                                             <h2
                                                                                                 style="color: #656565; display: block; font-family: Helvetica; font-size: 18px; font-weight: bold; line-height: 125%; margin: 15px 0 10px 0; text-align: left; font-style: normal; letter-spacing: normal;">
-                                                                                                Adresse de facturation</h2>
+                                                                                                Adresse de facturation
+                                                                                            </h2>
 
                                                                                             <address class="address"
                                                                                                 style="color: #4e4e4e;">
-                                                                                                {{ $data['order']['fname'] }} {{ $data['order']['lname'] }}<br>{{ $data['order']['address1'] }}<br>{{ $data['order']['address2'] }} <br>{{ $data['order']['phone'] }} <p
+                                                                                                {{ $data['order']['fname'] }}
+                                                                                                {{ $data['order']['lname'] }}<br>{{ $data['order']['address1'] }}<br>{{ $data['order']['address2'] }}
+                                                                                                <br>{{ $data['order']['phone'] }}
+                                                                                                <p
                                                                                                     style="margin: 10px 0; padding: 0; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #222222; font-family: Helvetica; font-size: 13px; line-height: 150%; text-align: left;">
                                                                                                     {{ $data['order']['email'] }}
                                                                                                 </p>
@@ -306,11 +318,14 @@
                                                                                             width="50%">
                                                                                             <h2
                                                                                                 style="color: #656565; display: block; font-family: Helvetica; font-size: 18px; font-weight: bold; line-height: 125%; margin: 15px 0 10px 0; text-align: left; font-style: normal; letter-spacing: normal;">
-                                                                                                Adresse de livraison</h2>
+                                                                                                Adresse de livraison
+                                                                                            </h2>
 
                                                                                             <address class="address"
                                                                                                 style="color: #4e4e4e;">
-                                                                                                {{ $data['order']['fname'] }} {{ $data['order']['lname'] }}<br>{{ $data['order']['address1'] }}<br>{{ $data['order']['address2'] }}</address>
+                                                                                                {{ $data['order']['fname'] }}
+                                                                                                {{ $data['order']['lname'] }}<br>{{ $data['order']['address1'] }}<br>{{ $data['order']['address2'] }}
+                                                                                            </address>
                                                                                         </td>
                                                                                     </tr>
                                                                                 </table>

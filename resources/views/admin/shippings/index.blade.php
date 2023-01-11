@@ -1,46 +1,17 @@
 @extends('layouts.admin')
 
-@section('extra-css')
-    <style>
-        .edit-button {
-            color: #007bff;
-        }
-
-        .edit-button:hover {
-            color: #0069d9;
-        }
-
-        .delete-button {
-            color: #dc3545;
-        }
-
-        .delete-button:hover {
-            color: #c82333;
-        }
-    </style>
-@endsection
-
-@section('breadcrumbs')
-    <a class="navbar-brand" href="{{ route('admin.shippings.index') }}">Livraison</a>
-@endsection
-
-
 @section('content')
     <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="header">
-                    <div class="row">
-                        <div class="col-md-10 col">
-                            <h4 class="title">Liste des livraison disponible</h4>
-                        </div>
-                        <div class="col-md-2 col">
-                            <a href="{{ route('admin.shippings.create') }}" class="btn btn-primary">Ajouter</a>
-                        </div>
+        <div class="col-12 col-lg-12 col-xxl-12 d-flex">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="card-title mb-0">Liste des livraison par pays</h5>
+                        <a href="{{ route('admin.shippings.create') }}" class="btn btn-primary">Ajouter</a>
                     </div>
                 </div>
-                <div class="content table-responsive table-full-width">
-                    <table class="table table-hover table-striped">
+                <div class="table-responsive">
+                    <table class="table table-hover my-0">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -56,17 +27,17 @@
                                     <td>{{ $shipping->id }}</td>
                                     <td>{{ $shipping->name }}</td>
                                     <td>{{ $shipping->country->name }}</td>
-                                    <td>{{ $shipping->price }}</td>
-                                    <td>
-                                        <a href="{{ route('admin.shippings.edit', $shipping->id) }}"
-                                            class="fa fa-pencil edit-button" title="Modifier"></a>
+                                    <td>{{ $shipping->price }} FCFA</td><td>
+                                        <a href="{{ route('admin.shippings.edit', $shipping->id) }}" title="Modifier">
+                                            <i class="align-middle me-1" data-feather="edit"></i></a>
                                         <form action="{{ route('admin.shippings.destroy', $shipping->id) }}" method="POST"
                                             onsubmit="" style="display: inline" id="delete_form">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="#"
-                                                onclick="return confirm('Etes-vous sur ?') ? document.getElementById('delete_form').submit() : null"
-                                                class="fa fa-times delete-button"></a>
+                                            <a href="#" style="color: red"
+                                                onclick="return confirm('Etes-vous sur ?') ? document.getElementById('delete_form').submit() : null">
+                                                <i class="align-middle me-1" data-feather="trash"></i>
+                                            </a>
                                         </form>
                                     </td>
                                 </tr>
@@ -80,14 +51,11 @@
                                 </tr>
                             @endforelse
                         </tbody>
-
                     </table>
-
-                </div>
-                <div>
-                    <hr>
-                    <div class="justify-content-center">
-                        {{ $shippings->links('vendor.pagination.admin') }}
+                    <div>
+                        <div class="mt-1 px-5">
+                            {{ $shippings->links('vendor.pagination.bootstrap-5') }}
+                        </div>
                     </div>
                 </div>
             </div>

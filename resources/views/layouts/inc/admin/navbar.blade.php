@@ -47,6 +47,18 @@
                     <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Pays</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ $active == 'shippings' ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.shippings.index') }}">
+                    <i class="align-middle" data-feather="truck"></i> <span class="align-middle">Livraison</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item {{ $active == 'attributes' ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.attributes.index') }}">
+                    <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Attributs</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

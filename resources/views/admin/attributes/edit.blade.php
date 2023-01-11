@@ -1,29 +1,23 @@
 @extends('layouts.admin')
 
 @section('extra-css')
-    
-@endsection
-
-@section('breadcrumbs')
-    <a class="navbar-brand" href="{{ route('admin.attributes.index') }}">Attributs</a>
 @endsection
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12 col-lg-12">
             <div class="card">
-                <div class="header">
-                    <h4 class="title">Modifier {{ $attribute->name }}</h4>
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Modifier {{ $attribute->name }}</h5>
                 </div>
-                <div class="content">
-                    <form action="{{ route('admin.attributes.update', $attribute->id) }}" method="post" class="">
+                <div class="card-body">
+                    <form action="{{ route('admin.attributes.update', $attribute->id) }}" method="post">
                         @csrf
                         @method('PUT')
-
-                        <div class="form-group">
-                            <label for="name" class=" form-control-label">Nom de l'attribut</label>
-                            <input type="text" id="name" placeholder="Entrer le nom de l'attribut" name="name"
-                                value="{{ $attribute->name }}" class="form-control @error('name') is-invalid @enderror"
+                        <div class="mb-3">
+                            <label class="form-label" for="name">Nom de l'attribut</label>
+                            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"
+                                id="name" placeholder="Entrer le nom de l'attribut" value="{{ $attribute->name }}"
                                 autocomplete="name" required autofocus>
 
                             @error('name')
@@ -32,9 +26,8 @@
                                 </span>
                             @enderror
                         </div>
-
-                        <div class="form-actions form-group">
-                            <button type="submit" class="btn btn-secondary btn-sm">Modifier</button>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
                         </div>
                     </form>
                 </div>
@@ -44,5 +37,4 @@
 @endsection
 
 @section('extra-js')
-    
 @endsection

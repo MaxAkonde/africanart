@@ -59,6 +59,12 @@
                     <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Attributs</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ $active == 'values' ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.values.index') }}">
+                    <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Valeurs</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

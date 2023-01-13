@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('attribute_product', function (Blueprint $table) {
+        Schema::create('values', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->unsignedBigInteger('attribute_id');
-            $table->unsignedBigInteger('product_id');
-            $table->float('price')->nullable();
+            $table->foreign('attribute_id')->references('id')->on('attributes');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attribute_product');
+        Schema::dropIfExists('values');
     }
 };

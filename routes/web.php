@@ -58,5 +58,6 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'namespace' => 'App\Http\Cont
     Route::resource('payments', 'PaymentController');
     Route::resource('shippings', 'ShippingController');
     Route::resource('attributes', 'AttributeController');
+    Route::resource('values', 'ValueController');
 
 });

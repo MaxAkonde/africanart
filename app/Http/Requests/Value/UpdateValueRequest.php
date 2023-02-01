@@ -24,7 +24,7 @@ class UpdateValueRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255', 'min:3'],
+            'name' => ['required', 'string', 'max:255'],
             'attribute_id' => ['required', 'numeric'],
         ];
     }

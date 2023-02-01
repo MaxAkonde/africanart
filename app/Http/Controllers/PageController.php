@@ -12,6 +12,7 @@ use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\User\ProfileUserRequest;
 use App\Models\Country;
 use App\Models\User;
+use App\Models\Value;
 
 class PageController extends Controller
 {
@@ -57,6 +58,34 @@ class PageController extends Controller
         return view('pages.single', [
             'product' => $product,
             'latest' => $latest,
+            'price' => false,
+            'productValue' => false,
+            'selected' => false,
+        ]);
+    }
+
+    public function variable(Product $product, Request $request)
+    {
+        $latest = Product::latest()->paginate(4);
+
+        $productValue = Value::where('attribute_id', '=', $request->attributeVal)->get();
+
+        foreach($product->attributes as $attribute)
+        {
+            if($request->attributeVal == $attribute->pivot->attribute_id) {
+                $price = $attribute->pivot->price;
+            }
+        }
+        return view('pages.single', [
+            'product' => $product,
+            'latest' => $latest,
+            'productValue' => $productValue,
+            'price' => $price,
+            'selected' => $request->attributeVal,
+        ]);
+
+        return redirect()->route('single', [
+
         ]);
     }
 

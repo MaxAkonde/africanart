@@ -18,6 +18,12 @@
                 </a>
             </li>
 
+            <li class="sidebar-item {{ $active == 'types' ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.types.index') }}">
+                    <i class="align-middle" data-feather="bookmark"></i> <span class="align-middle">Types de produit</span>
+                </a>
+            </li>
+
             <li class="sidebar-item {{ $active == 'products' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('admin.products.index') }}">
                     <i class="align-middle" data-feather="package"></i> <span class="align-middle">Produits</span>

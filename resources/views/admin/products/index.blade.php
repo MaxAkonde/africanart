@@ -31,7 +31,19 @@
                                             style="width: 45px" alt="Image a la une products {{ $product->id }}">
                                     </td>
                                     <td>{{ $product->title }}</td>
-                                    <td>{{ $product->getPrice() }}</td>
+                                    <td>
+                                        @if ($product->getPrice())
+                                            {{ $product->getPrice() }}
+                                        @else
+                                            @php
+                                                $array = [];
+                                                foreach ($product->attributes as $attribute) {
+                                                    array_push($array, $attribute->pivot->price . " FCFA");
+                                                }
+                                                echo implode(" | ", $array);
+                                            @endphp
+                                        @endif
+                                    </td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>
                                         <a href="{{ route('admin.products.edit', $product->id) }}" title="Modifier">

@@ -19,6 +19,25 @@
                     <form action="{{ route('admin.products.update', $product) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+
+                        <div class="mb-3">
+                            <label class="form-label" for="type_id">Type de produit</label>
+
+                            <select name="type_id" id="type_id" required
+                                class="form-control @error('type_id') is-invalid @enderror">
+                                <option value="">--- Choisissez le type de produit ---</option>
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}" @if($product->type_id == $type->id) selected @endif>{{ $type->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('type_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
                         <div class="mb-3">
                             <label class="form-label" for="title">Titre</label>
                             <input class="form-control @error('title') is-invalid @enderror" type="text" name="title"
@@ -51,11 +70,11 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3" id="priceLayout">
                             <label class="form-label" for="price">Price</label>
-                            <input class="form-control @error('price') is-invalid @enderror" type="text" name="price"
-                                id="price" placeholder="Entrer le prix du produit" value="{{ $product->price }}"
-                                autocomplete="price" required autofocus>
+                            <input class="form-control @error('price') is-invalid @enderror" type="number" name="price"
+                                id="price" placeholder="Entrer le prix du produit" value="{{ $product->price ? $product->price : 0 }}"
+                                autocomplete="price" autofocus>
 
                             @error('price')
                                 <span class="invalid-feedback" role="alert">
@@ -116,6 +135,14 @@
     <script>
         jQuery(document).ready(function($) {
 
+            var type_id = $('select#type_id').val();
+
+            if(type_id > 1) {
+                $("div#priceLayout").css('display', 'none');
+            } else {
+                $("div#priceLayout").css('display', 'block');
+            }
+
             $('#image').on('change', function(e) {
                 //alert('1');
                 var input = this;
@@ -136,6 +163,14 @@
 
             $("img.img-thumbnail").click(function() {
                 $("#image").click();
+            });
+
+            $("select#type_id").on('change', function(e) {
+                if($(this).val() > 1) {
+                    $("div#priceLayout").css('display', 'none');
+                } else {
+                    $("div#priceLayout").css('display', 'block');
+                }
             });
         });
     </script>

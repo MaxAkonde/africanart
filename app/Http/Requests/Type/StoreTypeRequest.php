@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Value;
+namespace App\Http\Requests\Type;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreValueRequest extends FormRequest
+class StoreTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class StoreValueRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'attribute_id' => ['required', 'numeric'],
+            'name' => 'required|min:3|max:255|string|unique:types',
         ];
     }
 }

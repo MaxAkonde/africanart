@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
+use App\Http\Requests\Variable\StoreVariableRequest;
+use App\Models\Attribute;
+use App\Models\Type;
 
 class ProductController extends Controller
 {
@@ -40,10 +43,12 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $types = Type::all();
         $categories = Category::all();
         return view('admin.products.create', [
             'active' => $this->active,
             'categories' => $categories,
+            'types' => $types,
         ]);
     }
 
@@ -57,16 +62,27 @@ class ProductController extends Controller
     {
         $product = new Product();
         $product->title = $request->title;
-        $product->price = $request->price;
+
         $product->category_id = $request->category_id;
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
 
         $product->image = $this->uploadImage($request->file('image'));
 
+        if ($request->type_id > 1) {
+            $product->type_id = $request->type_id;
+            $product->price = NULL;
+        } else {
+            $product->price = $request->price;
+        }
+
         $product->save();
 
-        return redirect()->route('admin.products.index')->with('status', $request->title . ' a été enregistrer avec succes !');
+        if ($request->type_id < 2) {
+            return redirect()->route('admin.products.index')->with('status', $request->title . ' a été enregistrer avec succes !');
+        }
+
+        return redirect()->route('admin.products.attr.create', $product);
     }
 
     private function uploadImage($requestImage)
@@ -77,6 +93,71 @@ class ProductController extends Controller
             $file->move(public_path("assets/products"), $filename);
             return $filename;
         }
+    }
+
+    public function createdAddAttr(Product $product)
+    {
+        $selected_id = [];
+        // $selected_name = [];
+
+        foreach ($product->values as $item) {
+            array_push($selected_id, $item->pivot->value_id);
+        }
+
+        // foreach($product->values as $item) {
+        //     array_push($selected_name, $item->name);
+        // }
+
+        //dd($selected_name);
+
+        $attributes = Attribute::all();
+        return view('admin.products.createAddAttr', [
+            'product' => $product,
+            'selected_id' => $selected_id,
+            //'selected_name' => $selected_name,
+            'attributes' => $attributes,
+            'active' => $this->active,
+        ]);
+    }
+
+    public function storeAddAttr(StoreVariableRequest $request, Product $product)
+    {
+        $array = [
+            $request->attribute_id => ['price' => 0]
+        ];
+        $product->attributes()->attach($array);
+
+        return redirect()->route('admin.products.attr.create', $product);
+    }
+
+    public function storeAddValue(Request $request, Product $product)
+    {
+        //dd($request);
+        $array = [
+            $request->attribute_id => ['price' => $request->price]
+        ];
+        $product->attributes()->syncWithoutDetaching($array);
+
+        if($product->values()->wherePivot('attribute_id', '=', $request->attribute_id)->get()) {
+            $product->values()->wherePivot('attribute_id', '=', $request->attribute_id)->syncWithPivotValues($request->values, ['attribute_id' => $request->attribute_id]);
+        } else {
+            $product->values()->syncWithPivotValues($request->values, ['attribute_id' => $request->attribute_id]);
+        }
+
+
+
+        //$product->values()->syncWithPivotValues();
+
+        return redirect()->route('admin.products.attr.create', $product);
+    }
+
+    public function deleteValueAndAttr(Product $product, $attribute_id)
+    {
+        $product->attributes()->detach($attribute_id);
+
+        $product->values()->wherePivot('attribute_id', '=', $attribute_id)->sync([]);
+
+        return redirect()->route('admin.products.attr.create', $product);
     }
 
     /**
@@ -98,10 +179,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $types = Type::all();
         $categories = Category::all();
         return view('admin.products.edit', [
             'product' => $product,
             'categories' => $categories,
+            'types' => $types,
             'active' => $this->active
         ]);
     }
@@ -117,14 +200,23 @@ class ProductController extends Controller
     {
         $image = $request->file('image');
         if ($image) {
-            unlink("assets/products/" . $product->image);
+            try {
+                unlink("assets/products/" . $product->image);
+            } catch (\Throwable $th) {
+            }
         }
 
         $product->title = $request->title;
-        $product->price = $request->price;
         $product->category_id = $request->category_id;
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
+
+        if ($request->type_id > 1) {
+            $product->type_id = $request->type_id;
+            $product->price = NULL;
+        } else {
+            $product->price = $request->price;
+        }
 
         if ($image) {
             $product->image = $this->uploadImage($request->file('image'));
@@ -132,7 +224,11 @@ class ProductController extends Controller
 
         $product->update();
 
-        return redirect()->route('admin.products.index')->with('status', $request->title . ' a été modifier avec succes !');
+        if ($request->type_id < 2) {
+            return redirect()->route('admin.products.index')->with('status', $request->title . ' a été modifier avec succes !');
+        }
+
+        return redirect()->route('admin.products.attr.create', $product);
     }
 
     /**
@@ -143,7 +239,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        unlink("assets/products/" . $product->image);
+        try {
+            unlink("assets/products/" . $product->image);
+        } catch (\Throwable $th) {
+        }
 
         $name = $product->name;
 

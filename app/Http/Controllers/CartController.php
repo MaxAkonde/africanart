@@ -38,7 +38,7 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        $product = Product::find($request->id);
+        //$product = Product::find($request->id);
 
         $duplicata = Cart::search(function($cartItem, $rowId) use ($request) {
             return $cartItem->id == $request->id;
@@ -50,7 +50,7 @@ class CartController extends Controller
 
         $product = Product::find($request->id);
 
-        Cart::add($product->id, $product->title, 1, $product->price)
+        Cart::add($product->id, $product->title, 1, $request->price)
             ->associate('App\Models\Product');
 
         return redirect()->back()->with('success', $product->title . ' ajouter à votre panier.');

@@ -103,22 +103,40 @@
                                             style="text-decoration: none">{{ $item->title }}</a></h6>
                                     <small>{{ $item->category->name }}</small>
                                     <div class="d-flex justify-content-center">
-                                        <h6>{{ $item->getPrice() }}</h6>
+                                        <h6>
+                                            @if ($item->getPrice())
+                                            {{ $item->getPrice() }}
+                                        @else
+                                            @php
+                                                $array = [];
+                                                foreach ($item->attributes as $attribute) {
+                                                    array_push($array, $attribute->pivot->price . " FCFA");
+                                                }
+                                                echo implode(" | ", $array);
+                                            @endphp
+                                        @endif
+                                        </h6>
                                         {{-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> --}}
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-center bg-light border">
                                     {{-- <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
                                             class="fas fa-eye text-primary mr-1"></i>Voir les détails</a> --}}
-                                    <form action="{{ route('cart.store') }}" class="addCartForm" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{ $item->id }}">
-                                        <input type="hidden" name="title" value="{{ $item->title }}">
-                                        <input type="hidden" name="price" value="{{ $item->price }}">
-                                        <button type="submit" class="btn btn-sm text-dark p-0"><i
-                                                class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au
-                                            panier</button>
-                                    </form>
+                                    @if (!is_null($item->price))
+                                        <form action="{{ route('cart.store') }}" class="addCartForm" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $item->id }}">
+                                            <input type="hidden" name="title" value="{{ $item->title }}">
+                                            <input type="hidden" name="price" value="{{ $item->price }}">
+                                            <button type="submit" class="btn btn-sm text-dark p-0"><i
+                                                    class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au
+                                                panier</button>
+                                        </form>
+                                    @else
+                                        <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
+                                                class="fas fa-eye text-primary mr-1"></i>Voir les détails</a>
+                                    @endif
+
                                 </div>
                             </div>
                         </div>

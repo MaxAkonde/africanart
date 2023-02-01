@@ -18,6 +18,25 @@
                 <div class="card-body">
                     <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="mb-3">
+                            <label class="form-label" for="type_id">Type de produit</label>
+
+                            <select name="type_id" id="type_id" required
+                                class="form-control @error('type_id') is-invalid @enderror">
+                                <option value="">--- Choisissez le type de produit ---</option>
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}" @if(old('type_id') == $type->id) selected @endif>{{ $type->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('type_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
                         <div class="mb-3">
                             <label class="form-label" for="title">Titre</label>
                             <input class="form-control @error('title') is-invalid @enderror" type="text" name="title"
@@ -34,11 +53,11 @@
                         <div class="mb-3">
                             <label class="form-label" for="category_id">Catégorie</label>
 
-                            <select name="category_id" id="category_id"
+                            <select name="category_id" id="category_id" required
                                 class="form-control @error('category_id') is-invalid @enderror">
                                 <option value="">--- Choisissez une catégorie ---</option>
                                 @foreach ($categories as $categorie)
-                                    <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
+                                    <option value="{{ $categorie->id }}" @if(old('category_id') == $categorie->id) selected @endif>{{ $categorie->name }}</option>
                                 @endforeach
                             </select>
 
@@ -49,11 +68,11 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="price">Price</label>
-                            <input class="form-control @error('price') is-invalid @enderror" type="text" name="price"
-                                id="price" placeholder="Entrer le prix du produit" value="{{ old('price') }}"
-                                autocomplete="price" required autofocus>
+                        <div class="mb-3" id="priceLayout">
+                            <label class="form-label" for="price">Prix</label>
+                            <input class="form-control @error('price') is-invalid @enderror" type="number" name="price"
+                                id="price" placeholder="Entrer le prix du produit" value="{{ old('price') ? old('price') : 0 }}"
+                                autocomplete="price">
 
                             @error('price')
                                 <span class="invalid-feedback" role="alert">
@@ -65,7 +84,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="short_description">Description courte</label>
                             <textarea name="short_description" id="short_description" name="short_description"
-                                class="form-control @error('short_description') is-invalid @enderror" cols="30" rows="4" required></textarea>
+                                class="form-control @error('short_description') is-invalid @enderror" cols="30" rows="4" required>{{ old('short_description') }}</textarea>
 
                             @error('short_description')
                                 <span class="invalid-feedback" role="alert">
@@ -77,7 +96,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="long_description">Description longue</label>
                             <textarea name="long_description" id="long_description" name="long_description"
-                                class="form-control @error('long_description') is-invalid @enderror" cols="30" rows="10" required></textarea>
+                                class="form-control @error('long_description') is-invalid @enderror" cols="30" rows="10" required>{{ old('long_description') }}</textarea>
 
                             @error('long_description')
                                 <span class="invalid-feedback" role="alert">
@@ -114,6 +133,14 @@
     <script>
         jQuery(document).ready(function($) {
 
+            var type_id = $('select#type_id').val();
+
+            if(type_id > 1) {
+                $("div#priceLayout").css('display', 'none');
+            } else {
+                $("div#priceLayout").css('display', 'block');
+            }
+
             $('#image').on('change', function(e) {
                 //alert('1');
                 var input = this;
@@ -134,6 +161,14 @@
 
             $("img.img-thumbnail").click(function() {
                 $("#image").click();
+            });
+
+            $("select#type_id").on('change', function(e) {
+                if($(this).val() > 1) {
+                    $("div#priceLayout").css('display', 'none');
+                } else {
+                    $("div#priceLayout").css('display', 'block');
+                }
             });
         });
     </script>

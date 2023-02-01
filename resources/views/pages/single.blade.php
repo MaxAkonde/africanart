@@ -54,23 +54,70 @@
                 <h6 class="font-weight-semi-bold">{{ $product->category->name }}</h6>
                 <span class="mb-4">
                     <small>
-                        <i class="fa fa-check"></i> Vendu par 
+                        <i class="fa fa-check"></i> Vendu par
                         @if (isset($product->user_id))
-                            
                         @else
                             African Art
                         @endif
                     </small>
                 </span>
-                <h4 class="font-weight-semi-bold mb-4">{{ $product->getPrice() }}</h4>
-                <p class="mb-4">{{ $product->short_description }}
-                </p>
+                @if (!$price)
+                    <h4 class="font-weight-semi-bold mb-4">
+                        @if ($product->getPrice())
+                            {{ $product->getPrice() }}
+                        @else
+                            @php
+                                $array = [];
+                                foreach ($product->attributes as $attribute) {
+                                    array_push($array, $attribute->pivot->price . ' FCFA');
+                                }
+                                echo implode(' | ', $array);
+                            @endphp
+                        @endif
+                    </h4>
+                @else
+                    <h4 class="font-weight-semi-bold mb-4">{{ $price . " FCFA" }}</h4>
+                @endif
+
+                <p class="mb-4">{{ $product->short_description }}</p>
+                @if ($product->type_id == 2)
+                    <div class="d-flex mb-4">
+                        <p class="text-dark font-weight-medium mb-0 mr-3">Attribut</p>
+                        <form action="{{ route('variable', [$product]) }}" method="post" id="attrForm">
+                            @csrf
+                            <select name="attributeVal" id="attrSelect">
+                                <option value="">- Choisissez un attribut -</option>
+                                @foreach ($product->attributes as $attribute)
+                                    <option value="{{ $attribute->id }}" @if($attribute->id == $selected) selected @endif>{{ $attribute->name }}</option>
+                                @endforeach
+                            </select>
+                        </form>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <form>
+                            @if ($productValue)
+                                @foreach ($productValue as $value)
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input"
+                                        id="{{ $attribute->name . '-' . $value->id }}" name="{{ $attribute->name }}">
+                                        <label class="custom-control-label"
+                                            for="{{ $value->id }}">{{ $value->name }}</label>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </form>
+                    </div>
+                @endif
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <form action="{{ route('cart.store') }}" class="addCartForm" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{ $product->id }}">
                         <input type="hidden" name="title" value="{{ $product->title }}">
-                        <input type="hidden" name="price" value="{{ $product->price }}">
+                        @if (!$price)
+                            <input type="hidden" name="price" value="{{ $product->price }}">
+                        @else
+                            <input type="hidden" name="price" value="{{ $price }}">
+                        @endif
                         <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Ajouter
                             au
                             panier</button>
@@ -182,7 +229,8 @@
                                         <input type="email" class="form-control" id="email">
                                     </div>
                                     <div class="form-group mb-0">
-                                        <input type="submit" value="Laisser un commentaire" class="btn btn-primary px-3">
+                                        <input type="submit" value="Laisser un commentaire"
+                                            class="btn btn-primary px-3">
                                     </div>
                                 </form>
                             </div>
@@ -240,4 +288,14 @@
 
 
 @section('extra-js')
+    <script>
+        jQuery(document).ready(function($) {
+
+            $('#attrSelect').on('change', function(e) {
+                e.preventDefault();
+                $('#attrForm').submit();
+            })
+
+        });
+    </script>
 @endsection

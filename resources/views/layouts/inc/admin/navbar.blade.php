@@ -65,6 +65,18 @@
                     <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Valeurs</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ $active == 'topics' ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.topics.index') }}">
+                    <i class="align-middle" data-feather="bookmark"></i> <span class="align-middle">Sujets</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item {{ $active == 'posts' ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.posts.index') }}">
+                    <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Articles</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

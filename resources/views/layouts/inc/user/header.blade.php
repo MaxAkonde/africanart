@@ -114,7 +114,7 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{ route('index') }}" class="nav-item nav-link active">Accueil</a>
                             <a href="{{ route('shop') }}" class="nav-item nav-link">Boutique</a>
-                            <a href="#" class="nav-item nav-link">A propos</a>
+                            <a href="{{ route('blog') }}" class="nav-item nav-link">Blog</a>
                             <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                         </div>
                         @guest
@@ -201,7 +201,7 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{ route('index') }}" class="nav-item nav-link">Accueil</a>
                             <a href="{{ route('shop') }}" class="nav-item nav-link">Boutique</a>
-                            <a href="#" class="nav-item nav-link">A propos</a>
+                            <a href="{{ route('blog') }}" class="nav-item nav-link">Blog</a>
                             <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                         </div>
                         @guest

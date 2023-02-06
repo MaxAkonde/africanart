@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\User\ProfileUserRequest;
 use App\Models\Country;
+use App\Models\Post;
 use App\Models\User;
 
 class PageController extends Controller
@@ -48,6 +49,27 @@ class PageController extends Controller
         return view('pages.shop', [
             'latest' => $latest,
         ]);
+    }
+
+    public function blog()
+    {
+        $categories = DB::table('topics')
+            ->select(["topics.name", "topics.slug", DB::raw("COUNT(posts.topic_id) as post_count")])
+            ->join('posts', 'posts.topic_id', '=', 'topics.id')
+            ->groupBy('topics.name')
+            ->groupBy('topics.slug')
+            ->get();
+
+        $posts = Post::latest()->paginate(10);
+        return view('pages.blog', [
+            'posts' => $posts,
+            'categorie'
+        ]);
+    }
+
+    public function postSingle()
+    {
+        return view('pages.postSingle');
     }
 
     public function single(Product $product)
@@ -169,7 +191,7 @@ class PageController extends Controller
     public function myshop()
     {
         $latest = Product::where('user_id', '=', Auth::user()->id)->paginate(12);
-        
+
         return view('pages.myownshop', [
             'latest' => $latest,
         ]);

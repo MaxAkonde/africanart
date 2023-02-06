@@ -20,7 +20,9 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [PageController::class, 'home'])->name('index');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/shop', [PageController::class, 'shop'])->name('shop');
+Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 Route::get('/single/{product}', [PageController::class, 'single'])->name('single');
+Route::get('/post/single', [PageController::class, 'postSingle'])->name('postSingle');
 Route::get('/tracking', [PageController::class, 'tracking'])->name('tracking');
 Route::post('/tracking', [PageController::class, 'findOrder'])->name('findOrder');
 Route::get('/confirmation/{codepin}', [PageController::class, 'confirmation'])->name('confirmation');
@@ -59,5 +61,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'namespace' => 'App\Http\Cont
     Route::resource('shippings', 'ShippingController');
     Route::resource('attributes', 'AttributeController');
     Route::resource('values', 'ValueController');
+    Route::resource('posts', 'PostController');
+    Route::resource('topics', 'TopicController');
 
 });

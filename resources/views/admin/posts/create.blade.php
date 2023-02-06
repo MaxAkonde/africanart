@@ -1,5 +1,17 @@
 @extends('layouts.admin')
 
+@section('extra-css')
+    <!-- TinyMCE -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#description',
+            toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
+                'bullist numlist checklist outdent indent | removeformat | code table help'
+        })
+    </script>
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-12 col-lg-12">
@@ -42,8 +54,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="price">Description</label>
-                            <textarea name="description" id="description" class="form-control" cols="30" rows="10" required>{{ old('price') }}</textarea>
+                            <label class="form-label" for="description">Description</label>
+                            <textarea name="description" id="description" cols="30" rows="10"></textarea>
 
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
@@ -59,4 +71,7 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('extra-js')
 @endsection

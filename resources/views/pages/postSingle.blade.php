@@ -44,27 +44,7 @@
                             </div>
                             
                             <p>
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, magnam doloribus veritatis
-                                mollitia accusantium minima incidunt iusto nihil, accusamus quos sunt porro, ex fuga sequi
-                                adipisci. Ullam nulla commodi incidunt.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, magnam doloribus veritatis
-                                mollitia accusantium minima incidunt iusto nihil, accusamus quos sunt porro, ex fuga sequi
-                                adipisci. Ullam nulla commodi incidunt.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, magnam doloribus veritatis
-                                mollitia accusantium minima incidunt iusto nihil, accusamus quos sunt porro, ex fuga sequi
-                                adipisci. Ullam nulla commodi incidunt.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, magnam doloribus veritatis
-                                mollitia accusantium minima incidunt iusto nihil, accusamus quos sunt porro, ex fuga sequi
-                                adipisci. Ullam nulla commodi incidunt.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, magnam doloribus veritatis
-                                mollitia accusantium minima incidunt iusto nihil, accusamus quos sunt porro, ex fuga sequi
-                                adipisci. Ullam nulla commodi incidunt.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, magnam doloribus veritatis
-                                mollitia accusantium minima incidunt iusto nihil, accusamus quos sunt porro, ex fuga sequi
-                                adipisci. Ullam nulla commodi incidunt.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, magnam doloribus veritatis
-                                mollitia accusantium minima incidunt iusto nihil, accusamus quos sunt porro, ex fuga sequi
-                                adipisci. Ullam nulla commodi incidunt.
+                                {!! $post->description !!}
                             </p>
                             <div class="d-flex justify-content-between mb-4">
                                 <div>

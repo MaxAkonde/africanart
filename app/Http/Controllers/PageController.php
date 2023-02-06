@@ -59,17 +59,19 @@ class PageController extends Controller
             ->groupBy('topics.name')
             ->groupBy('topics.slug')
             ->get();
-
+        //dd($categories);
         $posts = Post::latest()->paginate(10);
         return view('pages.blog', [
             'posts' => $posts,
-            'categorie'
+            'categories' => $categories
         ]);
     }
 
-    public function postSingle()
+    public function postSingle(Post $post)
     {
-        return view('pages.postSingle');
+        return view('pages.postSingle', [
+            'post' => $post,
+        ]);
     }
 
     public function single(Product $product)

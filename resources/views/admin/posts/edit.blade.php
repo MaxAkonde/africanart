@@ -1,5 +1,17 @@
 @extends('layouts.admin')
 
+@section('extra-css')
+    <!-- TinyMCE -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#description',
+            toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
+                'bullist numlist checklist outdent indent | removeformat | code table help'
+        })
+    </script>
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-12 col-lg-12">
@@ -47,10 +59,6 @@
                             <label class="form-label" for="description">Prix</label>
 
                             <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $post->description }}</textarea>
-                            
-                            {{-- <input class="form-control @error('price') is-invalid @enderror" type="text" name="price"
-                                id="price" placeholder="Entrer le prix" value="{{ $shipping->price }}"
-                                autocomplete="price" required autofocus> --}}
 
                             @error('description')
                                 <span class="invalid-feedback" role="alert">

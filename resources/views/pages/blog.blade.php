@@ -45,7 +45,7 @@
                                 </div>
 
                                 <p>
-                                    {{ $post->execpt() }}...
+                                    {!! $post->execpt() !!}[...]
                                 </p>
                                 <div class="d-flex justify-content-between">
                                     <div>
@@ -71,7 +71,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <a href="#" class="btn btn-outline-primary py-md-2 px-md-3">Lire la suite</a>
+                                    <a href="{{ route('postSingle', $post) }}" class="btn btn-outline-primary py-md-2 px-md-3">Lire la suite</a>
                                 </div>
                             </div>
                         </div>
@@ -97,28 +97,15 @@
                     </div>
                 </div>
                 <h5 class="font-weight-semi-bold mb-3">Catégories</h5>
-                {{-- <p>Justo sed diam ut sed amet duo amet lorem amet stet sea ipsum, sed duo amet et. Est elitr dolor elitr
-                    erat sit sit. Dolor diam et erat clita ipsum justo sed.</p> --}}
                 <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Inbox
-                        <span class="badge badge-primary badge-pill">12</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Ads
-                        <span class="badge badge-primary badge-pill">50</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Junk
-                        <span class="badge badge-primary badge-pill">99</span>
-                    </li>
+                    @forelse ($categories as $item)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $item->name }}
+                            <span class="badge badge-primary badge-pill">{{ $item->post_count }}</span>
+                        </li>
+                    @empty
+                    @endforelse
                 </ul>
-                {{-- <div class="d-flex flex-column mb-3">
-                    <h5 class="font-weight-semi-bold mb-3">Store 1</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
-                </div> --}}
             </div>
             <div class="col-12 pb-1">
                 <nav aria-label="Page navigation">

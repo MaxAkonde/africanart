@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 
 @section('extra-css')
+    <style>
+        img.img-thumbnail {
+            cursor: pointer;
+        }
+    </style>
     <!-- TinyMCE -->
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
@@ -20,7 +25,7 @@
                     <h5 class="card-title mb-0">Modifier {{ $post->title }}</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.posts.update', $post->id) }}" method="post">
+                    <form action="{{ route('admin.posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -56,11 +61,25 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="description">Prix</label>
+                            <label class="form-label" for="description">Description</label>
 
                             <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $post->description }}</textarea>
 
                             @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="d-block form-label" for="image">Image à la une</label>
+                            <img src="@if ($post->image) {{ asset('assets/posts/' . $post->image) }} @else https://via.placeholder.com/200 @endif"
+                                class="img-thumbnail mb-2" alt="Image à la une" style="height: 200px;width: 200px">
+                            <input type="file" id="image" name="image" style="display: none"
+                                class="form-control-file @error('image') is-invalid @enderror">
+
+                            @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -74,4 +93,33 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('extra-js')
+    <script>
+        jQuery(document).ready(function($) {
+
+            $('#image').on('change', function(e) {
+                //alert('1');
+                var input = this;
+                var url = $(this).val();
+                var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+                if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" ||
+                        ext == "jpg")) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('img.img-thumbnail').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    $('img.img-thumbnail').attr('src', 'https://via.placeholder.com/200');
+                }
+            });
+
+            $("img.img-thumbnail").click(function() {
+                $("#image").click();
+            });
+        });
+    </script>
 @endsection

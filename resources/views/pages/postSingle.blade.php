@@ -29,18 +29,18 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card produt-item border-0 mb-4">
-                            <h2 class="font-weight-semi-bold mb-3">Men's dresses</h2>
+                            <h2 class="font-weight-semi-bold mb-3">{{ $post->title }}</h2>
                             <small class="mb-3">
                                 <i class="fas fa-clock"></i>
-                                Il y a 20 min
+                                {{ $post->created_at->diffForHumans() }}
                             </small>
                             <h6 class="text-truncate mb-3">
                                 <i class="fas fa-bookmark"></i>
-                                Colorful Stylish Shirt
+                                {{ $post->topic->name }}
                             </h6>
                             <div
                                 class="card-header product-img position-relative-overwflow-hidden bg-transparent border p-0 mb-4">
-                                <img src="https://via.placeholder.com/750x400" alt="" class="img-fluid w-100">
+                                <img src="{{ asset('assets/posts/' . $post->image) }}" alt="" class="img-fluid w-100">
                             </div>
                             
                             <p>
@@ -114,18 +114,13 @@
                 </div>
                 <h5 class="font-weight-semi-bold mb-3">Catégories</h5>
                 <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Inbox
-                        <span class="badge badge-primary badge-pill">12</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Ads
-                        <span class="badge badge-primary badge-pill">50</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Junk
-                        <span class="badge badge-primary badge-pill">99</span>
-                    </li>
+                    @forelse ($categories as $item)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $item->name }}
+                            <span class="badge badge-primary badge-pill">{{ $item->post_count }}</span>
+                        </li>
+                    @empty
+                    @endforelse
                 </ul>
             </div>
         </div>

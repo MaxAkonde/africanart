@@ -59,9 +59,21 @@ class PostController extends Controller
         $post->topic_id = $request->topic_id;
         $post->description = $request->description;
 
+        $post->image = $this->uploadImage($request->file('image'));
+
         $post->save();
 
         return redirect()->route('admin.posts.index')->with('status', $request->name . ' a été enregistrer avec succes !');
+    }
+
+    private function uploadImage($requestImage)
+    {
+        if ($requestImage) {
+            $file = $requestImage;
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('assets/posts'), $filename);
+            return $filename;
+        }
     }
 
     /**
@@ -100,9 +112,22 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+        $image = $request->file('image');
+
+        if ($image) {
+            try {
+                unlink("assets/posts/" . $post->image);
+            } catch (\Throwable $th) {
+            }
+        }
+
         $post->title = $request->title;
         $post->description = $request->description;
         $post->topic_id = $request->topic_id;
+
+        if ($image) {
+            $post->image = $this->uploadImage($request->file('image'));
+        }
 
         $post->update();
 
@@ -117,6 +142,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        try {
+            unlink("assets/posts/" . $post->image);
+        } catch (\Throwable $th) {
+        }
+
         $name = $post->name;
 
         $post->delete();

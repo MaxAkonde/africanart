@@ -41,7 +41,7 @@
                                 </h6>
                                 <div
                                     class="card-header product-img position-relative-overwflow-hidden bg-transparent border p-0 mb-4">
-                                    <img src="https://via.placeholder.com/750x400" alt="" class="img-fluid w-100">
+                                    <img src="{{ asset('assets/posts/' . $post->image) }}" alt="" class="img-fluid w-100">
                                 </div>
 
                                 <p>
@@ -108,7 +108,8 @@
                 </ul>
             </div>
             <div class="col-12 pb-1">
-                <nav aria-label="Page navigation">
+                {{ $posts->links('vendor.pagination.user') }}
+                {{-- <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center mb-3">
                         <li class="page-item disabled">
                             <a class="page-link" href="#" aria-label="Previous">
@@ -126,7 +127,7 @@
                             </a>
                         </li>
                     </ul>
-                </nav>
+                </nav> --}}
             </div>
         </div>
     </div>

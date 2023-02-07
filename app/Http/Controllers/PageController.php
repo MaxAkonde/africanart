@@ -69,8 +69,16 @@ class PageController extends Controller
 
     public function postSingle(Post $post)
     {
+        $categories = DB::table('topics')
+            ->select(["topics.name", "topics.slug", DB::raw("COUNT(posts.topic_id) as post_count")])
+            ->join('posts', 'posts.topic_id', '=', 'topics.id')
+            ->groupBy('topics.name')
+            ->groupBy('topics.slug')
+            ->get();
+
         return view('pages.postSingle', [
             'post' => $post,
+            'categories' => $categories,
         ]);
     }
 

@@ -54,7 +54,7 @@
                 </a>
             </li>
 
-            <li class="sidebar-item {{ $active == 'attributes' ? 'active' : '' }}">
+            {{-- <li class="sidebar-item {{ $active == 'attributes' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('admin.attributes.index') }}">
                     <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Attributs</span>
                 </a>
@@ -64,7 +64,7 @@
                 <a class="sidebar-link" href="{{ route('admin.values.index') }}">
                     <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Valeurs</span>
                 </a>
-            </li>
+            </li> --}}
 
             <li class="sidebar-item {{ $active == 'topics' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('admin.topics.index') }}">

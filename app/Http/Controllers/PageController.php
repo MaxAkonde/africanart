@@ -43,55 +43,6 @@ class PageController extends Controller
         return view('pages.contact');
     }
 
-    public function shop()
-    {
-        $latest = Product::latest()->paginate(12);
-        return view('pages.shop', [
-            'latest' => $latest,
-        ]);
-    }
-
-    public function blog()
-    {
-        $categories = DB::table('topics')
-            ->select(["topics.name", "topics.slug", DB::raw("COUNT(posts.topic_id) as post_count")])
-            ->join('posts', 'posts.topic_id', '=', 'topics.id')
-            ->groupBy('topics.name')
-            ->groupBy('topics.slug')
-            ->get();
-        //dd($categories);
-        $posts = Post::latest()->paginate(10);
-        return view('pages.blog', [
-            'posts' => $posts,
-            'categories' => $categories
-        ]);
-    }
-
-    public function postSingle(Post $post)
-    {
-        $categories = DB::table('topics')
-            ->select(["topics.name", "topics.slug", DB::raw("COUNT(posts.topic_id) as post_count")])
-            ->join('posts', 'posts.topic_id', '=', 'topics.id')
-            ->groupBy('topics.name')
-            ->groupBy('topics.slug')
-            ->get();
-
-        return view('pages.postSingle', [
-            'post' => $post,
-            'categories' => $categories,
-        ]);
-    }
-
-    public function single(Product $product)
-    {
-        $latest = Product::latest()->paginate(4);
-
-        return view('pages.single', [
-            'product' => $product,
-            'latest' => $latest,
-        ]);
-    }
-
     public function confirmation($codepin)
     {
         $order = Order::where('pincode', '=', $codepin)->firstOrFail();
@@ -130,34 +81,6 @@ class PageController extends Controller
         }
 
         return view('auth.login');
-    }
-
-    public function search(Request $request)
-    {
-
-        $validated = $request->validate([
-            'title' => 'required',
-        ]);
-
-        $latest = Product::where('title', 'like', '%' . $request->title . '%')->paginate(12);
-
-        return view('pages.shop', [
-            'query' => $request->title,
-            'latest' => $latest,
-        ]);
-    }
-
-    public function category($slug)
-    {
-        $latest = Product::join('categories', 'categories.id', '=', 'products.category_id')
-            ->where('categories.name', $slug)
-            ->select(['products.*'])
-            ->paginate(12);
-
-        return view('pages.shop', [
-            'query' => $slug,
-            'latest' => $latest,
-        ]);
     }
 
     public function addproduct()

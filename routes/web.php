@@ -5,6 +5,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,18 +19,24 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
+/** PageController Route */
 Route::get('/', [PageController::class, 'home'])->name('index');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
-Route::get('/shop', [PageController::class, 'shop'])->name('shop');
-Route::get('/blog', [PageController::class, 'blog'])->name('blog');
-Route::get('/single/{product}', [PageController::class, 'single'])->name('single');
-Route::get('/post/single/{post}', [PageController::class, 'postSingle'])->name('postSingle');
 Route::get('/tracking', [PageController::class, 'tracking'])->name('tracking');
 Route::post('/tracking', [PageController::class, 'findOrder'])->name('findOrder');
 Route::get('/confirmation/{codepin}', [PageController::class, 'confirmation'])->name('confirmation');
+
+/** ProductController Route */
+Route::get('/shop', [ProductController::class, 'index'])->name('product.index');
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/category/{name}', [ProductController::class, 'category'])->name('category');
+Route::post('/search', [ProductController::class, 'search'])->name('search');
+
+/** PostController Route */
+Route::get('/blog', [PostController::class, 'index'])->name('post.index');
+Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
+
 Route::get('/commandes', [PageController::class, 'commande'])->name('commandes');
-Route::post('/search', [PageController::class, 'search'])->name('search');
-Route::get('/category/{name}', [PageController::class, 'category'])->name('category');
 Route::get('/addproduct', [PageController::class, 'addproduct'])->name('addproduct');
 Route::post('/addproduct', [PageController::class, 'storeproduct'])->name('storeproduct');
 Route::get('/myshop', [PageController::class, 'myshop'])->name('myshop');

@@ -1,7 +1,7 @@
 <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
     <div class="row px-xl-5 pt-5">
         <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-            <a href="" class="text-decoration-none">
+            <a href="{{ route('index') }}" class="text-decoration-none">
                 <h1 class="mb-4 display-5 font-weight-semi-bold"><span
                         class="text-primary font-weight-bold border border-white px-3 mr-1">African</span>Art</h1>
             </a>
@@ -26,7 +26,7 @@
                     <h5 class="font-weight-bold text-dark mb-4">Navigation</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-dark mb-2" href="{{ route('index') }}"><i class="fa fa-angle-right mr-2"></i>Accueil</a>
-                        <a class="text-dark mb-2" href="{{ route('shop') }}"><i class="fa fa-angle-right mr-2"></i>Boutique</a>
+                        <a class="text-dark mb-2" href="{{ route('product.index') }}"><i class="fa fa-angle-right mr-2"></i>Boutique</a>
                         <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>A propos</a>
                         <a class="text-dark mb-2" href="{{ route('contact') }}"><i class="fa fa-angle-right mr-2"></i>Contact</a>
                         <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Mon compte</a>

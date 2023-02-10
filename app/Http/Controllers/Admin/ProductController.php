@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(10);
+        $products = Product::latest()->paginate(15);
         return view('admin.products.index', [
             'products' => $products,
             'active' => $this->active,

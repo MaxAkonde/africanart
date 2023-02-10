@@ -218,7 +218,7 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="{{ route('single', $item) }}" class="btn btn-sm text-dark p-0"><i
+                                <a href="{{ route('product.show', $item) }}" class="btn btn-sm text-dark p-0"><i
                                         class="fas fa-eye text-primary mr-1"></i>Voir les Détails</a>
                                 <form action="{{ route('cart.store') }}" class="addCartForm" method="POST">
                                     @csrf

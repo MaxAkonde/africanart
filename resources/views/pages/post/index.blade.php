@@ -71,7 +71,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <a href="{{ route('postSingle', $post) }}" class="btn btn-outline-primary py-md-2 px-md-3">Lire la suite</a>
+                                    <a href="{{ route('post.show', $post) }}" class="btn btn-outline-primary py-md-2 px-md-3">Lire la suite</a>
                                 </div>
                             </div>
                         </div>

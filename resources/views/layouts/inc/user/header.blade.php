@@ -103,7 +103,7 @@
             </div>
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                    <a href="" class="text-decoration-none d-block d-lg-none">
+                    <a href="{{ route('index') }}" class="text-decoration-none d-block d-lg-none">
                         <h1 class="m-0 display-5 font-weight-semi-bold"><span
                                 class="text-primary font-weight-bold border px-3 mr-1">African</span>Art</h1>
                     </a>
@@ -113,8 +113,8 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{ route('index') }}" class="nav-item nav-link active">Accueil</a>
-                            <a href="{{ route('shop') }}" class="nav-item nav-link">Boutique</a>
-                            <a href="{{ route('blog') }}" class="nav-item nav-link">Blog</a>
+                            <a href="{{ route('product.index') }}" class="nav-item nav-link">Boutique</a>
+                            <a href="{{ route('post.index') }}" class="nav-item nav-link">Blog</a>
                             <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                         </div>
                         @guest
@@ -200,8 +200,8 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{ route('index') }}" class="nav-item nav-link">Accueil</a>
-                            <a href="{{ route('shop') }}" class="nav-item nav-link">Boutique</a>
-                            <a href="{{ route('blog') }}" class="nav-item nav-link">Blog</a>
+                            <a href="{{ route('product.index') }}" class="nav-item nav-link">Boutique</a>
+                            <a href="{{ route('post.index') }}" class="nav-item nav-link">Blog</a>
                             <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                         </div>
                         @guest

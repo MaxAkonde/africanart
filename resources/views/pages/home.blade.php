@@ -96,12 +96,12 @@
                     <div class="card product-item mb-4" style="border:1px solid #f3f3f3;">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0"
                             style="box-shadow: 1px 1px 5px #ddd">
-                            <a href="{{ route('single', $item) }}"><img class="img-fluid w-100 products_image"
+                            <a href="{{ route('product.show', $item) }}"><img class="img-fluid w-100 products_image"
                                     src="{{ asset('assets/products/' . $item->image) }}" alt=""></a>
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3"
                             style="box-shadow: 1px 1px 5px #ddd">
-                            <h6 class="text-truncate"><a href="{{ route('single', $item) }}"
+                            <h6 class="text-truncate"><a href="{{ route('product.show', $item) }}"
                                     style="text-decoration: none">{{ $item->title }}</a></h6>
                             <small>{{ $item->category->name }}</small>
                             <div class="d-flex justify-content-center">
@@ -164,11 +164,11 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-6 pb-1">
                     <div class="card product-item border-0 mb-4">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <a href="{{ route('single', $item) }}"><img class="img-fluid w-100 products_image"
+                            <a href="{{ route('product.show', $item) }}"><img class="img-fluid w-100 products_image"
                                     src="{{ asset('assets/products/' . $item->image) }}" alt=""></a>
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate"><a href="{{ route('single', $item) }}"
+                            <h6 class="text-truncate"><a href="{{ route('product.show', $item) }}"
                                     style="text-decoration: none">{{ $item->title }}</a></h6>
                             <small>{{ $item->category->name }}</small>
                             <div class="d-flex justify-content-center">

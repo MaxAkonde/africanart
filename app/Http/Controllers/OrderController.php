@@ -7,6 +7,7 @@ use App\Mail\SendMail;
 use App\Models\Country;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -26,6 +27,35 @@ class OrderController extends Controller
             'orders' => $orders,
             'active' => 'orders',
         ]);
+    }
+
+    public function confirmation($codepin)
+    {
+        $order = Order::where('pincode', '=', $codepin)->firstOrFail();
+        return view('pages.order.confirmation', [
+            'order' => $order,
+        ]);
+    }
+
+    
+
+    public function tracking()
+    {
+        return view('pages.order.tracking');
+    }
+
+    public function findOrder(Request $request)
+    {
+        //dd($request);
+        $order = DB::table('orders')
+            ->where('pincode', $request->order)
+            ->where('email', $request->email)
+            ->get();
+        if (count($order)) {
+            return redirect()->route('confirmation', $request->order);
+        }
+
+        return redirect()->route('tracking')->with('status', 'Veuillez entrer des informations');
     }
 
     /**

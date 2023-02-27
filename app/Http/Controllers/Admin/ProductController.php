@@ -67,7 +67,10 @@ class ProductController extends Controller
 
         $product->save();
         
-        $gallery = (new AttachmentController)->store($request, $product->id);
+        if($request->file('attachment'))
+        {
+            $gallery = (new AttachmentController)->store($request, $product->id);
+        }
 
         return redirect()->route('admin.products.index')->with('status', $request->title . ' a été enregistrer avec succes !');
     }

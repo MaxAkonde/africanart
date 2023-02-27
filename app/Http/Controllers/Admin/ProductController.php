@@ -80,7 +80,7 @@ class ProductController extends Controller
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path("assets/products"), $filename);
             $path = public_path("assets\products\\" . $filename);
-            //dd($path);
+            dd($path);
             $img = Image::make($path);
             $img->fit(500, 500);
             $img->save(public_path("assets\products\\thumbnails\\" . $filename));

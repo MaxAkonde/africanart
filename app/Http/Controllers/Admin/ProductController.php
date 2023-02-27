@@ -79,11 +79,11 @@ class ProductController extends Controller
             $file = $requestImage;
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path("assets/products"), $filename);
-            $path = public_path("assets\products\\" . $filename);
-            dd($path);
+            $path = public_path("assets/products/" . $filename);
+            //dd($path);
             $img = Image::make($path);
             $img->fit(500, 500);
-            $img->save(public_path("assets\products\\thumbnails\\" . $filename));
+            $img->save(public_path("assets/products/thumbnails/" . $filename));
             return $filename;
         }
     }

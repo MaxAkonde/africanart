@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('extra-css')
+    <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
+
     <style>
         img.img-thumbnail {
             cursor: pointer;
@@ -16,7 +18,7 @@
                     <h5 class="card-title mb-0">Ajouter un produit</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data" id="form">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="title">Titre</label>
@@ -87,18 +89,31 @@
                         </div>
 
 
-                        <div class="mb-3">
-                            <label class="d-block form-label" for="image">Image à la une</label>
-                            <img src="https://via.placeholder.com/200" class="img-thumbnail mb-2" alt="Image à la une"
-                                style="height: 200px;width: 200px">
-                            <input type="file" id="image" name="image" style="display: none"
-                                class="form-control-file @error('image') is-invalid @enderror">
-
-                            @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="mb-3 row">
+                            <div class="col-md-4">
+                                <label class="d-block form-label" for="image">Image à la une</label>
+                                <img src="https://via.placeholder.com/200" class="img-thumbnail mb-2" alt="Image à la une"
+                                    style="height: 200px;width: 200px">
+                                <input type="file" id="image" name="image" style="display: none"
+                                    class="form-control-file @error('image') is-invalid @enderror">
+    
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-8">
+                                <label class="d-block form-label" for="attachement">Galerie</label>
+                                <input type="file" name="attachment[]" id="attachment" multiple hidden>
+                                <div class="multiple-uploader" id="multiple-uploader">
+                                    <div class="mup-msg">
+                                      <span class="mup-main-msg">Cliquez pour téléverser des photos.</span>
+                                      <span class="mup-msg" id="max-upload-number">Téléverser jusqu'à 05 images</span>
+                                      <span class="mup-msg">Seules les images sont autorisées.</span>
+                                    </div>
+                                  </div>
+                            </div>
                         </div>
                         <div class="mt-3">
                             <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
@@ -111,6 +126,8 @@
 @endsection
 
 @section('extra-js')
+    <script src="{{ asset('admin/js/multiple-uploader.js') }}"></script>
+
     <script>
         jQuery(document).ready(function($) {
 
@@ -135,6 +152,15 @@
             $("img.img-thumbnail").click(function() {
                 $("#image").click();
             });
+
+            let multipleUploader = new MultipleUploader('#multiple-uploader').init({
+                maxUpload : 5,
+                // input name sent to backend
+                filesInpName:'attachment', 
+                // form selector
+                formSelector: '#form', 
+            });
+
         });
     </script>
 @endsection

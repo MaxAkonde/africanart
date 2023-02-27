@@ -96,8 +96,11 @@
                     <div class="card product-item mb-4" style="border:1px solid #f3f3f3;">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0"
                             style="box-shadow: 1px 1px 5px #ddd">
-                            <a href="{{ route('product.show', $item) }}"><img class="img-fluid w-100 products_image"
-                                    src="{{ asset('assets/products/' . $item->image) }}" alt=""></a>
+                            <a href="{{ route('product.show', $item) }}">
+                                {{-- <div class="img-fluid w-100 products_image" style="width:100%;height:450px;background-image:url({{ asset('assets/products/' . $item->image) }});background-size:cover;background-position:center center;"></div> --}}
+                               <img class="img-fluid w-100 products_image"
+                                    src="{{ asset('assets/products/thumbnails/' . $item->image) }}" alt="">
+                            </a>
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3"
                             style="box-shadow: 1px 1px 5px #ddd">
@@ -165,7 +168,7 @@
                     <div class="card product-item border-0 mb-4">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                             <a href="{{ route('product.show', $item) }}"><img class="img-fluid w-100 products_image"
-                                    src="{{ asset('assets/products/' . $item->image) }}" alt=""></a>
+                                    src="{{ asset('assets/products/thumbnails/' . $item->image) }}" alt=""></a>
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate"><a href="{{ route('product.show', $item) }}"

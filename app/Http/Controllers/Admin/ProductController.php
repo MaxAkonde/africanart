@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 
@@ -65,6 +66,8 @@ class ProductController extends Controller
         $product->image = $this->uploadImage($request->file('image'));
 
         $product->save();
+        
+        $gallery = (new AttachmentController)->store($request, $product->id);
 
         return redirect()->route('admin.products.index')->with('status', $request->title . ' a été enregistrer avec succes !');
     }
@@ -72,9 +75,15 @@ class ProductController extends Controller
     private function uploadImage($requestImage)
     {
         if ($requestImage) {
+            //dd($requestImage);
             $file = $requestImage;
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path("assets/products"), $filename);
+            $path = public_path("assets\products\\" . $filename);
+            //dd($path);
+            $img = Image::make($path);
+            $img->fit(500, 500);
+            $img->save(public_path("assets\products\\thumbnails\\" . $filename));
             return $filename;
         }
     }
@@ -118,6 +127,7 @@ class ProductController extends Controller
         $image = $request->file('image');
         if ($image) {
             unlink("assets/products/" . $product->image);
+            unlink("assets/products/thumbnails" . $product->image);
         }
 
         $product->title = $request->title;
@@ -143,7 +153,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        unlink("assets/products/" . $product->image);
+        try {
+            unlink("assets/products/" . $product->image);
+            unlink("assets/products/thumbnails" . $product->image);
+        } catch (\Throwable $th) {
+        }
 
         $name = $product->name;
 

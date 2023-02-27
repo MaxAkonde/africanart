@@ -21,6 +21,11 @@ class Product extends Model
         return $this->belongsToMany(Order::class);
     }
 
+    public function attachments()
+    {
+        return $this->hasMany(Attachment::class);
+    }
+
     public function getPrice()
     {
         $price = $this->price;

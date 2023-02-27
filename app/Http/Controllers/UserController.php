@@ -96,7 +96,7 @@ class UserController extends Controller
     {
         $latest = Product::where('user_id', '=', Auth::user()->id)->paginate(12);
 
-        return view('pages.myownshop', [
+        return view('pages.user.myownshop', [
             'latest' => $latest,
         ]);
     }

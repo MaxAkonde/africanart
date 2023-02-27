@@ -39,6 +39,13 @@
                         <div class="carousel-item active">
                             <img class="w-100 h-100" src="{{ asset('assets/products/' . $product->image) }}" alt="Image">
                         </div>
+
+                        @foreach ($product->attachments as $item)
+                            <div class="carousel-item">
+                                <img class="w-100 h-100" src="{{ asset('assets/products/' . $item->image) }}" alt="Image">
+                            </div>
+                        @endforeach
+
                     </div>
                     <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                         <i class="fa fa-2x fa-angle-left text-dark"></i>
@@ -54,9 +61,8 @@
                 <h6 class="font-weight-semi-bold">{{ $product->category->name }}</h6>
                 <span class="mb-4">
                     <small>
-                        <i class="fa fa-check"></i> Vendu par 
+                        <i class="fa fa-check"></i> Vendu par
                         @if (isset($product->user_id))
-                            
                         @else
                             African Art
                         @endif
@@ -182,7 +188,8 @@
                                         <input type="email" class="form-control" id="email">
                                     </div>
                                     <div class="form-group mb-0">
-                                        <input type="submit" value="Laisser un commentaire" class="btn btn-primary px-3">
+                                        <input type="submit" value="Laisser un commentaire"
+                                            class="btn btn-primary px-3">
                                     </div>
                                 </form>
                             </div>
@@ -207,8 +214,8 @@
                         <div class="card product-item border-0">
                             <div
                                 class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                <img class="img-fluid w-100" style="width: 500px; height:350px;"
-                                    src="{{ asset('assets/products/' . $item->image) }}" alt="">
+                                <img class="img-fluid w-100"
+                                    src="{{ asset('assets/products/thumbnails/' . $item->image) }}" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                 <h6 class="text-truncate mb-3">{{ $item->title }}</h6>

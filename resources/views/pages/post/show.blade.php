@@ -40,9 +40,10 @@
                             </h6>
                             <div
                                 class="card-header product-img position-relative-overwflow-hidden bg-transparent border p-0 mb-4">
-                                <img src="{{ asset('assets/posts/' . $post->image) }}" alt="" class="img-fluid w-100">
+                                <img src="{{ asset('assets/posts/' . $post->image) }}" alt=""
+                                    class="img-fluid w-100">
                             </div>
-                            
+
                             <p>
                                 {!! $post->description !!}
                             </p>
@@ -91,7 +92,7 @@
                                     </div>
                                 </form>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

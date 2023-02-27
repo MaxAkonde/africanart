@@ -77,5 +77,4 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'namespace' => 'App\Http\Cont
     Route::resource('values', 'ValueController');
     Route::resource('posts', 'PostController');
     Route::resource('topics', 'TopicController');
-
 });

@@ -41,7 +41,8 @@
                                 </h6>
                                 <div
                                     class="card-header product-img position-relative-overwflow-hidden bg-transparent border p-0 mb-4">
-                                    <img src="{{ asset('assets/posts/' . $post->image) }}" alt="" class="img-fluid w-100">
+                                    <img src="{{ asset('assets/posts/' . $post->image) }}" alt=""
+                                        class="img-fluid w-100">
                                 </div>
 
                                 <p>
@@ -71,7 +72,8 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <a href="{{ route('post.show', $post) }}" class="btn btn-outline-primary py-md-2 px-md-3">Lire la suite</a>
+                                    <a href="{{ route('post.show', $post) }}"
+                                        class="btn btn-outline-primary py-md-2 px-md-3">Lire la suite</a>
                                 </div>
                             </div>
                         </div>

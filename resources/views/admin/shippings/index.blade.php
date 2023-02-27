@@ -27,7 +27,8 @@
                                     <td>{{ $shipping->id }}</td>
                                     <td>{{ $shipping->name }}</td>
                                     <td>{{ $shipping->country->name }}</td>
-                                    <td>{{ $shipping->price }} FCFA</td><td>
+                                    <td>{{ $shipping->price }} FCFA</td>
+                                    <td>
                                         <a href="{{ route('admin.shippings.edit', $shipping->id) }}" title="Modifier">
                                             <i class="align-middle me-1" data-feather="edit"></i></a>
                                         <form action="{{ route('admin.shippings.destroy', $shipping->id) }}" method="POST"
@@ -45,7 +46,8 @@
                                 <tr>
                                     <td colspan="5">
                                         <div class="">
-                                            <p class="d-flex justify-content-center">Pas de livraison par pays disponible</p>
+                                            <p class="d-flex justify-content-center">Pas de livraison par pays disponible
+                                            </p>
                                         </div>
                                     </td>
                                 </tr>

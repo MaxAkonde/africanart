@@ -37,7 +37,7 @@ class OrderController extends Controller
         ]);
     }
 
-    
+
 
     public function tracking()
     {
@@ -125,7 +125,7 @@ class OrderController extends Controller
 
         $order->payment_id = $request->payment;
 
-        if(Auth::check()) {
+        if (Auth::check()) {
             $order->user_id = Auth::user()->id;
         }
 

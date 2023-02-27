@@ -68,7 +68,7 @@
                                 </span>
                             @enderror
                         </div>
-                        
+
                         <div class="mb-3">
                             <label class="d-block form-label" for="image">Image à la une</label>
                             <img src="https://via.placeholder.com/200" class="img-thumbnail mb-2" alt="Image à la une"

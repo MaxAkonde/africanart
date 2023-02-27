@@ -30,8 +30,7 @@ class Product extends Model
     {
         $price = $this->price;
         $devise = ' FCFA';
-        if($price > 900)
-        {
+        if ($price > 900) {
             $price = intval($price);
             return number_format($price, 0, '.', ' ') . $devise;
         }

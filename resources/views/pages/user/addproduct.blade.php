@@ -27,7 +27,8 @@
             <div class="col-lg-7 mb-5">
                 <div class="contact-form">
                     <div id="success"></div>
-                    <form action="{{ route('storeproduct') }}" id="addproduct" method="post" class="" enctype="multipart/form-data">
+                    <form action="{{ route('storeproduct') }}" id="addproduct" method="post" class=""
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="control-group">
                             <input type="text" name="title" class="form-control" id="title"

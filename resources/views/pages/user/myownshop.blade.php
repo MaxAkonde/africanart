@@ -20,13 +20,13 @@
 
     <!-- Shop Start -->
     <div class="container-fluid pt-5">
-        
+
 
         <div class="row px-xl-5">
             <!-- Shop Product Start -->
             <div class="col-lg-12 col-md-12">
                 <div class="row pb-3">
-                    
+
                 </div>
             </div>
             <!-- Shop Product End -->

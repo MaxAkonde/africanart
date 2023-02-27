@@ -27,8 +27,9 @@
                                 <tr>
                                     <td>{{ $product->id }}</td>
                                     <td>
-                                        <img src="{{ asset('assets/products/thumbnails/' . $product->image) }}" class=""
-                                            style="width: 45px" alt="Image a la une products {{ $product->id }}">
+                                        <img src="{{ asset('assets/products/thumbnails/' . $product->image) }}"
+                                            class="" style="width: 45px"
+                                            alt="Image a la une products {{ $product->id }}">
                                     </td>
                                     <td>{{ $product->title }}</td>
                                     <td>{{ $product->getPrice() }}</td>

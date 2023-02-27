@@ -29,7 +29,8 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ implode(' ,',$user->roles()->get()->pluck('name')->toArray()) }}</td>
                                     <td>
-                                        <a href="#" title="Mot de passe"><i class="align-middle me-1" data-feather="unlock"></i></a>
+                                        <a href="#" title="Mot de passe"><i class="align-middle me-1"
+                                                data-feather="unlock"></i></a>
                                         <a href="{{ route('admin.users.edit', $user->id) }}" title="Modifier">
                                             <i class="align-middle me-1" data-feather="edit"></i></a>
                                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"

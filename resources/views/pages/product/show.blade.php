@@ -42,7 +42,8 @@
 
                         @foreach ($product->attachments as $item)
                             <div class="carousel-item">
-                                <img class="w-100 h-100" src="{{ asset('assets/products/' . $item->image) }}" alt="Image">
+                                <img class="w-100 h-100" src="{{ asset('assets/products/' . $item->image) }}"
+                                    alt="Image">
                             </div>
                         @endforeach
 

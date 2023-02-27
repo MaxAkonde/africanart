@@ -16,21 +16,29 @@
                 <div class="col-md-4 mb-5">
                     <h5 class="font-weight-bold text-dark mb-4">Liens Utiles</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Mentions Légales</a>
-                        <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Livraison & Retour</a>
-                        <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Condition de vente</a>
-                        <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Politique de confidentialité</a>
+                        <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Mentions
+                            Légales</a>
+                        <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Livraison &
+                            Retour</a>
+                        <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Condition de
+                            vente</a>
+                        <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Politique de
+                            confidentialité</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
                     <h5 class="font-weight-bold text-dark mb-4">Navigation</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-dark mb-2" href="{{ route('index') }}"><i class="fa fa-angle-right mr-2"></i>Accueil</a>
-                        <a class="text-dark mb-2" href="{{ route('product.index') }}"><i class="fa fa-angle-right mr-2"></i>Boutique</a>
+                        <a class="text-dark mb-2" href="{{ route('index') }}"><i
+                                class="fa fa-angle-right mr-2"></i>Accueil</a>
+                        <a class="text-dark mb-2" href="{{ route('product.index') }}"><i
+                                class="fa fa-angle-right mr-2"></i>Boutique</a>
                         <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>A propos</a>
-                        <a class="text-dark mb-2" href="{{ route('contact') }}"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                        <a class="text-dark mb-2" href="{{ route('contact') }}"><i
+                                class="fa fa-angle-right mr-2"></i>Contact</a>
                         <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Mon compte</a>
-                        <a class="text-dark" href="{{ route('tracking') }}"><i class="fa fa-angle-right mr-2"></i>Tracking</a>
+                        <a class="text-dark" href="{{ route('tracking') }}"><i
+                                class="fa fa-angle-right mr-2"></i>Tracking</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
@@ -55,7 +63,9 @@
     <div class="row border-top border-light mx-xl-5 py-4">
         <div class="col-md-6 px-xl-0">
             <p class="mb-md-0 text-center text-md-left text-dark">
-                &copy; <a class="text-dark font-weight-semi-bold" href="#">Afrian Art</a>. Tous les droits sont réservés. Conçu par <a class="text-dark font-weight-semi-bold" target="_blank" href="https://www.divo-home.com">DIVO HOME</a><br>
+                &copy; <a class="text-dark font-weight-semi-bold" href="#">Afrian Art</a>. Tous les droits sont
+                réservés. Conçu par <a class="text-dark font-weight-semi-bold" target="_blank"
+                    href="https://www.divo-home.com">DIVO HOME</a><br>
                 {{-- Distributed By <a href="#" target="_blank">ThemeWagon</a> --}}
             </p>
         </div>

@@ -66,9 +66,8 @@ class ProductController extends Controller
         $product->image = $this->uploadImage($request->file('image'));
 
         $product->save();
-        
-        if($request->file('attachment'))
-        {
+
+        if ($request->file('attachment')) {
             $gallery = (new AttachmentController)->store($request, $product->id);
         }
 

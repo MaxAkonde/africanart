@@ -98,7 +98,7 @@
                             style="box-shadow: 1px 1px 5px #ddd">
                             <a href="{{ route('product.show', $item) }}">
                                 {{-- <div class="img-fluid w-100 products_image" style="width:100%;height:450px;background-image:url({{ asset('assets/products/' . $item->image) }});background-size:cover;background-position:center center;"></div> --}}
-                               <img class="img-fluid w-100 products_image"
+                                <img class="img-fluid w-100 products_image"
                                     src="{{ asset('assets/products/thumbnails/' . $item->image) }}" alt="">
                             </a>
                         </div>

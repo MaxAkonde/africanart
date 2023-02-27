@@ -43,7 +43,7 @@
                             @enderror
                         </div>
 
-                        
+
                         <div class="mt-3">
                             <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
                         </div>

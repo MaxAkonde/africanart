@@ -44,8 +44,8 @@
                         <div class="mb-3">
                             <label class="form-label" for="price">Prix</label>
                             <input class="form-control @error('price') is-invalid @enderror" type="text" name="price"
-                                id="price" placeholder="Entrer le prix" value="{{ old('price') }}"
-                                autocomplete="price" required autofocus>
+                                id="price" placeholder="Entrer le prix" value="{{ old('price') }}" autocomplete="price"
+                                required autofocus>
 
                             @error('price')
                                 <span class="invalid-feedback" role="alert">

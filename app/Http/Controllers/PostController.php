@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *

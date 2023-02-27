@@ -29,7 +29,7 @@ class PaymentController extends Controller
         return view('admin.payments.index', [
             'payments' => $payments,
             'active' => $this->active,
-        ]);   
+        ]);
     }
 
     /**

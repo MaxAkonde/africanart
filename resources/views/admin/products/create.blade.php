@@ -18,7 +18,8 @@
                     <h5 class="card-title mb-0">Ajouter un produit</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data" id="form">
+                    <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data"
+                        id="form">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="title">Titre</label>
@@ -96,7 +97,7 @@
                                     style="height: 200px;width: 200px">
                                 <input type="file" id="image" name="image" style="display: none"
                                     class="form-control-file @error('image') is-invalid @enderror">
-    
+
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -108,11 +109,11 @@
                                 <input type="file" name="attachment[]" id="attachment" multiple hidden>
                                 <div class="multiple-uploader" id="multiple-uploader">
                                     <div class="mup-msg">
-                                      <span class="mup-main-msg">Cliquez pour téléverser des photos.</span>
-                                      <span class="mup-msg" id="max-upload-number">Téléverser jusqu'à 05 images</span>
-                                      <span class="mup-msg">Seules les images sont autorisées.</span>
+                                        <span class="mup-main-msg">Cliquez pour téléverser des photos.</span>
+                                        <span class="mup-msg" id="max-upload-number">Téléverser jusqu'à 05 images</span>
+                                        <span class="mup-msg">Seules les images sont autorisées.</span>
                                     </div>
-                                  </div>
+                                </div>
                             </div>
                         </div>
                         <div class="mt-3">
@@ -154,11 +155,11 @@
             });
 
             let multipleUploader = new MultipleUploader('#multiple-uploader').init({
-                maxUpload : 5,
+                maxUpload: 5,
                 // input name sent to backend
-                filesInpName:'attachment', 
+                filesInpName: 'attachment',
                 // form selector
-                formSelector: '#form', 
+                formSelector: '#form',
             });
 
         });

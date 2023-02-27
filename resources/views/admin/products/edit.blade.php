@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('extra-css')
+    <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
+
     <style>
         img.img-thumbnail {
             cursor: pointer;
@@ -16,7 +18,8 @@
                     <h5 class="card-title mb-0">Modifier {{ $product->name }}</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.products.update', $product) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.products.update', $product) }}" method="post"
+                        enctype="multipart/form-data" id="form">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -77,15 +80,29 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="long_description">Description longue</label>
-                            <textarea name="long_description" id="long_description" name="long_description"
-                                class="form-control @error('long_description') is-invalid @enderror" cols="30" rows="10" required>{{ $product->long_description }}</textarea>
+                            <div class="col-md-4">
+                                <label class="form-label" for="long_description">Description longue</label>
+                                <textarea name="long_description" id="long_description" name="long_description"
+                                    class="form-control @error('long_description') is-invalid @enderror" cols="30" rows="10" required>{{ $product->long_description }}</textarea>
 
-                            @error('long_description')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                                @error('long_description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-8">
+                                <label class="d-block form-label" for="attachement">Galerie</label>
+                                <input type="file" name="attachment[]" id="attachment" multiple hidden>
+                                <div class="multiple-uploader" id="multiple-uploader">
+                                    <div class="mup-msg">
+                                        <span class="mup-main-msg">Cliquez pour téléverser des photos.</span>
+                                        <span class="mup-msg" id="max-upload-number">Téléverser jusqu'à 05 images</span>
+                                        <span class="mup-msg">Seules les images sont autorisées.</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -113,6 +130,8 @@
 @endsection
 
 @section('extra-js')
+    <script src="{{ asset('admin/js/multiple-uploader.js') }}"></script>
+
     <script>
         jQuery(document).ready(function($) {
 
@@ -136,6 +155,14 @@
 
             $("img.img-thumbnail").click(function() {
                 $("#image").click();
+            });
+
+            let multipleUploader = new MultipleUploader('#multiple-uploader').init({
+                maxUpload : 5,
+                // input name sent to backend
+                filesInpName:'attachment', 
+                // form selector
+                formSelector: '#form', 
             });
         });
     </script>

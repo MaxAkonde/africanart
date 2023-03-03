@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Attachment;
 use App\Models\Product;
+use App\Models\Attachment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class AttachmentController extends Controller
@@ -35,8 +36,16 @@ class AttachmentController extends Controller
         return $filename;
     }
 
-    public function destroy(Attachment $attachment, )
+    public function destroyByProduct(Product $product)
     {
-
+        $attachment = DB::table('attachments')->where('product_id', $product->id)->get();
+        foreach ($attachment as $item) {
+            try {
+                unlink("assets/products/" . $item->image);
+            } catch (\Throwable $th) {
+            }
+        }
+        $attachment = DB::table('attachments')->where('product_id', $product->id)->delete();
+        return true;
     }
 }

@@ -18,8 +18,8 @@
                     <h5 class="card-title mb-0">Modifier {{ $product->name }}</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.products.update', $product) }}" method="post"
-                        enctype="multipart/form-data" id="form">
+                    <form action="{{ route('admin.products.update', $product) }}" method="post" enctype="multipart/form-data"
+                        id="form">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -80,18 +80,32 @@
                         </div>
 
                         <div class="mb-3">
-                            <div class="col-md-4">
-                                <label class="form-label" for="long_description">Description longue</label>
-                                <textarea name="long_description" id="long_description" name="long_description"
-                                    class="form-control @error('long_description') is-invalid @enderror" cols="30" rows="10" required>{{ $product->long_description }}</textarea>
+                            <label class="form-label" for="long_description">Description longue</label>
+                            <textarea name="long_description" id="long_description" name="long_description"
+                                class="form-control @error('long_description') is-invalid @enderror" cols="30" rows="10" required>{{ $product->long_description }}</textarea>
 
-                                @error('long_description')
+                            @error('long_description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+
+                        <div class="mb-3 row">
+                            <div class="col-md-4">
+                                <label class="d-block form-label" for="image">Image à la une</label>
+                                <img src="@if ($product->image) {{ asset('assets/products/' . $product->image) }} @else https://via.placeholder.com/200 @endif"
+                                    class="img-thumbnail mb-2" alt="Image à la une" style="height: 200px;width: 200px">
+                                <input type="file" id="image" name="image" style="display: none"
+                                    class="form-control-file @error('image') is-invalid @enderror">
+
+                                @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-
                             <div class="col-md-8">
                                 <label class="d-block form-label" for="attachement">Galerie</label>
                                 <input type="file" name="attachment[]" id="attachment" multiple hidden>
@@ -103,21 +117,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label class="d-block form-label" for="image">Image à la une</label>
-                            <img src="@if ($product->image) {{ asset('assets/products/' . $product->image) }} @else https://via.placeholder.com/200 @endif"
-                                class="img-thumbnail mb-2" alt="Image à la une" style="height: 200px;width: 200px">
-                            <input type="file" id="image" name="image" style="display: none"
-                                class="form-control-file @error('image') is-invalid @enderror">
-
-                            @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
                         <div class="mt-3">
                             <button type="submit" class="btn btn-lg btn-primary">Modifier</button>
@@ -158,11 +157,11 @@
             });
 
             let multipleUploader = new MultipleUploader('#multiple-uploader').init({
-                maxUpload : 5,
+                maxUpload: 5,
                 // input name sent to backend
-                filesInpName:'attachment', 
+                filesInpName: 'attachment',
                 // form selector
-                formSelector: '#form', 
+                formSelector: '#form',
             });
         });
     </script>

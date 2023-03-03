@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\Product\StoreProductRequest;
@@ -126,9 +127,10 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $image = $request->file('image');
+        $attachment = $request->file('attachment');
         if ($image) {
             unlink("assets/products/" . $product->image);
-            unlink("assets/products/thumbnails" . $product->image);
+            unlink("assets/products/thumbnails/" . $product->image);
         }
 
         $product->title = $request->title;
@@ -139,6 +141,11 @@ class ProductController extends Controller
 
         if ($image) {
             $product->image = $this->uploadImage($request->file('image'));
+        }
+
+        if ($attachment) {
+            $destroyByProduct = (new AttachmentController)->destroyByProduct($product);
+            $gallery = (new AttachmentController)->store($request, $product->id);
         }
 
         $product->update();
@@ -156,14 +163,27 @@ class ProductController extends Controller
     {
         try {
             unlink("assets/products/" . $product->image);
-            unlink("assets/products/thumbnails" . $product->image);
+            unlink("assets/products/thumbnails/" . $product->image);
         } catch (\Throwable $th) {
         }
-
+        
+        $attachment = $this->unLinkAttachment($product);
         $name = $product->name;
 
         $product->delete();
 
         return redirect()->route('admin.products.index')->with('status', "Le produit " . $name . " vient d'être supprimer !");
+    }
+
+    private function unLinkAttachment(Product $product)
+    {
+        //dd($product);
+        $attachment = DB::table('attachments')->where('product_id', $product->id)->get();
+        foreach ($attachment as $item) {
+            try {
+                unlink("assets/products/" . $item->image);
+            } catch (\Throwable $th) {
+            }
+        }
     }
 }

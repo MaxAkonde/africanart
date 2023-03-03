@@ -112,7 +112,10 @@ class CategoryController extends Controller
 
         $image = $request->file('image');
         if ($image) {
-            unlink("assets/categories/" . $category->image);
+            try {
+                unlink("assets/categories/" . $category->image);
+            } catch (\Throwable $th) {
+            }
         }
 
         $category->name = $request->name;
@@ -135,7 +138,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        unlink("assets/categories/" . $category->image);
+        try {
+            unlink("assets/categories/" . $category->image);
+        } catch (\Throwable $th) {
+        }
 
         $name = $category->name;
 

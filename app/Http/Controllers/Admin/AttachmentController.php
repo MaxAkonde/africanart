@@ -34,4 +34,9 @@ class AttachmentController extends Controller
 
         return $filename;
     }
+
+    public function destroy(Attachment $attachment, )
+    {
+
+    }
 }

@@ -32,11 +32,10 @@
                                         <a href="{{ route('admin.shippings.edit', $shipping->id) }}" title="Modifier">
                                             <i class="align-middle me-1" data-feather="edit"></i></a>
                                         <form action="{{ route('admin.shippings.destroy', $shipping->id) }}" method="POST"
-                                            onsubmit="" style="display: inline" id="delete_form">
+                                            onsubmit="" style="display: inline" class="delete_form">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="#" style="color: red"
-                                                onclick="return confirm('Etes-vous sur ?') ? document.getElementById('delete_form').submit() : null">
+                                            <a href="#" style="color: red" class="delete_button">
                                                 <i class="align-middle me-1" data-feather="trash"></i>
                                             </a>
                                         </form>
@@ -66,4 +65,16 @@
 @endsection
 
 @section('extra-js')
+<script>
+    jQuery(document).ready(function($) {
+        $('a.delete_button').on('click', function(e) {
+            e.preventDefault();
+            if (confirm('Etes-vous sur ?')) {
+                $(this).parent().submit();
+            } else {
+                return null;
+            }
+        });
+    });
+</script>
 @endsection
